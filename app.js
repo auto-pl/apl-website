@@ -1,5 +1,8 @@
 'use strict';
 
+//prevent double clicking from selecting SVG image:
+document.getElementsByClassName("gameGrid")[0].addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
+
 let listOfPaths = document.getElementsByTagName('path');
 let baseOwnership = [];
 let ownershipColorsCSS = 
@@ -14,7 +17,7 @@ for(let i=0;i<listOfPaths.length; i++)
 {
 	baseOwnership[listOfPaths[i].id] = 0
 	console.log(listOfPaths[i].id);
-	document.getElementById(listOfPaths[i].id).addEventListener("click", switchOwnership(this.id));
+	document.getElementById(listOfPaths[i].id).addEventListener("click", () => switchOwnership(listOfPaths[i].id));
 }
 
 function switchOwnership(id)
