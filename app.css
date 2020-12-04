@@ -3,10 +3,58 @@
     --COLOR-FG-CAPPED-NC: #1D4698;
     --COLOR-FG-CAPPED-TR: #961100;
     --COLOR-FG-CAPPED-VS: #612597;
-}    
-
-html{
-    background-color: #051010;
+}
+@font-face { /* WIP CHECK COMPATIBILITY */
+    font-family: 'PS2-HEADER';
+    src: url('./Resources/Fonts/COPYRIGHT.TXT') /* IE9 Compat Modes */
+    url('./Resources/Fonts/Geo-Md.ttf') format('truetype');
+}
+.buttonDiv {
+    width: auto;
+    position: relative;
+    display: inline-block;
+    padding: 0 8px 0 12px;
+    box-sizing: border-box;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #202020;
+}
+.buttonDiv::before {
+    content: "";
+    position: absolute;
+    margin: -8px -20px;
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    background-color: #444444; /* to see where it is */
+    border-right: 1px rgba(185,190,190,0.9) solid;
+}
+.font-header {
+    font-family: 'PS2-HEADER', Fallback, sans-serif;
+    font-weight: 500;
+}
+.font-primary {
+    color: rgba(125,130,130,0.9);
+    text-shadow: 0 0 10px #707070;
+}
+.font-size-2{
+    font-size: 2vh;
+}
+.font-size-3 {
+    font-size: 3vh;
+}
+.font-size-4 {
+    font-size: 4vh;
+}
+.font-size-5 {
+    font-size: 5vh;
+}
+.border-button {
+    border: 1px rgba(185,190,190,0.9) solid;
+}
+html {
+    /*background-color: #051010;*/
+    background-color: #444444;
 }
 .wrapper {
     width: 100%;
