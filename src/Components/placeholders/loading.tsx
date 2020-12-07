@@ -62,9 +62,6 @@ type DotProps = {
 };
 
 const Dot: React.FC<DotProps> = (props: DotProps) => {
-  const text_style = props.done
-    ? { ...dot_text_style, color: "white" }
-    : dot_text_style;
   return (
     <span
       style={{
@@ -72,7 +69,9 @@ const Dot: React.FC<DotProps> = (props: DotProps) => {
         backgroundColor: props.done ? "green" : "grey",
       }}
     >
-      <span style={text_style}>{props.done ? "Loaded!" : "Loading..."}</span>
+      <span style={dot_text_style}>
+        {props.done ? "Loaded!" : "Loading..."}
+      </span>
     </span>
   );
 };
@@ -120,7 +119,7 @@ const get_animation = (animation_type: string): animation_func => {
 export const LoadingCover: React.FC<LoadingCoverProps> = (
   props: LoadingCoverProps
 ) => {
-  const [progress, setProgress]: [
+  const [progress, set_progress]: [
     number,
     (progress: number) => void
   ] = useState(0);
