@@ -29,10 +29,9 @@ type LoadingCoverProps = {
   max_width?: number;
 
   /**
-   * How often the progress is incremented (ms).
-   * Default: 10ms
+   * How much % of max_width / max_height it will move per ms
    */
-  period?: number;
+  rate: number;
 };
 
 const dot_style: CSSProperties = {
@@ -124,20 +123,27 @@ export const LoadingCover: React.FC<LoadingCoverProps> = (
     (progress: number) => void
   ] = useState(0);
   const [done, set_done] = useState(false);
+  const [backwards, set_backwards] = useState(false);
   let interval_id: number;
 
-  const period = props.period || 10;
   const max_pixels =
     props.animation_type === ANIMATION_TYPES.top_to_bottom
       ? props.max_height || 100
       : props.max_width || 100;
+  const rate = props.rate * max_pixels;
 
   /** Increment `progress` */
   const update = () => {
     // make sure that the component wasn't deleted
     const component = document.getElementById(props.id);
     if (!component) window.clearInterval(interval_id);
-    setProgress(progress === max_pixels ? 0 : progress + 1);
+
+    // Decide how to move
+    if (progress === max_pixels) {
+      set_backwards(backwards ? false : true); // change directions
+    }
+    const distance_to_move = backwards ? -1 * rate : rate;
+    set_progress(progress === max_pixels ? 0 : progress + distance_to_move);
   };
 
   const clear_loader = () => {
@@ -146,7 +152,7 @@ export const LoadingCover: React.FC<LoadingCoverProps> = (
   };
   props.promise.then(clear_loader);
 
-  interval_id = window.setInterval(update, period);
+  interval_id = window.setInterval(update, 1);
   const style = get_animation(props.animation_type)(progress);
   return <Dot style={style} done={done}></Dot>;
 };
