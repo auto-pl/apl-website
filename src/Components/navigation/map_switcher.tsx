@@ -1,5 +1,6 @@
 import React, { useState, FC } from "react";
-import { ContinentDetails, get_active_continent } from "../map/continent";
+import { ContinentDetails } from "../../interfaces/continent";
+import { get_active_continent } from "../../Utils/apitils";
 
 interface MapSwitcherProps {
   /**
