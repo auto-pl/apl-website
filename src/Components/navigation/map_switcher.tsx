@@ -1,12 +1,13 @@
-import React, { useState, FC } from "react";
+import React, { useState, FC, CSSProperties } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
 
 interface MapSwitcherProps {
   /**
-   * The continents to display
+   * @member details: the information about the continent
+   * @member view_url: the URL to the view of the continent
    */
-  continents: Array<ContinentDetails>;
+  continents: Array<{ view_url: string; details: ContinentDetails }>;
 }
 
 interface ContinentItemProps {
@@ -42,10 +43,11 @@ export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
     <div id="MapSwitcher">
       {props.continents.map((cont, i) => (
         <ContinentItem
-          continent_details={cont}
+          continent_details={cont.details}
           key={i}
-          selected={cont.name === current_cont.name}
+          selected={cont.details.name === current_cont.name}
           set_cont={set_current_cont}
+          url={cont.view_url}
         />
       ))}
     </div>
