@@ -25,13 +25,32 @@ interface ContinentItemProps {
    * The function to update the parent's state when this item is selected.
    */
   set_cont: (new_continent: ContinentDetails) => void;
+
+  /**
+   * The URL to the target continent's view
+   */
+  url: string;
 }
+
+// TODO: add styles
+const continent_item_overlay_style: CSSProperties = {};
+const continent_item_link_style: CSSProperties = {};
 
 /**
  * A link to display another continent
  */
 const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
-  return <div></div>;
+  const style: CSSProperties = {
+    ...continent_item_overlay_style,
+    backgroundColor: props.selected ? "rgba(255,255,255, 0.5)" : undefined,
+  };
+  return (
+    <div style={style}>
+      <a href={props.url} style={continent_item_link_style}>
+        {props.continent_details.name}
+      </a>
+    </div>
+  );
 };
 
 const default_cont = get_active_continent();
