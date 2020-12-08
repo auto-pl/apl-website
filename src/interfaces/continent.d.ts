@@ -36,8 +36,8 @@ export type ContinentGetter = ApiGetter<ContinentDetails>;
  * A more readable representation of the continent IDs
  */
 export enum ContinentIds {
-  Esamir,
-  Indar,
-  Amerish,
-  Hossin,
+  INDAR = 2,
+  HOSSIN = 4,
+  AMERISH = 6,
+  ESAMIR = 8,
 }
