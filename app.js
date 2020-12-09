@@ -1,25 +1,47 @@
 'use strict';
 
-const e = React.createElement;
+//prevent double clicking from selecting SVG image:
+document.getElementsByClassName("gameGrid")[0].addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
 
-class LikeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
+let listOfPaths = document.getElementsByTagName('path');
+let baseOwnership = [];
+let ownershipColorsCSS = 
+	[
+		getComputedStyle(document.documentElement).getPropertyValue('--COLOR-FG-CAPPED-NULL'),
+		getComputedStyle(document.documentElement).getPropertyValue('--COLOR-FG-CAPPED-NC'),
+		getComputedStyle(document.documentElement).getPropertyValue('--COLOR-FG-CAPPED-TR'),
+		getComputedStyle(document.documentElement).getPropertyValue('--COLOR-FG-CAPPED-VS'),
+	]
 
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
-
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
-  }
+for(let i=0;i<listOfPaths.length; i++)
+{
+	baseOwnership[listOfPaths[i].id] = 0
+	console.log(listOfPaths[i].id);
+	document.getElementById(listOfPaths[i].id).addEventListener("click", () => switchOwnership(listOfPaths[i].id));
 }
 
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+function switchOwnership(id)
+{
+	console.log("Switched Ownership");
+	if(baseOwnership[id] == 0)
+	{
+		baseOwnership[id] = 1;
+		document.getElementById(id).style.fill = ownershipColorsCSS[1];
+	}
+	else if(baseOwnership[id] == 1)
+	{
+		baseOwnership[id] = 2;
+		document.getElementById(id).style.fill = ownershipColorsCSS[2];
+	}
+	else if(baseOwnership[id] == 2)
+	{
+		baseOwnership[id] = 3;
+		document.getElementById(id).style.fill = ownershipColorsCSS[3];
+	}
+	else if(baseOwnership[id] == 3)
+	{
+		baseOwnership[id] = 0;
+		document.getElementById(id).style.fill = ownershipColorsCSS[0];
+	}
+}
+
