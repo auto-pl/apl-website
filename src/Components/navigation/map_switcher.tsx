@@ -1,6 +1,7 @@
 import React, { useState, FC, CSSProperties } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
+import { faction_colours } from "../../Utils/globals/faction_globals";
 
 interface MapSwitcherProps {
   /**
@@ -14,7 +15,7 @@ interface ContinentItemProps {
   /**
    * All relevant information about the continent to link to
    */
-  continent_details: ContinentDetails;
+  continent_record: { name: string; locked_by: string | null };
 
   /**
    * Whether this item is the currently viewed continent.
@@ -40,14 +41,35 @@ const continent_item_link_style: CSSProperties = {};
  * A link to display another continent
  */
 const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
-  const style: CSSProperties = {
+  const div_style: CSSProperties = {
     ...continent_item_overlay_style,
     backgroundColor: props.selected ? "rgba(255,255,255, 0.5)" : undefined,
   };
+  const locked_by = props.continent_record.locked_by;
+
+  let locked_icon = null;
+  if (locked_by) {
+    locked_icon = (
+      <img
+        src={`../../app/Resources/images/${locked_by}`}
+        alt={`Locked by ${locked_by}`}
+      ></img>
+    );
+  }
+
+  const span_style: CSSProperties = {
+    backgroundColor: locked_by
+      ? faction_colours.get(locked_by)
+      : "rgba(0, 0, 0, 0)",
+  };
+
   return (
-    <div style={style}>
+    <div style={div_style}>
       <a href={props.url} style={continent_item_link_style}>
-        {props.continent_details.name}
+        <span style={span_style}>
+          {locked_icon}
+          {props.continent_record.name}
+        </span>
       </a>
     </div>
   );
@@ -62,7 +84,10 @@ export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
     <div id="MapSwitcher">
       {props.continents.map((cont, i) => (
         <ContinentItem
-          continent_details={cont.details}
+          continent_record={{
+            name: cont.details.name,
+            locked_by: cont.details.locked_by,
+          }}
           key={i}
           selected={cont.details.name === current_cont.name}
           set_cont={set_current_cont}
