@@ -1,10 +1,14 @@
-import { ContinentGetter, ContinentIds as CI } from "../interfaces/continent";
+import {
+  ContinentGetter,
+  ContinentDetails,
+  ContinentIds as CI,
+} from "../interfaces/continent";
 
 interface apiT {
   get_all_continents: ContinentGetter;
 }
 
-const dummy_continents = [
+const dummy_continents: Array<ContinentDetails> = [
   {
     name: "Indar",
     population: 410,

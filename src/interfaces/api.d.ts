@@ -6,5 +6,5 @@ import { KeyFunction } from "./global_interfaces";
  * @param key The function for filtering out the undesired results. Optional
  */
 export interface ApiGetter<incomingT> {
-  (key?: KeyFunction): Array<incomingT>;
+  <incomingT>(key?: KeyFunction): Array<incomingT>;
 }
