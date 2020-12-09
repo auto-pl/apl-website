@@ -8,7 +8,6 @@ const dummy_continents = [
   {
     name: "Indar",
     population: 410,
-    locked: false,
     base_states: [
       {
         name: "Hvar",
@@ -17,13 +16,15 @@ const dummy_continents = [
         captured_by: null,
         continent_id: CI.INDAR,
         leaderboard: null,
+        population: { NC: 40, TR: 10, VS: 15 },
+        priority_level: 3,
       },
     ],
+    locked_by: null,
   },
   {
     name: "Amerish",
     population: 90,
-    locked: false,
     base_states: [
       {
         name: "Heyoka Chemical Lab",
@@ -32,13 +33,15 @@ const dummy_continents = [
         captured_by: null,
         continent_id: CI.AMERISH,
         leaderboard: null,
+        population: { NC: 40, TR: 10, VS: 15 },
+        priority_level: 3,
       },
     ],
+    locked_by: null,
   },
   {
     name: "Esamir",
     population: 780,
-    locked: false,
     base_states: [
       {
         name: "Pale Canyon Chemical",
@@ -47,13 +50,15 @@ const dummy_continents = [
         captured_by: null,
         continent_id: CI.ESAMIR,
         leaderboard: null,
+        population: { NC: 40, TR: 10, VS: 15 },
+        priority_level: 3,
       },
     ],
+    locked_by: null,
   },
   {
     name: "Hossin",
     population: 0,
-    locked: true,
     base_states: [
       {
         name: "Chac Fusion",
@@ -62,8 +67,15 @@ const dummy_continents = [
         captured_by: null,
         continent_id: CI.HOSSIN,
         leaderboard: null,
+        population: {
+          NC: 0,
+          TR: 0,
+          VS: 0,
+        },
+        priority_level: 0,
       },
     ],
+    locked_by: "VS",
   },
 ];
 

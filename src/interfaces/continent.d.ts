@@ -7,7 +7,10 @@ import { Outfit, Player } from "./player";
 export interface ContinentDetails {
   name: string;
   population: number;
-  locked: boolean;
+  /**
+   * The faction that locked the continent.
+   */
+  locked_by: string | null;
   base_states: Array<BaseState>;
 }
 
@@ -28,6 +31,11 @@ export interface BaseState {
   time_held: number;
   captured_by: null | Outfit;
   leaderboard: null | Array<{ player: Player; score: number; kills: number }>;
+  population: { NC: number; TR: number; VS: number };
+  /**
+   * This is the priority level assigned by the AI.
+   */
+  priority_level: number;
 }
 
 export type ContinentGetter = ApiGetter<ContinentDetails>;
