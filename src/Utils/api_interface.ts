@@ -84,9 +84,10 @@ const dummy_continents: Array<ContinentDetails> = [
 ];
 
 export const api: apiT = {
-  get_all_continents: (key) => {
+  get_all_continents: (key?) => {
     // make api call for all continents
     const result = dummy_continents;
+    if (!key) return result;
     return result.filter(key);
   },
 };
