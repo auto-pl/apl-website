@@ -48,7 +48,9 @@ const continent_item_link_style: CSSProperties = {
 const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
   const div_style: CSSProperties = {
     ...continent_item_overlay_style,
-    backgroundColor: props.selected ? "rgba(255,255,255, 0.5)" : undefined,
+    backgroundColor: props.selected ? "rgba(255,255,255, 0.75)" : undefined,
+    verticalAlign: "middle",
+    height: "32px",
   };
   const locked_by = props.continent_record.locked_by;
 
@@ -60,6 +62,7 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
         alt={`Locked by ${locked_by}`}
         height={"32px"}
         width={"32px"}
+        style={{ position: "relative", top: "10px" }}
       ></img>
     );
   }
@@ -68,6 +71,10 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
     backgroundColor: locked_by
       ? faction_colours.get(locked_by)
       : "rgba(0, 0, 0, 0)",
+    display: "inline-block",
+    border: "1px solid grey",
+    padding: "2px 4px 2px 4px",
+    width: "20%",
   };
 
   return (
