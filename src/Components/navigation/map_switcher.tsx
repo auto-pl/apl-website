@@ -1,4 +1,4 @@
-import React, { useState, FC, CSSProperties } from "react";
+import React, { useState, FC, CSSProperties, SyntheticEvent } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
 import {
@@ -90,24 +90,38 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
 };
 
 const default_cont = get_active_continent();
+const up_arrow = {
+  width: 0,
+  height: 0,
+  borderStyle: "solid",
+  borderWidth: "0 16px 32px 16px",
+  borderColor: "transparent transparent #7048e8 transparent",
+};
 
 export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
   const [current_cont, set_current_cont] = useState(default_cont);
+  const [clicked, set_clicked] = useState(false);
 
   return (
-    <div id="MapSwitcher">
-      {props.continents.map((cont, i) => (
-        <ContinentItem
-          continent_record={{
-            name: cont.details.name,
-            locked_by: cont.details.locked_by,
-          }}
-          key={i}
-          selected={cont.details.name === current_cont.name}
-          set_cont={set_current_cont}
-          url={cont.view_url}
-        />
-      ))}
+    <div id="MapSwitcher" onClick={(e: SyntheticEvent) => console.log(e)}>
+      <span>
+        <span style={up_arrow} />
+        {current_cont.name}
+      </span>
+      {clicked
+        ? props.continents.map((cont, i) => (
+            <ContinentItem
+              continent_record={{
+                name: cont.details.name,
+                locked_by: cont.details.locked_by,
+              }}
+              key={i}
+              selected={cont.details.name === current_cont.name}
+              set_cont={set_current_cont}
+              url={cont.view_url}
+            />
+          ))
+        : null}
     </div>
   );
 };
