@@ -1,7 +1,10 @@
 import React, { useState, FC, CSSProperties } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
-import { faction_colours } from "../../Utils/globals/faction_globals";
+import {
+  faction_colours,
+  faction_logos,
+} from "../../Utils/globals/faction_globals";
 
 interface MapSwitcherProps {
   /**
@@ -35,7 +38,9 @@ interface ContinentItemProps {
 
 // TODO: add styles
 const continent_item_overlay_style: CSSProperties = {};
-const continent_item_link_style: CSSProperties = {};
+const continent_item_link_style: CSSProperties = {
+  display: "inline-block",
+};
 
 /**
  * A link to display another continent
@@ -53,11 +58,13 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
       <img
         src={faction_logos.get(locked_by)}
         alt={`Locked by ${locked_by}`}
+        height={"32px"}
+        width={"32px"}
       ></img>
     );
   }
 
-  const span_style: CSSProperties = {
+  const locked_style: CSSProperties = {
     backgroundColor: locked_by
       ? faction_colours.get(locked_by)
       : "rgba(0, 0, 0, 0)",
@@ -65,12 +72,12 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
 
   return (
     <div style={div_style}>
-      <a href={props.url} style={continent_item_link_style}>
-        <span style={span_style}>
+      <span style={locked_style}>
+        <a href={props.url} style={continent_item_link_style}>
           {locked_icon}
-          {props.continent_record.name}
-        </span>
-      </a>
+          <span>{props.continent_record.name}</span>
+        </a>
+      </span>
     </div>
   );
 };
