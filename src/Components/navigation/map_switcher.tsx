@@ -93,12 +93,13 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
 };
 
 const default_cont = get_active_continent();
-const up_arrow = {
+const up_arrow: CSSProperties = {
   width: 0,
   height: 0,
   borderStyle: "solid",
   borderWidth: "0 16px 32px 16px",
   borderColor: "transparent transparent #7048e8 transparent",
+  position: "relative",
 };
 
 export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
