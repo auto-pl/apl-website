@@ -51,7 +51,7 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
   if (locked_by) {
     locked_icon = (
       <img
-        src={`../../app/Resources/images/${locked_by}`}
+        src={faction_logos.get(locked_by)}
         alt={`Locked by ${locked_by}`}
       ></img>
     );
