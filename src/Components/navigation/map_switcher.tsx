@@ -48,10 +48,10 @@ const continent_item_link_style: CSSProperties = {
 const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
   const div_style: CSSProperties = {
     ...continent_item_overlay_style,
-    backgroundColor: props.selected ? "rgba(255,255,255, 0.75)" : undefined,
     verticalAlign: "middle",
     height: "32px",
   };
+
   const locked_by = props.continent_record.locked_by;
 
   let locked_icon = null;
@@ -67,10 +67,15 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
     );
   }
 
+  const selected_style: CSSProperties = {
+    backgroundColor: props.selected ? "rgba(0, 0, 0, 0.25)" : undefined,
+    width: "100%",
+    verticalAlign: "middle",
+    display: "justify",
+  };
+
   const locked_style: CSSProperties = {
-    backgroundColor: locked_by
-      ? faction_colours.get(locked_by)
-      : "rgba(0, 0, 0, 0)",
+    backgroundColor: locked_by ? faction_colours.get(locked_by) : undefined,
     display: "inline-block",
     border: "1px solid grey",
     padding: "2px 4px 2px 4px",
@@ -83,10 +88,12 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
       onClick={() => props.set_cont(props.continent_record)}
     >
       <span style={locked_style}>
-        <a href={props.url} style={continent_item_link_style}>
-          {locked_icon}
-          <span>{props.continent_record.name}</span>
-        </a>
+        <div style={selected_style}>
+          <a href={props.url} style={continent_item_link_style}>
+            {locked_icon}
+            <span>{props.continent_record.name}</span>
+          </a>
+        </div>
       </span>
     </div>
   );
@@ -106,10 +113,17 @@ export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
   const [current_cont, set_current_cont] = useState(default_cont);
   const [clicked, set_clicked] = useState(false);
 
+  const cont_name_style: CSSProperties = {
+    border: "2px solid black",
+    width: "20%",
+    display: "inline-block",
+    marginBottom: "4px",
+  };
+
   return (
     <div id="MapSwitcher" onClick={() => set_clicked(!clicked)}>
-      <span>
-        <span style={up_arrow} />
+      <span style={cont_name_style}>
+        {/* <span style={up_arrow} /> */}
         {current_cont.name}
       </span>
       {clicked
