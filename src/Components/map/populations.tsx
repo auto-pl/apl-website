@@ -12,10 +12,15 @@ const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
   const total_pop = Object.values(props.populations).reduce(
     (acc, item) => acc + item
   );
-  const to_percentage = (pop: number): number => pop / total_pop;
-  const population_percentages = {
-    vs: (props.populations.vs / total_pop) * 100,
+
+  const array_to_obj = (obj: object, [key, value]: [string, number]) => {
+    obj[key] = value;
+    return obj;
   };
+  const population_percentages = Object.entries(props.populations)
+    .map(([name, pop]) => [name, (pop / total_pop) * 100])
+    .reduce(array_to_obj, {});
+
   return (
     <div>
       <span></span>
