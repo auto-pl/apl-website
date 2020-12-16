@@ -14,6 +14,8 @@ export interface ContinentDetails {
   base_states: Array<BaseState>;
 }
 
+export type faction = "NC" | "TR" | "VS" | "NS";
+
 /**
  * Represents a base.
  */
@@ -23,7 +25,7 @@ export interface BaseState {
    * Should be one of the following: [NC, TR, VS, NS]
    * Neutral is NS
    */
-  faction: string;
+  faction: faction;
   continent_id: number;
   /**
    * How long since it was last capped in ms

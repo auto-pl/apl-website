@@ -1,6 +1,8 @@
 // this file will have the hover menu for hexes
 import React, { FC, ReactNode } from "react";
 
+type position = "bottom right" | "bottom left" | "top right" | "top left";
+
 interface HoverMenuProps {
   /**
    * The name of the menu to be placed at the top
@@ -16,7 +18,7 @@ interface HoverMenuProps {
      * Whether the menu should appear in a set spot.
      * Should be one of [bottom right, bottom left, top right, top left]
      */
-    fixed_position?: string;
+    fixed_position?: position;
   };
 }
 
