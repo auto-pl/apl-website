@@ -1,6 +1,8 @@
 // this file will have the hover menu for hexes
 import React, { FC, ReactNode } from "react";
 
+type WrappedComponent = ComponentType<{ key: string }>;
+
 interface HoverMenuProps {
   /**
    * The name of the menu to be placed at the top
