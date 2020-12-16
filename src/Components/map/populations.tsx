@@ -13,13 +13,24 @@ const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
     (acc, item) => acc + item
   );
 
-  const array_to_obj = (obj: object, [key, value]: [string, number]) => {
+  const array_to_obj = (
+    obj: { [faction_name: string]: number },
+    [key, value]: [string, number]
+  ) => {
     obj[key] = value;
     return obj;
   };
-  const population_percentages = Object.entries(props.populations)
-    .map(([name, pop]) => [name, (pop / total_pop) * 100])
-    .reduce(array_to_obj, {});
+  const percentages = Object.entries(props.populations).map(([name, pop]) => [
+    name,
+    (pop / total_pop) * 100,
+  ]);
+
+  // !FIX: this type cast is a hack
+  // The compiler was saying `percentages` was `ReactText`
+  const faction_percentages = (percentages as Array<[string, number]>).reduce(
+    array_to_obj,
+    {}
+  );
 
   return (
     <div>
