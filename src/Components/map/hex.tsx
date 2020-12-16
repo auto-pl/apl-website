@@ -58,6 +58,12 @@ export const Hex = memo<HexProps>((props) => {
         id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
       ></div>
       <HexImg id={props.base_id} />
+      {state.hovered ? (
+        <HoverMenu
+          title={props.base_state.name}
+          body_items={[() => <span>Placeholder</span>]}
+        />
+      ) : null}
     </div>
   );
 }, check_for_hex_update);
