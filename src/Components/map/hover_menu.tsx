@@ -1,5 +1,7 @@
 // this file will have the hover menu for hexes
-import React, { FC } from "react";
+import React, { FC, ComponentType } from "react";
+
+type WrappedComponent = ComponentType<{ key: string }>;
 
 interface HoverMenuProps {
   /**
@@ -9,7 +11,7 @@ interface HoverMenuProps {
   /**
    * What should be displayed in the body.
    */
-  body_items: Array<FC>;
+  body_items: Array<WrappedComponent>;
 
   options?: {
     /**
@@ -23,7 +25,8 @@ interface HoverMenuProps {
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
   return (
     <div>
-      <span></span>
+      <span>{props.title}</span>
+      <div>{props.body_items}</div>
     </div>
   );
 };
