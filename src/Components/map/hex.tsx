@@ -1,9 +1,14 @@
-import React, { useState, memo, useReducer, Reducer } from "react";
+import React, { memo, useReducer, Reducer } from "react";
 import { BaseState } from "../../interfaces/continent";
 import { HoverMenu } from "./hover_menu";
+import { HexImg } from "./hex_img";
 
 interface HexProps {
   base_state: BaseState;
+  /**
+   * The id of the base SVG
+   */
+  base_id: string;
 }
 
 interface HexState {
@@ -49,7 +54,10 @@ export const Hex = memo<HexProps>((props) => {
 
   return (
     <div onMouseOver={() => dispatch(ACTION_TYPES.hovered)}>
-      <span></span>
+      <div
+        id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
+      ></div>
+      <HexImg id={props.base_id} />
     </div>
   );
 }, check_for_hex_update);
