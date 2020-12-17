@@ -1,6 +1,5 @@
 import React, { memo, useReducer, Reducer } from "react";
 import { BaseState } from "../../interfaces/continent";
-import { HoverMenu } from "./hover_menu";
 import { HexImg } from "./hex_img";
 
 interface HexProps {
@@ -9,26 +8,26 @@ interface HexProps {
    * The id of the base SVG
    */
   base_id: string;
+  /**
+   * The callback to show the hover menu when the hex is hovered.
+   */
+  show_hover_menu: (base_state: BaseState) => void; // NOTE: This is needed because the menu needs to be outside the container the hex is in
 }
 
 interface HexState {
   base_state: BaseState;
-  hovered: boolean;
 }
 
 export enum ACTION_TYPES {
-  hovered = "hovered",
   clicked = "clicked",
   priority_changed = "priority_changed",
 }
 
 const reducer: Reducer<HexState, string> = (state, action): HexState => {
   switch (action) {
-    case ACTION_TYPES.hovered:
-      return { ...state, hovered: !state.hovered };
-    case ACTION_TYPES.clicked:
+    case ACTION_TYPES.clicked: // TODO: do something on click
       return state;
-    case ACTION_TYPES.priority_changed:
+    case ACTION_TYPES.priority_changed: // TODO: make the hex flash with increased saturation and speed depending on the priority
       return state;
     default:
       throw new Error(
@@ -48,22 +47,15 @@ const check_for_hex_update = (prev_props: HexProps, new_props: HexProps) => {
 
 export const Hex = memo<HexProps>((props) => {
   const [state, dispatch] = useReducer(reducer, {
-    hovered: true,
     base_state: props.base_state,
   });
 
   return (
-    <div onMouseOver={() => dispatch(ACTION_TYPES.hovered)}>
+    <div onMouseOver={() => props.show_hover_menu(props.base_state)}>
       <div
         id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
       ></div>
       <HexImg id={props.base_id} />
-      {state.hovered ? (
-        <HoverMenu
-          title={props.base_state.name}
-          body_items={[() => <span>Placeholder</span>]}
-        />
-      ) : null}
     </div>
   );
 }, check_for_hex_update);
