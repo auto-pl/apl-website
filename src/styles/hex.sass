@@ -1,0 +1,32 @@
+$border: "1px solid lightcyan"
+
+.Hex
+    border: $border
+
+@keyframes BorderFlashLowAnimation
+    0%
+        border: $border
+
+    25%
+        border: "1.5px solid yellow"
+
+    50%
+        border: $border
+        from: border-color: "lightcyan"
+        to: $border
+
+@keyframes BorderFlashMediumAnimation
+    from: border-color: "lightcyan"
+    to: border-color: "#ffae42"
+
+/* For 25% priority */
+.BorderFlashLow
+    @extend .Hex
+    animation-name: BorderFlashLowAnimation
+    animation-duration: 4s
+
+/* For 50% priority */
+.BorderFlashMedium
+    @extend .Hex
+    animation-name: BorderFlashMediumAnimation
+    animation: 3s
