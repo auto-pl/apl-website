@@ -42,3 +42,13 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
     />
   );
 };
+
+export const EnemiesDetected: FC<PopulationProps> = (props) => {
+  return (
+    <div>
+      <span>VS detected: {props.populations.vs}</span>
+      <span>TR detected: {props.populations.tr}</span>
+      <span>NC detected: {props.populations.nc}</span>
+    </div>
+  );
+};
