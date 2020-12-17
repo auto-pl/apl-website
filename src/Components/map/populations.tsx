@@ -52,3 +52,20 @@ export const EnemiesDetected: FC<PopulationProps> = (props) => {
     </div>
   );
 };
+
+const population_report_style: CSSProperties = {
+  border: "1px double cyan",
+  height: "30%",
+  width: "20%",
+};
+
+// Alias added to prevent confusion
+type PopulationReportProps = PopulationPieChartProps;
+export const PopulationReport: FC<PopulationReportProps> = (props) => {
+  return (
+    <div style={population_report_style}>
+      <EnemiesDetected populations={props.populations} />
+      <PopulationPieChart {...props} />
+    </div>
+  );
+};
