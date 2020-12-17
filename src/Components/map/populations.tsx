@@ -1,11 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, CSSProperties } from "react";
 import { Chart } from "react-google-charts";
 
-interface PopulationPieChartProps {
+interface PopulationProps {
   /**
    * The number of players per faction
    */
   populations: { nc: number; vs: number; tr: number };
+}
+
+interface PopulationPieChartProps extends PopulationProps {
   /**
    * Defaults to 150px
    */
@@ -16,7 +19,7 @@ interface PopulationPieChartProps {
   width?: number;
 }
 
-const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
+export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
   const total_pop = Object.values(props.populations).reduce(
     (acc, item) => acc + item
   );
