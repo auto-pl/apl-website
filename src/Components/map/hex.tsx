@@ -12,6 +12,10 @@ interface HexProps {
    * The callback to show the hover menu when the hex is hovered.
    */
   show_hover_menu: (base_state: BaseState) => void; // NOTE: This is needed because the menu needs to be outside the container the hex is in
+  /**
+   * Whether it should be a grey out-of-map hex
+   */
+  out_of_bounds: boolean;
 }
 
 interface HexState {
