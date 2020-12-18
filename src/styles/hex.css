@@ -1,0 +1,44 @@
+.Hex, .HexPriorityLow, .HexPriorityMed, .HexPriorityHigh, .HexPriorityExtreme {
+  border: 1px solid cyan;
+}
+
+.HexPriorityLow {
+  -webkit-transition: border 4s ease-in-out;
+  transition: border 4s ease-in-out;
+}
+
+.HexPriorityLowAnimated {
+  border-size: 1.5px;
+  border-color: yellow;
+}
+
+.HexPriorityMed {
+  -webkit-transition: border 3s ease-in-out;
+  transition: border 3s ease-in-out;
+}
+
+.HexPriorityMedAnimated {
+  border-size: 2px;
+  border-color: #ffae42;
+}
+
+.HexPriorityHigh {
+  -webkit-transition: border 2s ease-in-out;
+  transition: border 2s ease-in-out;
+}
+
+.HexPriorityHighAnimated {
+  border-size: 2.5px;
+  border-color: orange;
+}
+
+.HexPriorityExtreme {
+  -webkit-transition: border 1s ease-in-out;
+  transition: border 1s ease-in-out;
+}
+
+.HexPriorityExtremeAnimated {
+  border-size: 3px;
+  border-color: red;
+}
+/*# sourceMappingURL=hex.css.map */

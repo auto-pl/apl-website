@@ -1,11 +1,40 @@
 $border_size: 1px
-$border_color: cyan
+$base_border_colour: cyan
+$border_type: solid
+$base_transition_time: 4s
+$transition_type: ease-in-out
 
 .Hex
-    border: $border
-    transition: border 4s ease-in-out
+    border: $border_size $border_type $base_border_colour
 
 .HexPriorityLow
     @extend .Hex
-    border-size: scale(border_size, 2)
+    transition: border $base_transition_time $transition_type
+
+.HexPriorityLowAnimated
+    border-size: $border_size * 1.5
     border-color: yellow
+
+.HexPriorityMed
+    @extend .Hex
+    transition: border $base_transition_time * 0.75 $transition_type
+
+.HexPriorityMedAnimated
+    border-size: $border_size * 2
+    border-color: #ffae42
+
+.HexPriorityHigh
+    @extend .Hex
+    transition: border $base_transition_time * 0.5 $transition_type
+
+.HexPriorityHighAnimated
+    border-size: $border_size * 2.5
+    border-color: orange
+
+.HexPriorityExtreme
+    @extend .Hex
+    transition: border $base_transition_time * 0.25 $transition_type
+
+.HexPriorityExtremeAnimated
+    border-size: $border_size * 3
+    border-color: red
