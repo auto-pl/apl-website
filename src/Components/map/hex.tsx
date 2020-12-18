@@ -44,7 +44,7 @@ const reducer: Reducer<HexState, string> = (state, action): HexState => {
 /**
  * Get the appropriate animation class names for the priority level
  * @param priority The priority score assigned by the AI
- * @returns a CSS class name in `hex.sass`
+ * @returns a CSS class name in `src/stlyes/hex.sass`
  */
 const get_priority_style = (priority: number): string => {
   switch (Math.round(priority / 25)) {
