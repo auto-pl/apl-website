@@ -1,6 +1,7 @@
 import React, { memo, useReducer, Reducer } from "react";
 import { BaseState } from "../../interfaces/continent";
 import { HexImg } from "./hex_img";
+import "../../styles/hex.css";
 
 interface HexProps {
   base_state: BaseState;
@@ -37,6 +38,26 @@ const reducer: Reducer<HexState, string> = (state, action): HexState => {
       throw new Error(
         "Invalid action. See src/Components/map/hex.ACTION_TYPES for the valid types."
       );
+  }
+};
+
+/**
+ * Get the appropriate animation class names for the priority level
+ * @param priority The priority score assigned by the AI
+ * @returns a CSS class name in `hex.sass`
+ */
+const get_priority_style = (priority: number): string => {
+  switch (Math.round(priority / 25)) {
+    case 1:
+      return "HexPriorityLow HexPriorityLowAnimated";
+    case 2:
+      return "HexPriorityMed HexPriorityMedAnimated";
+    case 3:
+      return "HexPriorityHigh HexPriorityHighAnimated";
+    case 4:
+      return "HexPriorityExtreme HexPriorityExtremeAnimated";
+    default:
+      return "Hex";
   }
 };
 
