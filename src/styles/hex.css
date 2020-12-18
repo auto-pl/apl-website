@@ -1,5 +1,11 @@
 .Hex, .HexPriorityLow, .HexPriorityMed, .HexPriorityHigh, .HexPriorityExtreme {
   border: 1px solid cyan;
+  -webkit-transition-duration: infinite;
+          transition-duration: infinite;
+  -webkit-transition-property: border;
+  transition-property: border;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
 }
 
 .HexPriorityLow {

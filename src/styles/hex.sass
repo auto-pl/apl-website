@@ -1,15 +1,19 @@
 $border_size: 1px
 $base_border_colour: cyan
 $border_type: solid
-$base_transition_time: 4s
-$transition_type: ease-in-out
 
 .Hex
     border: $border_size $border_type $base_border_colour
 
+@mixin HasAnimation
+    transition-duration: 4s
+    transition-property: border
+    transition-timing-function: ease-in-out
+
 .HexPriorityLow
     @extend .Hex
-    transition: border $base_transition_time $transition_type
+    @include HasAnimation
+        transition-duration: $base_transition_time
 
 .HexPriorityLowAnimated
     border-size: $border_size * 1.5
@@ -17,15 +21,17 @@ $transition_type: ease-in-out
 
 .HexPriorityMed
     @extend .Hex
-    transition: border $base_transition_time * 0.75 $transition_type
+    @include HasAnimation
+        transition-duration: $base_transition_time * 0.75
 
 .HexPriorityMedAnimated
     border-size: $border_size * 2
     border-color: #ffae42
 
 .HexPriorityHigh
-    @extend .Hex
-    transition: border $base_transition_time * 0.5 $transition_type
+    @include HasAnimation
+        @extend .Hex
+        transition-duration: $base_transition_time * 0.5
 
 .HexPriorityHighAnimated
     border-size: $border_size * 2.5
@@ -33,7 +39,8 @@ $transition_type: ease-in-out
 
 .HexPriorityExtreme
     @extend .Hex
-    transition: border $base_transition_time * 0.25 $transition_type
+    @include HasAnimation
+        transition-duration: $base_transition_time * 0.25
 
 .HexPriorityExtremeAnimated
     border-size: $border_size * 3
