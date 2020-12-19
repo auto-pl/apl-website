@@ -4,38 +4,214 @@
     --COLOR-FG-CAPPED-TR: #961100;
     --COLOR-FG-CAPPED-VS: #612597;
 }
+body {
+    font-family: 'PS2-HEADER', Fallback, sans-serif;
+    font-weight: 500;
+}
 @font-face { /* WIP CHECK COMPATIBILITY */
     font-family: 'PS2-HEADER';
     src: url('./Resources/Fonts/COPYRIGHT.TXT') /* IE9 Compat Modes */
     url('./Resources/Fonts/Geo-Md.ttf') format('truetype');
 }
-.buttonDiv {
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background: #202020;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(185,190,190,0.9);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(185,190,190,1);
+}
+select {/* copied from stack overflow :) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+}
+.styleSelect {
+    color: rgba(125,130,130,0.9);
+    text-shadow: 0 0 10px #707070;
+    background-color: #202020;
+}
+option:hover
+{
+    
+    background-color: #606060;
+}
+.container {
+    border: 1px rgba(185,190,190,0.9) solid;
+    background-color: rgba(255,255,255,0.02);
+    margin: 5px;
+    padding: 5px;
+    z-index: 100000;
+}
+.container-header {
+    text-align: center;
+    border-color: rgba(185,190,190,0.9);
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    margin: 5px;
+    padding: 5px;
+}
+.container-body
+{
+    text-align: justify;
+    padding: 5px;
+}
+.overflow-y-scroll{
+    overflow-y: auto;
+}
+.container-inline {
+    text-align: center;
+    padding: 5px;
+}
+.w-10 {
+    width: 10%;
+}
+.w-20 {
+    width: 20%;
+}
+.w-30 {
+    width: 30%;
+}
+.w-40 {
+    width: 40%;
+}
+.w-50 {
+    width: 50%;
+}
+.w-60 {
+    width: 60%;
+}
+.w-auto {
+    width: auto;
+}
+.h-5{
+    height: 5%;
+}
+.h-10 {
+    height: 10%;
+}
+.h-20 {
+    height: 20%;
+}
+.h-30 {
+    height: 30%;
+}
+.h-40 {
+    height: 40%;
+}
+.h-45 {
+    height: 45%;
+}
+.h-50 {
+    height: 50%;
+}
+.h-55 {
+    height: 55%;
+}
+.h-60 {
+    height: 60%;
+}
+.h-70 {
+    height: 70%;
+}
+.h-80 {
+    height: 80%;
+}
+.h-85 {
+    height: 85%;
+}
+.h-90 {
+    height: 90%;
+}
+.h-100 {
+    height: 100%;
+}
+.h-auto {
+    height: auto;
+}
+.left {
+    position: absolute !important;
+    left: 0;
+    padding: 5px;
+}
+.right {
+    position: absolute !important;
+    right: 0;
+    padding: 5px;
+}
+.top {
+    position: absolute !important;
+    top: 0;
+    padding: 5px;
+}
+.bottom {
+    position: absolute !important;
+    bottom: 0;
+    padding: 5px;
+}
+.horizontalCenter {
+    position: absolute !important;
+    margin: 0 25%;
+    margin-top: 5px;
+    width: 50%;
+    padding: 5px;
+    text-align: justify;
+}
+.buttonDiv-notched-topLeft {
     width: auto;
     position: relative;
     display: inline-block;
-    padding: 0 8px 0 12px;
+    padding: 5px 8px 5px 12px;
     box-sizing: border-box;
     margin: 5px;
     cursor: pointer;
     background-color: #202020;
 }
-.buttonDiv::before {
+.buttonDiv-notched-topLeft::before {
     content: "";
     position: absolute;
-    margin: -8px -20px;
+    margin: -13px -20px;
     width: 15px;
     height: 15px;
     transform: rotate(45deg);
-    background-color: #444444; /* to see where it is */
+    background-color: #444444;
     border-right: 1px rgba(185,190,190,0.9) solid;
 }
-.font-header {
-    font-family: 'PS2-HEADER', Fallback, sans-serif;
-    font-weight: 500;
+.buttonDiv-notched-topLeft:hover {
+    background-color: #303030;
+}
+.button-active:hover {
+    background-color: #505050;
+}
+.button-active {
+    background-color: #505050;
+    cursor: default;
+    color: #202020 !important;
+    text-shadow: 0 0 10px #505050 !important;
+}
+.button-disabled:hover {
+    background-color: #303030;
+}
+.button-disabled {
+    background-color: #303030;
+    cursor: default;
+    color: #101010 !important;
+    text-shadow: 0 0 5px #505050 !important;
 }
 .font-primary {
     color: rgba(125,130,130,0.9);
     text-shadow: 0 0 10px #707070;
+}
+.font-size-1 {
+    font-size: 1vh;
 }
 .font-size-2{
     font-size: 2vh;
@@ -46,15 +222,11 @@
 .font-size-4 {
     font-size: 4vh;
 }
-.font-size-5 {
-    font-size: 5vh;
-}
 .border-button {
     border: 1px rgba(185,190,190,0.9) solid;
 }
 html {
-    /*background-color: #051010;*/
-    background-color: #444444;
+    background-color: #051010;
 }
 .wrapper {
     width: 100%;
