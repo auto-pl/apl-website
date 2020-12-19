@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-const error_svg = require("../../app/Resources/Images/error.svg") as string;
+import * as error_svg from "../../app/Resources/Images/error.svg";
 
 // TODO: (blocked) get the hexes from the database
 // TODO: convert the result to Map<string, SVG>
