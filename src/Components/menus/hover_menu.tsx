@@ -78,7 +78,11 @@ export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
       <span>
         <b>{props.title}</b>
       </span>
-      <div>{props.body_items}</div>
+      <div>
+        {props.body_items.map((e, i) => (
+          <span key={i}>{e}</span>
+        ))}
+      </div>
     </div>
   );
 };
