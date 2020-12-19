@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["./src/@types/", "./node_mudles/@types/"]
+    "typeRoots": ["./node_modles/@types/"]
   },
   "include": [
     "src/app",
