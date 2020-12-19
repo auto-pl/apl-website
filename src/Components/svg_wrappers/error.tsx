@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const error = (props: React.SVGProps<SVGSVGElement>) => (
+export const Error = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     height={32}
     width={32}
