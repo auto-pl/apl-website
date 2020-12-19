@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import * as error_svg from "../../app/Resources/Images/error.svg";
+import React, { FC, ReactNode } from "react";
+import { Error } from "../svg_wrappers/error";
 
 // TODO: (blocked) get the hexes from the database
 // TODO: convert the result to Map<string, SVG>
-const svgs: Map<string, typeof error_svg> = new Map();
+const svgs: Map<string, ReactNode> = new Map();
 
 interface HexImgProps {
   /**
@@ -19,10 +19,6 @@ interface HexImgProps {
 
 export const HexImg: FC<HexImgProps> = (props: HexImgProps) => {
   const result = svgs.get(props.id);
-  const HexSVG = result || error_svg;
-  return (
-    <div className={props.priority_class_name}>
-      <HexSVG />
-    </div>
-  );
+  const HexSVG: ReactNode = result || Error;
+  return <div className={props.priority_class_name}>{HexSVG}</div>;
 };
