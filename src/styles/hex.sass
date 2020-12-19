@@ -1,47 +1,57 @@
 $border_size: 1px
 $base_border_colour: cyan
 $border_type: solid
+$animation_time: 4s
 
 .Hex
     border: $border_size $border_type $base_border_colour
+    animation-iteration-count: infinite
+    animation-direction: alternate
 
-@mixin HasAnimation
-    transition-duration: 4s
-    transition-property: border
-    transition-timing-function: ease-in-out
-
-.HexPriorityLow
-    @extend .Hex
-    @include HasAnimation
-        transition-duration: $base_transition_time
-
-.HexPriorityLowAnimated
-    border-size: $border_size * 1.5
+@keyframes LowPriority
+    from:
+    border: $border_size $border_type $base_border_colour
+    to:
     border-color: yellow
+    border-size: $border_size * 1.5
 
-.HexPriorityMed
-    @extend .Hex
-    @include HasAnimation
-        transition-duration: $base_transition_time * 0.75
-
-.HexPriorityMedAnimated
-    border-size: $border_size * 2
+@keyframes MedPriority
+    from:
+    border: $border_size $border_type $base_border_colour
+    to:
     border-color: #ffae42
+    border-size: $border_size * 2
 
-.HexPriorityHigh
-    @include HasAnimation
-        @extend .Hex
-        transition-duration: $base_transition_time * 0.5
-
-.HexPriorityHighAnimated
-    border-size: $border_size * 2.5
+@keyframes HighPriority
+    from:
+    border: $border_size $border_type $base_border_colour
+    to:
     border-color: orange
+    border-size: $border_size * 2.5
 
-.HexPriorityExtreme
-    @extend .Hex
-    @include HasAnimation
-        transition-duration: $base_transition_time * 0.25
-
-.HexPriorityExtremeAnimated
-    border-size: $border_size * 3
+@keyframes ExtremePriority
+    from:
+    border: $border_size $border_type $base_border_colour
+    to:
     border-color: red
+    border-size: $border_size * 3
+
+.LowPriorityHex
+    @extend .Hex
+    animation-name: LowPriority
+    animation-duration: $animation_time
+
+.MedPriorityHex
+    @extend .Hex
+    animation-name: MedPriority
+    animation-duration: $animation_time * 0.75
+
+.HighPriorityHex
+    @extend .Hex
+    animation-name: HighPriority
+    animation-duration: $animation_time * 0.5
+
+.ExtremePriorityHex
+    @extend .Hex
+    animation-name: ExtremePriority
+    animation-duration: $animation_time * 0.25

@@ -1,50 +1,84 @@
-.Hex, .HexPriorityLow, .HexPriorityMed, .HexPriorityHigh, .HexPriorityExtreme {
+.Hex, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
   border: 1px solid cyan;
-  -webkit-transition-duration: infinite;
-          transition-duration: infinite;
-  -webkit-transition-property: border;
-  transition-property: border;
-  -webkit-transition-timing-function: ease-in-out;
-          transition-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
 }
 
-.HexPriorityLow {
-  -webkit-transition: border 4s ease-in-out;
-  transition: border 4s ease-in-out;
-}
-
-.HexPriorityLowAnimated {
-  border-size: 1.5px;
+@-webkit-keyframes LowPriority {
+  border: 1px solid cyan;
   border-color: yellow;
+  border-size: 1.5px;
 }
 
-.HexPriorityMed {
-  -webkit-transition: border 3s ease-in-out;
-  transition: border 3s ease-in-out;
+@keyframes LowPriority {
+  border: 1px solid cyan;
+  border-color: yellow;
+  border-size: 1.5px;
 }
 
-.HexPriorityMedAnimated {
-  border-size: 2px;
+@-webkit-keyframes MedPriority {
+  border: 1px solid cyan;
   border-color: #ffae42;
+  border-size: 2px;
 }
 
-.HexPriorityHigh {
-  -webkit-transition: border 2s ease-in-out;
-  transition: border 2s ease-in-out;
+@keyframes MedPriority {
+  border: 1px solid cyan;
+  border-color: #ffae42;
+  border-size: 2px;
 }
 
-.HexPriorityHighAnimated {
-  border-size: 2.5px;
+@-webkit-keyframes HighPriority {
+  border: 1px solid cyan;
   border-color: orange;
+  border-size: 2.5px;
 }
 
-.HexPriorityExtreme {
-  -webkit-transition: border 1s ease-in-out;
-  transition: border 1s ease-in-out;
+@keyframes HighPriority {
+  border: 1px solid cyan;
+  border-color: orange;
+  border-size: 2.5px;
 }
 
-.HexPriorityExtremeAnimated {
-  border-size: 3px;
+@-webkit-keyframes ExtremePriority {
+  border: 1px solid cyan;
   border-color: red;
+  border-size: 3px;
+}
+
+@keyframes ExtremePriority {
+  border: 1px solid cyan;
+  border-color: red;
+  border-size: 3px;
+}
+
+.LowPriorityHex {
+  -webkit-animation-name: LowPriority;
+          animation-name: LowPriority;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+.MedPriorityHex {
+  -webkit-animation-name: MedPriority;
+          animation-name: MedPriority;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+.HighPriorityHex {
+  -webkit-animation-name: HighPriority;
+          animation-name: HighPriority;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.ExtremePriorityHex {
+  -webkit-animation-name: ExtremePriority;
+          animation-name: ExtremePriority;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 /*# sourceMappingURL=hex.css.map */
