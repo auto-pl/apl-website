@@ -1,9 +1,11 @@
 import * as error_svg from "../app/Resources/Images/error.svg";
 import React, { FC } from "react";
 
+// !FIX: this type cast is a hack
+const error_icon: any = error_svg;
 // TODO: (blocked) get the hexes from the database
 // TODO: convert the result to Map<string, SVG>
-const svgs: Map<string, any> = new Map([["foo", "bar"]]);
+const svgs: Map<string, typeof error_svg> = new Map();
 
 interface HexImgProps {
   /**
