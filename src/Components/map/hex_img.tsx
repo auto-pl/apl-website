@@ -21,9 +21,8 @@ interface HexImgProps {
 
 export const HexImg: FC<HexImgProps> = (props: HexImgProps) => {
   const result = svgs.get(props.id);
-  const [svg, alt] = result
-    ? [result, `Hex (id: ${props.id})`]
-    : [error_svg, "Error loading hex"];
+  const svg = result || error_icon;
+  const alt = result ? `Hex (id: ${props.id})` : "Error loading hex";
   return (
     <div className={props.priority_class_name}>
       <img src={svg} alt={alt} />
