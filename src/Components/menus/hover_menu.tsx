@@ -73,7 +73,9 @@ const get_position_style = (
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
   return (
     <div style={get_position_style(props.options)}>
-      <span>{props.title}</span>
+      <span>
+        <b>{props.title}</b>
+      </span>
       <div>{props.body_items}</div>
     </div>
   );
