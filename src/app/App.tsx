@@ -6,9 +6,11 @@ import { Hex } from "../Components/map/hex";
 import { HoverMenu } from "../Components/menus/hover_menu";
 import { api } from "../Utils/api_interface";
 const all_conts = api.get_all_continents();
-const base = all_conts[0].base_states[0];
+let base = all_conts[0].base_states[0];
 
 function App() {
+  const [rerender, set_rerender] = React.useState(0);
+  const force_rerender = () => set_rerender(rerender + 1);
   const [hovered, set_hover] = React.useState(false);
   return (
     <div className="App">
@@ -28,6 +30,14 @@ function App() {
           />
         ) : null}
       </div>
+      <button
+        onClick={() => {
+          base = { ...base, priority_level: base.priority_level + 25 };
+          force_rerender();
+        }}
+      >
+        Increment priority by 25
+      </button>
     </div>
   );
 }
