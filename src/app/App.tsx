@@ -35,11 +35,13 @@ function App() {
           show_hover_menu={() => set_hover(!hovered)}
           base_state={base}
         />
-        <HoverMenu
-          title="foo"
-          body_items={[<span>Body</span>]}
-          options={{ fixed_position: "bottom right" }}
-        />
+        {hovered ? (
+          <HoverMenu
+            title="foo"
+            body_items={[<span>Body</span>]}
+            options={{ fixed_position: "bottom right" }}
+          />
+        ) : null}
       </div>
     </div>
   );
