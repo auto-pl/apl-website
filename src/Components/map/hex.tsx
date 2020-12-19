@@ -80,7 +80,12 @@ export const Hex = memo<HexProps>((props) => {
       <div
         id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
       ></div>
-      <HexImg id={props.base_id} />
+      <HexImg
+        id={props.base_id}
+        priority_class_name={get_priority_style(
+          props.base_state.priority_level
+        )}
+      />
     </div>
   );
 }, check_for_hex_update);
