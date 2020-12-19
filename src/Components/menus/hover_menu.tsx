@@ -34,35 +34,37 @@ const get_position_style = (
   };
   if (!options) return default_style;
 
-  const dimensions = { height: window.outerHeight, width: window.outerWidth };
   // get 90% of the dimension
   const reduce_dimension = (n: number): number => n - 0.1 * n;
+  const height = reduce_dimension(window.outerHeight);
+  const width = reduce_dimension(window.outerWidth);
+
   switch (options.fixed_position) {
     case undefined:
       return default_style;
 
     case "bottom right":
       return {
-        top: reduce_dimension(dimensions.height),
-        left: reduce_dimension(dimensions.width),
+        top: height,
+        left: width,
       };
 
     case "top right":
       return {
-        bottom: reduce_dimension(dimensions.height),
-        left: reduce_dimension(dimensions.width),
+        bottom: height,
+        left: width,
       };
 
     case "bottom left":
       return {
-        top: reduce_dimension(dimensions.height),
-        right: reduce_dimension(dimensions.width),
+        top: height,
+        right: width,
       };
 
     case "top left":
       return {
-        bottom: reduce_dimension(dimensions.height),
-        right: reduce_dimension(dimensions.width),
+        bottom: height,
+        right: width,
       };
 
     default:
