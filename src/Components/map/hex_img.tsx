@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { Error } from "../svg_wrappers/error";
 
 // TODO: (blocked) get the hexes from the database
