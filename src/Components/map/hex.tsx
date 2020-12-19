@@ -75,6 +75,7 @@ export const Hex = memo<HexProps>((props) => {
     base_state: props.base_state,
   });
   const priority_style = get_priority_style(props.base_state.priority_level);
+  console.log(priority_style);
 
   return (
     <div onMouseOver={() => props.show_hover_menu(props.base_state)}>
