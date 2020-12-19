@@ -1,4 +1,4 @@
-import * as error_svg from "../app/Resources/Images/error.svg";
+import * as error_svg from "../../app/Resources/Images/error.svg";
 import React, { FC } from "react";
 
 // !FIX: this type cast is a hack
