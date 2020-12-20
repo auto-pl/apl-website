@@ -1,5 +1,7 @@
-import React, { memo, useReducer, Reducer } from "react";
+import React, { memo, useReducer, Reducer, useState } from "react";
 import { BaseState } from "../../interfaces/continent";
+import { HoverMenu } from "../menus/hover_menu";
+import { PopulationReport } from "../visualisation/populations";
 import { HexImg } from "./hex_img";
 
 interface HexProps {
@@ -8,10 +10,6 @@ interface HexProps {
    * The id of the base SVG
    */
   base_id: string;
-  /**
-   * The callback to show the hover menu when the hex is hovered.
-   */
-  show_hover_menu: (base_state: BaseState) => void; // NOTE: This is needed because the menu needs to be outside the container the hex is in
   /**
    * Whether it should be a grey out-of-map hex
    */
@@ -73,7 +71,9 @@ export const Hex = memo<HexProps>((props) => {
   const [state, dispatch] = useReducer(reducer, {
     base_state: props.base_state,
   });
+  const [h, sh] = useState(false);
   const priority_style = get_priority_style(props.base_state.priority_level);
+  const hover = () => sh(!h);
 
   return (
     <div>
@@ -83,8 +83,17 @@ export const Hex = memo<HexProps>((props) => {
       <HexImg
         id={props.base_id}
         priority_class_name={priority_style}
-        hover={() => props.show_hover_menu(props.base_state)}
+        hover={hover}
       />
+      {h ? (
+        <HoverMenu
+          title={props.base_state.name}
+          body_items={[
+            <PopulationReport populations={props.base_state.population} />,
+          ]}
+          options={{ fixed_position: "bottom right" }}
+        />
+      ) : null}
     </div>
   );
 }, check_for_hex_update);

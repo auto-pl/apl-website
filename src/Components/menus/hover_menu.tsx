@@ -81,6 +81,7 @@ const base_style: CSSProperties = {
   height: "40%",
   width: "10%",
   transition: "opacity 1s linear",
+  zIndex: 1,
 };
 
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
