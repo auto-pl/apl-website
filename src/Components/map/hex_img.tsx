@@ -21,5 +21,9 @@ interface HexImgProps {
 export const HexImg: FC<HexImgProps> = (props: HexImgProps) => {
   const result = svgs.get(props.id);
   const HexSVG = result || Error;
-  return <div className={props.priority_class_name}>{<HexSVG />}</div>;
+  return (
+    <div style={{ width: "min-content" }} className={props.priority_class_name}>
+      {<HexSVG />}
+    </div>
+  );
 };
