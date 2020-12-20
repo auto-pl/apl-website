@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import "../styles/hex.css";
+import "../styles/hex/hex.css";
 
 import { Hex } from "../Components/map/hex";
 import { HoverMenu } from "../Components/menus/hover_menu";
