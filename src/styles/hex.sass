@@ -9,32 +9,32 @@ $animation_time: 4s
     animation-direction: alternate
 
 @keyframes LowPriority
-    from:
-    border: $border_size $border_type $base_border_colour
-    to:
-    border-color: yellow
-    border-size: $border_size * 1.5
+    0%
+        border: $border_size $border_type $base_border_colour
+    100%
+        border-color: yellow
+        border-size: $border_size * 1.5
 
 @keyframes MedPriority
-    from:
-    border: $border_size $border_type $base_border_colour
-    to:
-    border-color: #ffae42
-    border-size: $border_size * 2
+    0%
+        border: $border_size $border_type $base_border_colour
+    100%
+        border-color: #ffae42
+        border-size: $border_size * 2
 
 @keyframes HighPriority
-    from:
-    border: $border_size $border_type $base_border_colour
-    to:
-    border-color: orange
-    border-size: $border_size * 2.5
+    0%
+        border: $border_size $border_type $base_border_colour
+    100%
+        border-color: orange
+        border-size: $border_size * 2.5
 
 @keyframes ExtremePriority
-    from:
-    border: $border_size $border_type $base_border_colour
-    to:
-    border-color: red
-    border-size: $border_size * 3
+    0%
+        border: $border_size $border_type $base_border_colour
+    100%
+        border-color: red
+        border-size: $border_size * 3
 
 .LowPriorityHex
     @extend .Hex

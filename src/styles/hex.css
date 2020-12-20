@@ -7,51 +7,83 @@
 }
 
 @-webkit-keyframes LowPriority {
-  border: 1px solid cyan;
-  border-color: yellow;
-  border-size: 1.5px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: yellow;
+    border-size: 1.5px;
+  }
 }
 
 @keyframes LowPriority {
-  border: 1px solid cyan;
-  border-color: yellow;
-  border-size: 1.5px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: yellow;
+    border-size: 1.5px;
+  }
 }
 
 @-webkit-keyframes MedPriority {
-  border: 1px solid cyan;
-  border-color: #ffae42;
-  border-size: 2px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: #ffae42;
+    border-size: 2px;
+  }
 }
 
 @keyframes MedPriority {
-  border: 1px solid cyan;
-  border-color: #ffae42;
-  border-size: 2px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: #ffae42;
+    border-size: 2px;
+  }
 }
 
 @-webkit-keyframes HighPriority {
-  border: 1px solid cyan;
-  border-color: orange;
-  border-size: 2.5px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: orange;
+    border-size: 2.5px;
+  }
 }
 
 @keyframes HighPriority {
-  border: 1px solid cyan;
-  border-color: orange;
-  border-size: 2.5px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: orange;
+    border-size: 2.5px;
+  }
 }
 
 @-webkit-keyframes ExtremePriority {
-  border: 1px solid cyan;
-  border-color: red;
-  border-size: 3px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: red;
+    border-size: 3px;
+  }
 }
 
 @keyframes ExtremePriority {
-  border: 1px solid cyan;
-  border-color: red;
-  border-size: 3px;
+  0% {
+    border: 1px solid cyan;
+  }
+  100% {
+    border-color: red;
+    border-size: 3px;
+  }
 }
 
 .LowPriorityHex {
