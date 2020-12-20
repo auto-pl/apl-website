@@ -5,7 +5,7 @@ interface PopulationProps {
   /**
    * The number of players per faction
    */
-  populations: { nc: number; vs: number; tr: number };
+  populations: { NC: number; VS: number; TR: number };
 }
 
 interface PopulationPieChartProps extends PopulationProps {
@@ -45,10 +45,10 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
 
 export const EnemiesDetected: FC<PopulationProps> = (props) => {
   return (
-    <div>
-      <span>VS detected: {props.populations.vs}</span>
-      <span>TR detected: {props.populations.tr}</span>
-      <span>NC detected: {props.populations.nc}</span>
+    <div style={{ display: "inline-block", width: "100%" }}>
+      <span>VS detected: {props.populations.VS}</span>
+      <span>TR detected: {props.populations.TR}</span>
+      <span>NC detected: {props.populations.NC}</span>
     </div>
   );
 };
