@@ -1,5 +1,6 @@
 // this file will have the hover menu for hexes
 import React, { FC, ReactNode, CSSProperties } from "react";
+import "../../styles/global/fade_in/fade_in.css";
 
 type position = "bottom right" | "bottom left" | "top right" | "top left";
 
@@ -79,11 +80,15 @@ const base_style: CSSProperties = {
   position: "absolute",
   height: "40%",
   width: "10%",
+  transition: "opacity 1s linear",
 };
 
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
   return (
-    <div style={{ ...base_style, ...get_position_style(props.options) }}>
+    <div
+      className="FadeIn"
+      style={{ ...base_style, ...get_position_style(props.options) }}
+    >
       <span>
         <b>{props.title}</b>
       </span>

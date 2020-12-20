@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,MAAU;EACN,EAAE;IACE,OAAO,EAAE,CAAC;;EACd,IAAI;IACA,OAAO,EAAE,CAAC;;;;AAQlB,AAAA,OAAO,CAAC;EALJ,cAAc,EAAE,MAAM;EACtB,yBAAyB,EAAE,WAAW;EACtC,yBAAyB,EAAE,CAAC;EAC5B,kBAAkB,EAAE,IAAI;CAGL",
+    "sources": [
+        "fade_in.sass"
+    ],
+    "names": [],
+    "file": "fade_in.css"
+}
