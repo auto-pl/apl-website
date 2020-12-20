@@ -1,6 +1,7 @@
 $border_size: 1px
 $base_border_colour: cyan
 $border_type: solid
+$animation_border_width: $border_size * 4
 $animation_time: 4s
 
 .Hex
@@ -9,32 +10,24 @@ $animation_time: 4s
     animation-direction: alternate
 
 @keyframes LowPriority
-    0%
-        border: $border_size $border_type $base_border_colour
     100%
         border-color: yellow
-        border-size: $border_size * 1.5
+        border-width: $animation_border_width
 
 @keyframes MedPriority
-    0%
-        border: $border_size $border_type $base_border_colour
     100%
         border-color: #ffae42
-        border-size: $border_size * 2
+        border-width: $animation_border_width
 
 @keyframes HighPriority
-    0%
-        border: $border_size $border_type $base_border_colour
     100%
         border-color: orange
-        border-size: $border_size * 2.5
+        border-width: $animation_border_width
 
 @keyframes ExtremePriority
-    0%
-        border: $border_size $border_type $base_border_colour
     100%
         border-color: red
-        border-size: $border_size * 3
+        border-width: $animation_border_width
 
 .LowPriorityHex
     @extend .Hex

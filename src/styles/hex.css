@@ -7,82 +7,58 @@
 }
 
 @-webkit-keyframes LowPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: yellow;
-    border-size: 1.5px;
+    border-width: 4px;
   }
 }
 
 @keyframes LowPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: yellow;
-    border-size: 1.5px;
+    border-width: 4px;
   }
 }
 
 @-webkit-keyframes MedPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: #ffae42;
-    border-size: 2px;
+    border-width: 4px;
   }
 }
 
 @keyframes MedPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: #ffae42;
-    border-size: 2px;
+    border-width: 4px;
   }
 }
 
 @-webkit-keyframes HighPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: orange;
-    border-size: 2.5px;
+    border-width: 4px;
   }
 }
 
 @keyframes HighPriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: orange;
-    border-size: 2.5px;
+    border-width: 4px;
   }
 }
 
 @-webkit-keyframes ExtremePriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: red;
-    border-size: 3px;
+    border-width: 4px;
   }
 }
 
 @keyframes ExtremePriority {
-  0% {
-    border: 1px solid cyan;
-  }
   100% {
     border-color: red;
-    border-size: 3px;
+    border-width: 4px;
   }
 }
 
