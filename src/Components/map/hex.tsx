@@ -48,13 +48,13 @@ const reducer: Reducer<HexState, string> = (state, action): HexState => {
 const get_priority_style = (priority: number): string => {
   switch (Math.round(priority / 25)) {
     case 1:
-      return "LowPriorityHex";
+      return "HexPrioritised LowPriorityHex";
     case 2:
-      return "MedPriorityHex";
+      return "HexPrioritised MedPriorityHex";
     case 3:
-      return "HighPriorityHex";
+      return "HexPrioritised HighPriorityHex";
     case 4:
-      return "ExtremePriorityHex";
+      return "HexPrioritised ExtremePriorityHex";
     default:
       return "Hex";
   }

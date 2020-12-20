@@ -1,37 +1,41 @@
-.Hex, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
+.Hex, .HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
   border-width: 1px;
   border-style: solid;
-  border-color: cyan;
+  border-color: purple;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
 
+.HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
+  border-color: white;
+}
+
 @-webkit-keyframes LowPriority {
   100% {
-    border-color: yellow;
+    border-color: cyan;
     border-width: 4px;
   }
 }
 
 @keyframes LowPriority {
   100% {
-    border-color: yellow;
+    border-color: cyan;
     border-width: 4px;
   }
 }
 
 @-webkit-keyframes MedPriority {
   100% {
-    border-color: #ffae42;
+    border-color: yellow;
     border-width: 4px;
   }
 }
 
 @keyframes MedPriority {
   100% {
-    border-color: #ffae42;
+    border-color: yellow;
     border-width: 4px;
   }
 }
