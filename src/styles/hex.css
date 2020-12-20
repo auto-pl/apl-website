@@ -9,7 +9,7 @@
 }
 
 .HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
-  border-color: white;
+  border-color: transparent;
 }
 
 @-webkit-keyframes LowPriority {
