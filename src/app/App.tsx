@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "../styles/hex.css";
 
 import { Hex } from "../Components/map/hex";
 import { HoverMenu } from "../Components/menus/hover_menu";
@@ -37,6 +38,7 @@ function App() {
       >
         Increment priority by 25
       </button>
+      <span className="LowPriorityHex">Foobar</span>
     </div>
   );
 }
