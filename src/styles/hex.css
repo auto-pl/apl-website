@@ -1,5 +1,7 @@
 .Hex, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
-  border: 1px solid cyan;
+  border-width: 1px;
+  border-style: solid;
+  border-color: cyan;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
