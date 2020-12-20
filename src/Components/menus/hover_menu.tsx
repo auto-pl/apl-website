@@ -38,6 +38,7 @@ const get_position_style = (
   const reduce_dimension = (n: number): number => n - 0.1 * n;
   const height = reduce_dimension(window.outerHeight);
   const width = reduce_dimension(window.outerWidth);
+  console.log(height, width);
 
   switch (options.fixed_position) {
     case undefined:
@@ -45,26 +46,26 @@ const get_position_style = (
 
     case "bottom right":
       return {
-        top: height,
-        left: width,
+        bottom: 0,
+        right: 0,
       };
 
     case "top right":
       return {
-        bottom: height,
-        left: width,
+        top: 0,
+        right: 0,
       };
 
     case "bottom left":
       return {
-        top: height,
-        right: width,
+        bottom: 0,
+        left: 0,
       };
 
     case "top left":
       return {
-        bottom: height,
-        right: width,
+        top: 0,
+        left: 0,
       };
 
     default:
@@ -72,9 +73,17 @@ const get_position_style = (
   }
 };
 
+const base_style: CSSProperties = {
+  border: "3px solid cyan",
+  padding: "5px",
+  position: "absolute",
+  height: "40%",
+  width: "10%",
+};
+
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
   return (
-    <div style={get_position_style(props.options)}>
+    <div style={{ ...base_style, ...get_position_style(props.options) }}>
       <span>
         <b>{props.title}</b>
       </span>
