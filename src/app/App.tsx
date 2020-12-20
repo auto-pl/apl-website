@@ -12,6 +12,15 @@ function App() {
   const [rerender, set_rerender] = React.useState(0);
   const force_rerender = () => set_rerender(rerender + 1);
   const [hovered, set_hover] = React.useState(false);
+  const [i, set_i] = React.useState(0);
+  const classes = [
+    "LowPriorityHex",
+    "MedPriorityHex",
+    "HighPriorityHex",
+    "ExtremePriorityHex",
+  ];
+  const increment_class = () => set_i(i + 1);
+  const decrement_class = () => set_i(i - 1);
   return (
     <div className="App">
       {/* put your tests here */}
@@ -38,7 +47,11 @@ function App() {
       >
         Increment priority by 25
       </button>
-      <span className="LowPriorityHex">Foobar</span>
+      <span className={classes[i]} id="styletest">
+        Foobar
+      </span>
+      <button onClick={increment_class}>Increment style</button>
+      <button onClick={decrement_class}>Decrement style</button>
     </div>
   );
 }
