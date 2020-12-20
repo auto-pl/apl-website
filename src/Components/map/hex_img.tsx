@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Error } from "../svg_wrappers/error";
+import "../../styles/hex.css";
 
 // TODO: (blocked) get the hexes from the database
 // TODO: convert the result to Map<string, SVG>

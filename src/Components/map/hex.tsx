@@ -1,7 +1,6 @@
 import React, { memo, useReducer, Reducer } from "react";
 import { BaseState } from "../../interfaces/continent";
 import { HexImg } from "./hex_img";
-import "../../styles/hex.css";
 
 interface HexProps {
   base_state: BaseState;
