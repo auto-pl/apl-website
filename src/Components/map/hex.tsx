@@ -71,9 +71,9 @@ export const Hex = memo<HexProps>((props) => {
   const [state, dispatch] = useReducer(reducer, {
     base_state: props.base_state,
   });
-  const [h, sh] = useState(false);
+  const [hovered, set_hover] = useState(false);
   const priority_style = get_priority_style(props.base_state.priority_level);
-  const hover = () => sh(!h);
+  const hover = () => set_hover(!hovered);
 
   return (
     <div>
@@ -85,7 +85,7 @@ export const Hex = memo<HexProps>((props) => {
         priority_class_name={priority_style}
         hover={hover}
       />
-      {h ? (
+      {hovered ? (
         <HoverMenu
           title={props.base_state.name}
           body_items={[
