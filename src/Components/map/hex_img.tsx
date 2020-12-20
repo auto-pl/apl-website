@@ -16,6 +16,11 @@ interface HexImgProps {
    * The name of the class from `src/styles/hex.sass`
    */
   priority_class_name: string;
+
+  /**
+   * The onmouseover callback
+   */
+  hover: () => void;
 }
 
 export const HexImg: FC<HexImgProps> = (props: HexImgProps) => {
@@ -23,7 +28,7 @@ export const HexImg: FC<HexImgProps> = (props: HexImgProps) => {
   const HexSVG = result || Error;
   return (
     <div style={{ width: "min-content" }} className={props.priority_class_name}>
-      {<HexSVG />}
+      {<HexSVG onMouseOver={props.hover} />}
     </div>
   );
 };

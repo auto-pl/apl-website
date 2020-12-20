@@ -76,11 +76,15 @@ export const Hex = memo<HexProps>((props) => {
   const priority_style = get_priority_style(props.base_state.priority_level);
 
   return (
-    <div onMouseOver={() => props.show_hover_menu(props.base_state)}>
+    <div>
       <div
         id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
       ></div>
-      <HexImg id={props.base_id} priority_class_name={priority_style} />
+      <HexImg
+        id={props.base_id}
+        priority_class_name={priority_style}
+        hover={() => props.show_hover_menu(props.base_state)}
+      />
     </div>
   );
 }, check_for_hex_update);
