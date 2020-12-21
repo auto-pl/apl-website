@@ -13,11 +13,11 @@ interface PopulationPieChartProps extends PopulationProps {
   /**
    * Defaults to 150px
    */
-  height?: number;
+  height?: string;
   /**
    * Defaults to 200px
    */
-  width?: number;
+  width?: string;
 }
 
 export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
