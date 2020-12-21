@@ -1,4 +1,4 @@
-import React, { memo, useReducer, Reducer, useState } from "react";
+import React, { memo, useReducer, Reducer } from "react";
 import { BaseState } from "../../interfaces/continent";
 import { HoverMenu } from "../menus/hover_menu";
 import { PopulationReport } from "../visualisation/populations";
