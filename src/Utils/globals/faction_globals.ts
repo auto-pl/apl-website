@@ -7,6 +7,8 @@ export const tr_colour = "rgba(135, 81, 67, 0.75)";
 export const nc_colour = "rgba(87, 129, 143, 0.75)";
 export const ns_colour = "rgba(10, 16, 3, 0.75)";
 
+export const faction_names = ["VS", "TR", "NC"];
+
 export const faction_colours = new Map([
   ["TR", tr_colour],
   ["NC", nc_colour],
