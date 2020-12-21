@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import "../styles/hex/hex.css";
 
-import { Hex } from "../Components/map/hex";
+import { Hex } from "../Components/map/hex/hex";
 import { api } from "../Utils/api_interface";
 const all_conts = api.get_all_continents();
 let base = all_conts[0].base_states[0];

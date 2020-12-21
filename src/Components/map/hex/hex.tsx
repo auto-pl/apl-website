@@ -1,8 +1,9 @@
 import React, { memo, useReducer, Reducer } from "react";
-import { BaseState } from "../../interfaces/continent";
-import { HoverMenu } from "../menus/hover_menu";
-import { PopulationReport } from "../visualisation/populations";
+import { BaseState } from "../../../interfaces/continent";
+import { HoverMenu } from "../../menus/hover_menu";
+import { PopulationReport } from "../../visualisation/populations";
 import { HexImg } from "./hex_img";
+import { get_priority_style } from "./hex_priority";
 
 interface HexProps {
   base_state: BaseState;
@@ -36,27 +37,6 @@ const reducer: Reducer<HexState, string> = (state, action): HexState => {
       throw new Error(
         "Invalid action. See src/Components/map/hex.ACTION_TYPES for the valid types."
       );
-  }
-};
-
-// TODO: move the priority stuff to its own file
-/**
- * Get the appropriate animation class names for the priority level
- * @param priority The priority score assigned by the AI
- * @returns a CSS class name in `src/stlyes/hex.sass`
- */
-const get_priority_style = (priority: number): string => {
-  switch (Math.round(priority / 25)) {
-    case 1:
-      return "HexPrioritised LowPriorityHex";
-    case 2:
-      return "HexPrioritised MedPriorityHex";
-    case 3:
-      return "HexPrioritised HighPriorityHex";
-    case 4:
-      return "HexPrioritised ExtremePriorityHex";
-    default:
-      return "Hex";
   }
 };
 

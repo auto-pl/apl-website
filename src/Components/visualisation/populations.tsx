@@ -32,6 +32,7 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
   const options = {
     title: "Faction populations",
   };
+  //!FIX: chart doesn't work
   return (
     <Chart
       chartType="PieChart"
