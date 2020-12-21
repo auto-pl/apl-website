@@ -11,11 +11,11 @@ interface PopulationProps {
 
 interface PopulationPieChartProps extends PopulationProps {
   /**
-   * Defaults to 150px
+   * Defaults to 200px
    */
   height?: string;
   /**
-   * Defaults to 200px
+   * Defaults to 250px
    */
   width?: string;
 }
@@ -36,8 +36,8 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
   return (
     <Chart
       chartType="PieChart"
-      height={props.height || "150px"}
-      width={props.width || "200px"}
+      height={props.height || "200px"}
+      width={props.width || "250px"}
       loader={<div>ben was here</div>}
       data={percentages}
       options={options}
