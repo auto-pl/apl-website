@@ -35,12 +35,6 @@ const get_position_style = (
   };
   if (!options) return default_style;
 
-  // get 90% of the dimension
-  const reduce_dimension = (n: number): number => n - 0.1 * n;
-  const height = reduce_dimension(window.outerHeight);
-  const width = reduce_dimension(window.outerWidth);
-  console.log(height, width);
-
   switch (options.fixed_position) {
     case undefined:
       return default_style;
