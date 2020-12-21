@@ -1,3 +1,15 @@
+# Installation
+<b>Requirements:</b> nodejs https://nodejs.org/en/download/
+
+<b>Git and git bash:</b> https://git-scm.com/download/win (check the option for git bash as it's better than CMD)
+
+<b>Warning:</b> Commit any changes to the apl-website folder before running this as they will be lost otherwise
+
+`git clone https://github.com/auto-pl/apl-website.git && cd apl-website && git reset --hard && git checkout magane-chikujoin-is-cute && npm i && npm start`
+
+### <u>CRA docs below</u>
+--------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
