@@ -4,6 +4,7 @@
 <b>Git and git bash:</b> https://git-scm.com/download/win (check the option for git bash as it's better than CMD)
 
 <b>Warning:</b> Commit any changes to the apl-website folder before running this as they will be lost otherwise
+
 `git clone https://github.com/auto-pl/apl-website.git && cd apl-website && git reset --hard && git checkout magane-chikujoin-is-cute && npm i && npm start`
 
 ### <u>CRA docs below</u>
