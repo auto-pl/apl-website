@@ -1,5 +1,6 @@
 import React, { FC, CSSProperties } from "react";
 import { Chart } from "react-google-charts";
+import { faction_colours } from "../../Utils/globals/faction_globals";
 
 interface PopulationProps {
   /**
@@ -58,9 +59,12 @@ export const EnemiesDetected: FC<PopulationProps> = (props) => {
 };
 
 const population_report_style: CSSProperties = {
-  border: "1px double cyan",
   height: "30%",
-  width: "20%",
+  width: "100%",
+  textAlign: "center",
+  verticalAlign: "middle",
+  left: 0,
+  right: 0,
 };
 
 // Alias added to prevent confusion
