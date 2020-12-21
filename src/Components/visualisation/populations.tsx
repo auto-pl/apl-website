@@ -44,11 +44,15 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
 };
 
 export const EnemiesDetected: FC<PopulationProps> = (props) => {
+  const p_style: CSSProperties = { margin: 0, color: "white" };
+
   return (
-    <div style={{ display: "inline-block", width: "100%" }}>
-      <span>VS detected: {props.populations.VS}</span>
-      <span>TR detected: {props.populations.TR}</span>
-      <span>NC detected: {props.populations.NC}</span>
+    <div>
+      {Object.entries(props.populations).map(([name, pop], i) => (
+        <p style={{ ...p_style, backgroundColor: faction_colours.get(name) }}>
+          {name} detected: {pop}
+        </p>
+      ))}
     </div>
   );
 };
