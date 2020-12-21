@@ -18,19 +18,20 @@ interface HexProps {
 
 interface HexState {
   base_state: BaseState;
+  hovered: boolean;
 }
 
 export enum ACTION_TYPES {
   clicked = "clicked",
-  priority_changed = "priority_changed",
+  hovered = "hovered",
 }
 
 const reducer: Reducer<HexState, string> = (state, action): HexState => {
   switch (action) {
     case ACTION_TYPES.clicked: // TODO: do something on click
       return state;
-    case ACTION_TYPES.priority_changed: // TODO: make the hex flash with increased saturation and speed depending on the priority
-      return state;
+    case ACTION_TYPES.hovered:
+      return { ...state, hovered: !state.hovered };
     default:
       throw new Error(
         "Invalid action. See src/Components/map/hex.ACTION_TYPES for the valid types."
@@ -38,6 +39,7 @@ const reducer: Reducer<HexState, string> = (state, action): HexState => {
   }
 };
 
+// TODO: move the priority stuff to its own file
 /**
  * Get the appropriate animation class names for the priority level
  * @param priority The priority score assigned by the AI
@@ -70,10 +72,9 @@ const check_for_hex_update = (prev_props: HexProps, new_props: HexProps) => {
 export const Hex = memo<HexProps>((props) => {
   const [state, dispatch] = useReducer(reducer, {
     base_state: props.base_state,
+    hovered: false,
   });
-  const [hovered, set_hover] = useState(false);
   const priority_style = get_priority_style(props.base_state.priority_level);
-  const hover = () => set_hover(!hovered);
 
   return (
     <div>
@@ -83,9 +84,9 @@ export const Hex = memo<HexProps>((props) => {
       <HexImg
         id={props.base_id}
         priority_class_name={priority_style}
-        hover={hover}
+        hover={() => dispatch(ACTION_TYPES.hovered)}
       />
-      {hovered ? (
+      {state.hovered ? (
         <HoverMenu
           title={props.base_state.name}
           body_items={[
