@@ -21,6 +21,7 @@ export type faction = "NC" | "TR" | "VS" | "NS";
  */
 export interface BaseState {
   name: string;
+  id: string;
   /**
    * Should be one of the following: [NC, TR, VS, NS]
    * Neutral is NS
