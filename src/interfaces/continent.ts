@@ -1,5 +1,5 @@
 import { ApiGetter } from "./api";
-import { Outfit, Player } from "./player";
+import { Outfit } from "./player";
 
 /**
  * An object that represents all information about a continent
