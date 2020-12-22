@@ -6,10 +6,13 @@
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
+  position: absolute;
+  z-index: 0;
 }
 
 .HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
   border-color: transparent;
+  z-index: 10;
 }
 
 @-webkit-keyframes LowPriority {

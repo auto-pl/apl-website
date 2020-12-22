@@ -10,10 +10,13 @@ $animation_time: 4s
     border-color: $base_border_colour
     animation-iteration-count: infinite
     animation-direction: alternate
+    position: absolute
+    z-index: 0
 
 .HexPrioritised
     @extend .Hex
     border-color: transparent
+    z-index: 10
 
 @keyframes LowPriority
     100%
