@@ -8,10 +8,6 @@ import { get_priority_style } from "./hex_priority";
 interface HexProps {
   base_state: BaseState;
   /**
-   * The id of the base SVG
-   */
-  base_id: string;
-  /**
    * Whether it should be a grey out-of-map hex
    */
   out_of_bounds: boolean;
@@ -59,10 +55,10 @@ export const Hex = memo<HexProps>((props) => {
   return (
     <div>
       <div
-        id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_id}`}
+        id={`Hex_continent=${props.base_state.continent_id}_id=${props.base_state.id}`}
       ></div>
       <HexImg
-        id={props.base_id}
+        id={props.base_state.id}
         priority_class_name={priority_style}
         hover={() => dispatch(ACTION_TYPES.hovered)}
       />
