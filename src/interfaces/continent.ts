@@ -32,7 +32,6 @@ export interface BaseState {
    */
   time_held: number;
   captured_by: null | Outfit;
-  leaderboard: null | Array<{ player: Player; score: number; kills: number }>;
   population: { NC: number; TR: number; VS: number };
   /**
    * This is the priority level assigned by the AI.
