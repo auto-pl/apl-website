@@ -21,7 +21,7 @@ export const Continent: FC<ContinentProps> = (props: ContinentProps) => {
 
   return (
     <div>
-      <div className="TopRight">
+      <div className="TopRight" style={{ border: "3px solid cyan" }}>
         <PopulationPieChart populations={props.population} />
       </div>
       <HexArray base_states={props.base_states} />
