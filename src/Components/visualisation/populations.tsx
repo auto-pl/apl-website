@@ -1,12 +1,13 @@
 import React, { FC, CSSProperties } from "react";
 import { Chart } from "react-google-charts";
 import { get_faction_colour } from "../../Utils/globals/faction_globals";
+import { Population } from "../../interfaces/continent";
 
 interface PopulationProps {
   /**
    * The number of players per faction
    */
-  populations: { NC: number; VS: number; TR: number };
+  populations: Population;
 }
 
 interface PopulationPieChartProps extends PopulationProps {

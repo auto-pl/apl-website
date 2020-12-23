@@ -1,7 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { HexArray } from "./hex_array";
-export const plscompile = {};
+import { PopulationPieChart } from "../visualisation/populations";
+import "../../styles/global/corners/corners.css";
 
 // TODO: map over the continent's bases and send the states to `Hex`
 // TODO: add population ratio at the top right
@@ -20,6 +21,9 @@ export const Continent: FC<ContinentProps> = (props: ContinentProps) => {
 
   return (
     <div>
+      <div className="TopRight">
+        <PopulationPieChart populations={props.population} />
+      </div>
       <HexArray base_states={props.base_states} />
     </div>
   );
