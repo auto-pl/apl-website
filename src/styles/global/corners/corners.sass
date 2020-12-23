@@ -1,0 +1,27 @@
+@mixin IsTopRight
+    top: 0
+    right: 0
+
+@mixin IsTopLeft
+    top: 0
+    left: 0
+
+@mixin IsBottomRight
+    bottom: 0
+    right: 0
+
+@mixin IsBottomLeft
+    bottom: 0
+    left: 0
+
+.TopRight
+    @include IsTopRight
+
+.TopLeft
+    @include IsTopLeft
+
+.BottomRight
+    @include IsBottomRight
+
+.BottomLeft
+    @include IsBottomLeft

@@ -1,0 +1,20 @@
+.TopRight {
+  top: 0;
+  right: 0;
+}
+
+.TopLeft {
+  top: 0;
+  left: 0;
+}
+
+.BottomRight {
+  bottom: 0;
+  right: 0;
+}
+
+.BottomLeft {
+  bottom: 0;
+  left: 0;
+}
+/*# sourceMappingURL=corners.css.map */

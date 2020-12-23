@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAgBA,AAAA,SAAS,CAAC;EAfN,GAAG,EAAE,CAAC;EACN,KAAK,EAAE,CAAC;CAec;;AAE1B,AAAA,QAAQ,CAAC;EAdL,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;CAcc;;AAEzB,AAAA,YAAY,CAAC;EAbT,MAAM,EAAE,CAAC;EACT,KAAK,EAAE,CAAC;CAaiB;;AAE7B,AAAA,WAAW,CAAC;EAZR,MAAM,EAAE,CAAC;EACT,IAAI,EAAE,CAAC;CAYiB",
+    "sources": [
+        "corners.sass"
+    ],
+    "names": [],
+    "file": "corners.css"
+}
