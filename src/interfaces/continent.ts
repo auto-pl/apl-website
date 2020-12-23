@@ -1,12 +1,18 @@
 import { ApiGetter } from "./api";
 import { Outfit } from "./player";
 
+export interface Population {
+  NC: number;
+  TR: number;
+  VS: number;
+}
+
 /**
  * An object that represents all information about a continent
  */
 export interface ContinentDetails {
   name: string;
-  population: number;
+  population: Population;
   /**
    * The faction that locked the continent.
    */
@@ -33,7 +39,7 @@ export interface BaseState {
    */
   time_held: number;
   captured_by: null | Outfit;
-  population: { NC: number; TR: number; VS: number };
+  population: Population;
   /**
    * This is the priority level assigned by the AI.
    */
