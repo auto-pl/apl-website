@@ -1,6 +1,7 @@
 // this file will have the hover menu for hexes
 import React, { FC, ReactNode, CSSProperties } from "react";
 import "../../styles/global/fade_in/fade_in.css";
+import "../../styles/global/corners/corners.css";
 
 type position = "bottom right" | "bottom left" | "top right" | "top left";
 
@@ -23,16 +24,9 @@ interface HoverMenuProps {
   };
 }
 
-const get_position_style = (
-  options: HoverMenuProps["options"]
-): CSSProperties => {
-  const default_style: CSSProperties = {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
-    top: 0,
-  };
+const get_position_class = (options: HoverMenuProps["options"]): string => {
+  const default_style = "";
+
   if (!options) return default_style;
 
   switch (options.fixed_position) {
@@ -40,28 +34,16 @@ const get_position_style = (
       return default_style;
 
     case "bottom right":
-      return {
-        bottom: 0,
-        right: 0,
-      };
+      return "BottomRight";
 
     case "top right":
-      return {
-        top: 0,
-        right: 0,
-      };
+      return "TopRight";
 
     case "bottom left":
-      return {
-        bottom: 0,
-        left: 0,
-      };
+      return "BottomLeft";
 
     case "top left":
-      return {
-        top: 0,
-        left: 0,
-      };
+      return "TopLeft";
 
     default:
       return default_style;
@@ -81,8 +63,8 @@ const base_style: CSSProperties = {
 export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
   return (
     <div
-      className="FadeIn"
-      style={{ ...base_style, ...get_position_style(props.options) }}
+      className={`FadeIn ${get_position_class(props.options)}`}
+      style={base_style}
     >
       <span>
         <b>{props.title}</b>
