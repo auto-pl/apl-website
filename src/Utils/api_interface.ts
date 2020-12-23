@@ -11,7 +11,11 @@ interface apiT {
 const dummy_continents: Array<ContinentDetails> = [
   {
     name: "Indar",
-    population: 410,
+    population: {
+      TR: 200,
+      VS: 180,
+      NC: 220,
+    },
     base_states: [
       {
         name: "Hvar",
@@ -48,7 +52,11 @@ const dummy_continents: Array<ContinentDetails> = [
   },
   {
     name: "Amerish",
-    population: 90,
+    population: {
+      TR: 150,
+      VS: 140,
+      NC: 130,
+    },
     base_states: [
       {
         name: "Heyoka Chemical Lab",
@@ -65,7 +73,11 @@ const dummy_continents: Array<ContinentDetails> = [
   },
   {
     name: "Esamir",
-    population: 780,
+    population: {
+      TR: 80,
+      VS: 70,
+      NC: 30,
+    },
     base_states: [
       {
         name: "Pale Canyon Chemical",
@@ -82,7 +94,11 @@ const dummy_continents: Array<ContinentDetails> = [
   },
   {
     name: "Hossin",
-    population: 0,
+    population: {
+      TR: 300,
+      VS: 300,
+      NC: 300,
+    },
     base_states: [
       {
         name: "Chac Fusion",
