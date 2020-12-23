@@ -1,20 +1,24 @@
 .TopRight {
   top: 0;
   right: 0;
+  position: absolute;
 }
 
 .TopLeft {
   top: 0;
   left: 0;
+  position: absolute;
 }
 
 .BottomRight {
   bottom: 0;
   right: 0;
+  position: absolute;
 }
 
 .BottomLeft {
   bottom: 0;
   left: 0;
+  position: absolute;
 }
 /*# sourceMappingURL=corners.css.map */
