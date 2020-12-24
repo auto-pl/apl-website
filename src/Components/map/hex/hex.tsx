@@ -50,7 +50,9 @@ export const Hex = memo<HexProps>((props) => {
     base_state: props.base_state,
     hovered: false,
   });
-  const priority_style = get_priority_style(props.base_state.priority_level);
+  // !Saved for V2
+  // const priority_style = get_priority_style(props.base_state.priority_level);
+  const priority_style = "";
 
   return (
     <div>
