@@ -6,7 +6,9 @@ import {
   faction_logos,
 } from "../../Utils/globals/faction_globals";
 
-interface MapSwitcherProps {
+// !FIX: make good code this time, idiot
+
+export interface MapSwitcherProps {
   /**
    * @member details: the information about the continent
    * @member view_url: the URL to the view of the continent
