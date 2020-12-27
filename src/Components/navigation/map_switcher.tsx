@@ -7,13 +7,16 @@ import {
 } from "../../Utils/globals/faction_globals";
 
 // !FIX: make good code this time, idiot
-
-export interface MapSwitcherProps {
+export type MSContinents = Array<{
+  view_url: string;
+  details: ContinentDetails;
+}>;
+interface MapSwitcherProps {
   /**
    * @member details: the information about the continent
    * @member view_url: the URL to the view of the continent
    */
-  continents: Array<{ view_url: string; details: ContinentDetails }>;
+  continents: MSContinents;
 }
 
 interface ContinentItemProps {

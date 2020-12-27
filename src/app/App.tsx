@@ -1,16 +1,13 @@
 import React from "react";
 import {
   MapSwitcher,
-  MapSwitcherProps,
+  MSContinents,
 } from "../Components/navigation/map_switcher";
 
 import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
 const continents = conts.reduce(
-  (acc: MapSwitcherProps["continents"], cont) => [
-    ...acc,
-    { details: cont, view_url: "foo" },
-  ],
+  (acc: MSContinents, cont) => [...acc, { details: cont, view_url: "foo" }],
   []
 );
 
