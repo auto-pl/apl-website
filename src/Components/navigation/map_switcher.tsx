@@ -7,17 +7,30 @@ import {
 } from "../../Utils/globals/faction_globals";
 
 // !FIX: make good code this time, idiot
+
+/**
+ * @member details: the information about the continent
+ * @member view_url: the URL to the view of the continent
+ */
 export type MSContinents = Array<{
   view_url: string;
   details: ContinentDetails;
 }>;
+
 interface MapSwitcherProps {
-  /**
-   * @member details: the information about the continent
-   * @member view_url: the URL to the view of the continent
-   */
   continents: MSContinents;
 }
+
+/**
+ * Convert a list of `ContinentDetails` to `MSContinents`
+ * @param conts The ContinentDetails to add view URLs to
+ * @param view_urls The URLs to add to `conts`
+ */
+export const to_MSContinents = (
+  conts: Array<ContinentDetails>,
+  view_urls: Array<string>
+): MSContinents =>
+  conts.map((cont, i) => ({ details: cont, view_url: view_urls[i] }));
 
 interface ContinentItemProps {
   /**
