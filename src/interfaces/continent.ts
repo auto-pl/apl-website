@@ -20,6 +20,30 @@ export interface ContinentDetails {
   base_states: Array<BaseState>;
 }
 
+export interface ContinentView {
+  view_url: string;
+  details: ContinentDetails;
+}
+
+export type ContinentViews = Array<ContinentView>;
+
+/**
+ * Convert a list of `ContinentDetails` to `ContinentView`
+ * @param conts The ContinentDetails to add view URLs to
+ * @param view_urls The URLs to add to `conts`
+ * @throws The number of URLs does not match the number of continents
+ */
+export const to_continent_view = (
+  conts: Array<ContinentDetails>,
+  view_urls: Array<string>
+): ContinentViews => {
+  if (conts.length !== view_urls.length)
+    throw new Error(
+      "The number of URLs does not match the number of continents"
+    );
+  return conts.map((cont, i) => ({ details: cont, view_url: view_urls[i] }));
+};
+
 export type faction = "NC" | "TR" | "VS" | "NS";
 
 /**
