@@ -3,7 +3,9 @@ import { ContinentDetails } from "../../interfaces/continent";
 import { MapSwitcher, to_MSContinents } from "../navigation/map_switcher";
 import {
   MapContainer,
+  MapContainerProps,
   MapConsumer,
+  TileLayer,
   Polyline,
   useMap,
   useMapEvent,
@@ -22,8 +24,8 @@ interface MapProps {
 
 export const Map: FC<MapProps> = (props) => {
   return (
-    <div>
-      <span></span>
-    </div>
+    <MapContainer zoom={0} scrollWheelZoom={true}>
+      <TileLayer url=""></TileLayer>
+    </MapContainer>
   );
 };
