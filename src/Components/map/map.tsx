@@ -1,6 +1,7 @@
 import React, { FC, useReducer } from "react";
 import { ContinentDetails } from "../../interfaces/continent";
 import { MapSwitcher, to_MSContinents } from "../navigation/map_switcher";
+import * as Amerish from "../../app/Resources/Images/Maps/Amerish";
 import {
   MapContainer,
   MapContainerProps,
@@ -25,7 +26,7 @@ interface MapProps {
 export const Map: FC<MapProps> = (props) => {
   return (
     <MapContainer zoom={0} scrollWheelZoom={true}>
-      <TileLayer url=""></TileLayer>
+      <TileLayer url={Amerish}></TileLayer>
     </MapContainer>
   );
 };
