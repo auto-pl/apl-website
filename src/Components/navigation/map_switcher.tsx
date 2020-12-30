@@ -119,7 +119,11 @@ export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
   };
 
   return (
-    <div id="MapSwitcher" onClick={() => set_clicked(!clicked)}>
+    <div
+      id="MapSwitcher"
+      style={{ verticalAlign: "center" }}
+      onClick={() => set_clicked(!clicked)}
+    >
       <span style={cont_name_style}>
         {/* <span style={up_arrow} /> */}
         {current_cont.name}
