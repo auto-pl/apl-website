@@ -1,10 +1,13 @@
 import React, { FC, useReducer } from "react";
-import { ContinentDetails } from "../../interfaces/continent";
-import { MapSwitcher, to_MSContinents } from "../navigation/map_switcher";
-import * as Amerish from "../../app/Resources/Images/Maps/Amerish";
+import {
+  ContinentDetails,
+  to_continent_view,
+} from "../../interfaces/continent";
+import { MapSwitcher } from "../navigation/map_switcher";
+import * as Amerish from "../../app/Resources/Images/Maps/Amerish.png";
 import {
   MapContainer,
-  MapContainerProps,
+  TileLayerProps,
   MapConsumer,
   TileLayer,
   Polyline,
@@ -12,21 +15,30 @@ import {
   useMapEvent,
 } from "react-leaflet";
 
-interface Continent extends ContinentDetails {
-  /**
-   * The URL to the view for the continent
-   */
-  view_url: string;
-}
-
 interface MapProps {
-  continents: Array<Continent>;
+  continents: Array<ContinentDetails>;
+  /**
+   * The links to the view for each continent
+   */
+  view_urls: Array<string>;
 }
 
 export const Map: FC<MapProps> = (props) => {
+  const views = to_continent_view(props.continents, props.view_urls);
   return (
-    <MapContainer zoom={0} scrollWheelZoom={true}>
-      <TileLayer url={Amerish}></TileLayer>
-    </MapContainer>
+    <div>
+      <MapSwitcher continents={views} />
+      <MapContainer
+        center={[0, 0]}
+        zoom={0}
+        scrollWheelZoom={true}
+        dragging={true}
+        doubleClickZoom={true}
+      >
+        <TileLayer
+          url={"../../app/Resources/Images/Maps/Amerish.png"}
+        ></TileLayer>
+      </MapContainer>
+    </div>
   );
 };
