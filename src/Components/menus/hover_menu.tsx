@@ -5,7 +5,7 @@ import "../../styles/global/corners/corners.css";
 
 type position = "bottom right" | "bottom left" | "top right" | "top left";
 
-interface HoverMenuProps {
+export interface HoverMenuProps {
   /**
    * The name of the menu to be placed at the top
    */
