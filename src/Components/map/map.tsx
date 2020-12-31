@@ -4,7 +4,7 @@ import {
   to_continent_view,
 } from "../../interfaces/continent";
 import { MapSwitcher } from "../navigation/map_switcher";
-import * as Amerish from "../../app/Resources/Images/Maps/Amerish.png";
+import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
 import {
   MapContainer,
   TileLayerProps,
@@ -35,9 +35,7 @@ export const Map: FC<MapProps> = (props) => {
         dragging={true}
         doubleClickZoom={true}
       >
-        <TileLayer
-          url={"../../app/Resources/Images/Maps/Amerish.png"}
-        ></TileLayer>
+        <TileLayer url={Amerish}></TileLayer>
       </MapContainer>
     </div>
   );
