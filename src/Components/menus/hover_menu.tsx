@@ -1,5 +1,5 @@
 // this file will have the hover menu for hexes
-import React, { FC, ReactNode, CSSProperties } from "react";
+import React, { FC, ReactNode, CSSProperties, memo } from "react";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
 
@@ -60,7 +60,7 @@ const base_style: CSSProperties = {
   zIndex: 1,
 };
 
-export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
+export const HoverMenu = memo((props: HoverMenuProps) => {
   return (
     <div
       className={`FadeIn ${get_position_class(props.options)}`}
@@ -76,4 +76,4 @@ export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
       </div>
     </div>
   );
-};
+});
