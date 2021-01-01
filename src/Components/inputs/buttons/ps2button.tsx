@@ -6,8 +6,9 @@ import "../../../styles/global/ps2_styles/text/text.css";
 export interface ButtonProps {
   text?: string;
   tooltip_text?: string;
-  on_click?: MouseEventHandler<HTMLInputElement>;
+  on_click?: MouseEventHandler<HTMLButtonElement>;
   deactivated?: boolean;
+  value: any;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -15,6 +16,7 @@ export const Button: FC<ButtonProps> = ({
   tooltip_text,
   on_click,
   deactivated = false,
+  value,
 }: ButtonProps) => {
   return (
     <Tooltip
@@ -22,14 +24,15 @@ export const Button: FC<ButtonProps> = ({
       tipContentClassName="container container-body container-inline font-primary"
     >
       <div className="buttonDiv-notched-topLeft">
-        <input
+        <button
           type="button"
           className={`${deactivated ? "button-active" : "button-disabled"}`}
           onClick={on_click}
           disabled={deactivated}
+          value={value}
         >
           {text}
-        </input>
+        </button>
       </div>
     </Tooltip>
   );
