@@ -28,7 +28,6 @@
   cursor: default;
   color: #202020 !important;
   text-shadow: 0 0 10px #505050 !important;
-  border: 1px rgba(185, 190, 190, 0.9) solid;
 }
 .button-active:hover {
   background-color: #505050;
@@ -39,7 +38,6 @@
   cursor: default;
   color: #101010 !important;
   text-shadow: 0 0 5px #505050 !important;
-  border: 1px rgba(185, 190, 190, 0.9) solid;
 }
 .button-disabled:hover {
   background-color: #303030;
