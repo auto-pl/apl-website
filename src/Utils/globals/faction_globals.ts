@@ -3,14 +3,14 @@ import VS_logo from "../../app/Resources/Images/Logos/VS.png";
 import NC_logo from "../../app/Resources/Images/Logos/NC.png";
 import { faction } from "../../interfaces/continent";
 
-export const vs_colour = "rgba(92, 77, 105, 0.75)";
-export const tr_colour = "rgba(135, 81, 67, 0.75)";
-export const nc_colour = "rgba(87, 129, 143, 0.75)";
-export const ns_colour = "rgba(10, 16, 3, 0.75)";
-export const vs_colour_no_a = "rgb(92, 77, 105)";
-export const tr_colour_no_a = "rgb(135, 81, 67)";
-export const nc_colour_no_a = "rgb(87, 129, 143)";
-export const ns_colour_no_a = "rgb(10, 16, 3)";
+export const vs_colour = "rgba(97, 37, 151, 0.75)";
+export const tr_colour = "rgba(150, 17, 0, 0.75)";
+export const nc_colour = "rgba(29, 70, 152, 0.75)";
+export const ns_colour = "rgba(255, 255, 255, 0.75)";
+export const vs_colour_no_a = "rgb(97, 37, 151)";
+export const tr_colour_no_a = "rgb(150, 17, 0)";
+export const nc_colour_no_a = "rgb(29, 70, 152)";
+export const ns_colour_no_a = "rgb(255, 255, 255)";
 
 export const faction_names: Array<faction> = ["VS", "TR", "NC"];
 
