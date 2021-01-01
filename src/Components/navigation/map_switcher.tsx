@@ -2,7 +2,7 @@ import React, { useState, FC, CSSProperties } from "react";
 import { ContinentDetails, ContinentViews } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
 import {
-  faction_colours,
+  get_faction_colour,
   faction_logos,
 } from "../../Utils/globals/faction_globals";
 
@@ -73,7 +73,7 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
   };
 
   const locked_style: CSSProperties = {
-    backgroundColor: locked_by ? faction_colours.get(locked_by) : undefined,
+    backgroundColor: locked_by ? get_faction_colour(locked_by) : undefined,
     display: "inline-block",
     border: "1px solid grey",
     padding: "2px 4px 2px 4px",

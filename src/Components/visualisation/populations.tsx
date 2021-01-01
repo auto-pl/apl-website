@@ -53,7 +53,10 @@ export const EnemiesDetected: FC<PopulationProps> = (props) => {
       {Object.entries(props.populations).map(([name, pop], i) => (
         <p
           key={i}
-          style={{ ...p_style, backgroundColor: get_faction_colour(name) }}
+          style={{
+            ...p_style,
+            backgroundColor: get_faction_colour(name),
+          }}
         >
           {name} detected: {pop}
         </p>
