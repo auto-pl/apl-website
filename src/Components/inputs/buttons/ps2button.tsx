@@ -45,20 +45,22 @@ export const ToggleButton = ({
   tooltip_text,
   on_click,
   deactivated,
+  value,
 }: ToggleButtonProps) => {
-  const [toggled, set_toggled] = useState(deactivated);
+  const [toggled, set_toggled] = useState(false);
   const toggle = () => set_toggled(!toggled);
   const click_handler: typeof on_click = on_click || function (event) {};
 
   return (
     <Button
-      deactivated={toggled}
+      deactivated={deactivated}
       on_click={(e) => {
         toggle();
         click_handler(e);
       }}
       text={text}
       tooltip_text={tooltip_text}
+      value={toggled}
     />
   );
 };
