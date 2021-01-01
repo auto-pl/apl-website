@@ -1,0 +1,16 @@
+body {
+  font-family: "PS2-HEADER", Fallback, sans-serif;
+  font-weight: 500;
+}
+
+@font-face {
+  /* WIP CHECK COMPATIBILITY */
+  font-family: "PS2-HEADER";
+  src: url("../../app/Resources/Fonts/COPYRIGHT.TXT") url("../../app/Resources/Fonts/Geo-Md.ttf") format("truetype");
+}
+.font-primary {
+  color: rgba(125, 130, 130, 0.9);
+  text-shadow: 0 0 10px #707070;
+}
+
+/*# sourceMappingURL=text.css.map */

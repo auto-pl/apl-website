@@ -1,25 +1,16 @@
-.Hex, .HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
+.Hex, .HexPrioritised, .ExtremePriorityHex, .HighPriorityHex, .MedPriorityHex, .LowPriorityHex {
   border-width: 1px;
   border-style: solid;
   border-color: purple;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
   position: absolute;
   z-index: 0;
 }
 
-.HexPrioritised, .LowPriorityHex, .MedPriorityHex, .HighPriorityHex, .ExtremePriorityHex {
+.HexPrioritised, .ExtremePriorityHex, .HighPriorityHex, .MedPriorityHex, .LowPriorityHex {
   border-color: transparent;
   z-index: 10;
-}
-
-@-webkit-keyframes LowPriority {
-  100% {
-    border-color: cyan;
-    border-width: 4px;
-  }
 }
 
 @keyframes LowPriority {
@@ -28,74 +19,42 @@
     border-width: 4px;
   }
 }
-
-@-webkit-keyframes MedPriority {
-  100% {
-    border-color: yellow;
-    border-width: 4px;
-  }
-}
-
 @keyframes MedPriority {
   100% {
     border-color: yellow;
     border-width: 4px;
   }
 }
-
-@-webkit-keyframes HighPriority {
-  100% {
-    border-color: orange;
-    border-width: 4px;
-  }
-}
-
 @keyframes HighPriority {
   100% {
     border-color: orange;
     border-width: 4px;
   }
 }
-
-@-webkit-keyframes ExtremePriority {
-  100% {
-    border-color: red;
-    border-width: 4px;
-  }
-}
-
 @keyframes ExtremePriority {
   100% {
     border-color: red;
     border-width: 4px;
   }
 }
-
 .LowPriorityHex {
-  -webkit-animation-name: LowPriority;
-          animation-name: LowPriority;
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+  animation-name: LowPriority;
+  animation-duration: 4s;
 }
 
 .MedPriorityHex {
-  -webkit-animation-name: MedPriority;
-          animation-name: MedPriority;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-name: MedPriority;
+  animation-duration: 3s;
 }
 
 .HighPriorityHex {
-  -webkit-animation-name: HighPriority;
-          animation-name: HighPriority;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  animation-name: HighPriority;
+  animation-duration: 2s;
 }
 
 .ExtremePriorityHex {
-  -webkit-animation-name: ExtremePriority;
-          animation-name: ExtremePriority;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  animation-name: ExtremePriority;
+  animation-duration: 1s;
 }
+
 /*# sourceMappingURL=hex.css.map */
