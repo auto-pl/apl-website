@@ -66,9 +66,15 @@ export const HoverMenu = memo((props: HoverMenuProps) => {
       className={`FadeIn ${get_position_class(props.options)}`}
       style={base_style}
     >
-      <span>
+      <p
+        style={{
+          textAlign: "center",
+          margin: "0 0 5px 0",
+          width: "100%",
+        }}
+      >
         <b>{props.title}</b>
-      </span>
+      </p>
       <div>
         {props.body_items.map((e, i) => (
           <span key={i}>{e}</span>
