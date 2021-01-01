@@ -24,14 +24,14 @@ export const faction_colours = new Map([
 ]);
 
 /**
- * Get the RGB(A) code for a given faction tag
+ * Get the RGB(A) code for a given faction tag. The opacity of RGBAs is set to 75%
  * @param faction_tag The faction tag to get the RGB(A) for
- * @param no_alpha Whether to exclude the alpha field
+ * @param no_alpha Whether to exclude the alpha field. Defaults to true
  * @throws `Invalid faction tag` if `faction_tag` is not of type `src/interfaces/continents/faction`
  */
 export const get_faction_colour = (
   faction_tag: string, // NOTE: I couldn't use `faction` as it was awkward to use in cases involving Arrays
-  no_alpha: boolean = false
+  no_alpha: boolean = true
 ): string => {
   switch (faction_tag) {
     case "TR":
