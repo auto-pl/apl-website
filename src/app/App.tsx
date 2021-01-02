@@ -16,11 +16,14 @@ function App() {
           text="test"
           on_click={() => console.log("Clicked")}
           tooltip_text="Hovered"
+          value="yes"
         />
         <Button />
         <ToggleButton
           text="toggle test"
           on_click={() => console.log("toggle clicked")}
+          on_value="v"
+          off_value="5"
         />
       </div>
     </div>
