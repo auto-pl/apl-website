@@ -3,11 +3,14 @@ import Tooltip from "react-tooltip-lite";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
 import "../../../styles/global/ps2_styles/text/text.css";
 
-export interface ButtonProps {
+export interface BaseButtonProps {
   text?: string;
   tooltip_text?: string;
   on_click?: MouseEventHandler<HTMLButtonElement>;
   deactivated?: boolean;
+}
+
+export interface ButtonProps extends BaseButtonProps {
   value: any;
 }
 
@@ -38,18 +41,28 @@ export const Button: FC<ButtonProps> = ({
   );
 };
 
-export interface ToggleButtonProps extends ButtonProps {}
+export interface ToggleButtonProps extends BaseButtonProps {
+  /**
+   * The value of the button when the button is in the on state
+   */
+  on_value: any;
+  /**
+   * The value of the button when the button is in the off state
+   */
+  off_value: any;
+}
 
 export const ToggleButton = ({
   text,
   tooltip_text,
   on_click,
   deactivated,
-  value,
+  on_value,
+  off_value,
 }: ToggleButtonProps) => {
   const [toggled, set_toggled] = useState(false);
   const toggle = () => set_toggled(!toggled);
-  const click_handler: typeof on_click = on_click || function (event) {};
+  const click_handler: typeof on_click = on_click || (() => {});
 
   return (
     <Button
@@ -60,7 +73,7 @@ export const ToggleButton = ({
       }}
       text={text}
       tooltip_text={tooltip_text}
-      value={toggled}
+      value={toggled ? on_value : off_value}
     />
   );
 };
