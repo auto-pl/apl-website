@@ -1,0 +1,46 @@
+.buttonDiv-notched-topLeft {
+  width: auto;
+  position: relative;
+  display: inline-block;
+  padding: 5px 8px 5px 12px;
+  box-sizing: border-box;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #202020;
+  border: 1px rgba(185, 190, 190, 0.9) solid;
+}
+.buttonDiv-notched-topLeft::before {
+  content: "";
+  position: absolute;
+  margin: -13px -20px;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: #444444;
+  border-right: 1px rgba(185, 190, 190, 0.9) solid;
+}
+.buttonDiv-notched-topLeft:hover {
+  background-color: #303030;
+}
+
+.button-active {
+  background-color: #505050;
+  cursor: default;
+  color: #202020 !important;
+  text-shadow: 0 0 10px #505050 !important;
+}
+.button-active:hover {
+  background-color: #505050;
+}
+
+.button-disabled {
+  background-color: #303030;
+  cursor: default;
+  color: #101010 !important;
+  text-shadow: 0 0 5px #505050 !important;
+}
+.button-disabled:hover {
+  background-color: #303030;
+}
+
+/*# sourceMappingURL=buttons.css.map */
