@@ -11,7 +11,10 @@ export interface BaseButtonProps {
 }
 
 export interface ButtonProps extends BaseButtonProps {
-  value: any;
+  /**
+   * Defaults to an empty string
+   */
+  value?: any;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -19,7 +22,7 @@ export const Button: FC<ButtonProps> = ({
   tooltip_text,
   on_click,
   deactivated = false,
-  value,
+  value = "",
 }: ButtonProps) => {
   return (
     <Tooltip
@@ -43,13 +46,15 @@ export const Button: FC<ButtonProps> = ({
 
 export interface ToggleButtonProps extends BaseButtonProps {
   /**
-   * The value of the button when the button is in the on state
+   * The value of the button when the button is in the on state.
+   * Defaults to true
    */
-  on_value: any;
+  on_value?: any;
   /**
-   * The value of the button when the button is in the off state
+   * The value of the button when the button is in the off state.
+   * Defaults to false
    */
-  off_value: any;
+  off_value?: any;
 }
 
 export const ToggleButton = ({
@@ -57,8 +62,8 @@ export const ToggleButton = ({
   tooltip_text,
   on_click,
   deactivated,
-  on_value,
-  off_value,
+  on_value = true,
+  off_value = false,
 }: ToggleButtonProps) => {
   const [toggled, set_toggled] = useState(false);
   const toggle = () => set_toggled(!toggled);
