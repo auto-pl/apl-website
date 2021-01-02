@@ -1,5 +1,6 @@
-import React, { FC, useState, MouseEventHandler } from "react";
+import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
 import Tooltip from "react-tooltip-lite";
+import { ConditionalParent } from "../../HOCs/conditional_wrappers";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
 import "../../../styles/global/ps2_styles/text/text.css";
 
@@ -24,11 +25,16 @@ export const Button: FC<ButtonProps> = ({
   deactivated = false,
   value = "",
 }: ButtonProps) => {
-  return (
+  const wrapper_func = (children: ReactNode) => (
     <Tooltip
       content={tooltip_text}
       tipContentClassName="container container-body container-inline font-primary"
     >
+      {children}
+    </Tooltip>
+  );
+  return (
+    <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
       <div className="buttonDiv-notched-topLeft">
         <button
           type="button"
@@ -40,7 +46,7 @@ export const Button: FC<ButtonProps> = ({
           {text}
         </button>
       </div>
-    </Tooltip>
+    </ConditionalParent>
   );
 };
 
