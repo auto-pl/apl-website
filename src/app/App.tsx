@@ -12,7 +12,16 @@ function App() {
   return (
     <div className="background wrapper">
       {/* put your tests here */}
-      <div className="container" id="testing-code-goes-here"></div>
+      <div className="container" id="testing-code-goes-here">
+        <DropdownMenu
+          label="Testing"
+          items={[
+            { label: "hii", value: "I'm bob" },
+            { label: "hello", value: "bob" },
+          ]}
+          on_change={(v) => console.log(v)}
+        />
+      </div>
     </div>
   );
 }
