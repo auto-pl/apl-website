@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from "react";
+import React, { FC, MouseEventHandler, ReactNode } from "react";
 import "../../styles/global/ps2_styles/containers.css";
 import "../../styles/global/ps2_styles/text.css";
 import "../../styles/global/ps2_styles/sizing.css";
@@ -38,10 +38,6 @@ type Width = 5 | 10 | 15 | 20 | 25 | 30 | 40 | 45 | 50 | 55 | 60;
 type FontSize = 1 | 2 | 3 | 4;
 
 export interface TextContainerProps {
-  /**
-   * Defaults to an empty string
-   */
-  contents?: string;
   /**
    * Defaults to 2
    */
@@ -84,10 +80,10 @@ export interface TextContainerProps {
   height?: Height;
   on_hover?: MouseEventHandler;
   on_click?: MouseEventHandler;
+  children?: ReactNode;
 }
 
 export const TextContainer: FC<TextContainerProps> = ({
-  contents = "",
   header_settings,
   inline = false,
   x_scrollable = false,
@@ -97,6 +93,7 @@ export const TextContainer: FC<TextContainerProps> = ({
   on_hover,
   on_click,
   font_size = 2,
+  children,
 }) => {
   return (
     <div
@@ -123,7 +120,7 @@ export const TextContainer: FC<TextContainerProps> = ({
         }`}
       >
         {/* The contents */}
-        <div className={`container-body font-size${font_size}`}>{contents}</div>
+        <div className={`container-body font-size${font_size}`}>{children}</div>
       </div>
     </div>
   );
