@@ -2,7 +2,7 @@ import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
 import Tooltip from "react-tooltip-lite";
 import { ConditionalParent } from "../../HOCs/conditional_wrappers";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
-import "../../../styles/global/ps2_styles/text/text.css";
+import "../../../styles/global/ps2_styles/text.css";
 
 export interface BaseButtonProps {
   text?: string;
