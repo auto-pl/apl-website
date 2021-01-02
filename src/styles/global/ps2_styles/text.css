@@ -6,7 +6,7 @@ body {
 @font-face {
   /* WIP CHECK COMPATIBILITY */
   font-family: "PS2-HEADER";
-  src: url("../../../../app/Resources/Fonts/COPYRIGHT.TXT") url("../../../../app/Resources/Fonts/Geo-Md.ttf") format("truetype");
+  src: url("../../../app/Resources/Fonts/COPYRIGHT.TXT") url("../../../app/Resources/Fonts/Geo-Md.ttf") format("truetype");
 }
 .font-primary {
   color: rgba(125, 130, 130, 0.9);
