@@ -15,8 +15,9 @@ function App() {
       {/* put your tests here */}
       <div className="left" id="testing-code-goes-here">
         <TextContainer
-          width={20}
-          header_settings={{ text: "The best outfit ever" }}
+          width={30}
+          header_settings={{ text: "The Best Outfit Ever" }}
+          on_click={() => console.log("yes")}
         >
           Join MUMS on Cobalt VS. It is the greatest outfit to have ever graced
           Cobaltium.
