@@ -35,17 +35,15 @@ export const Button: FC<ButtonProps> = ({
   );
   return (
     <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
-      <div className="buttonDiv-notched-topLeft">
-        <button
-          type="button"
-          className={`${deactivated ? "button-active" : "button-disabled"}`}
-          onClick={on_click}
-          disabled={deactivated}
-          value={value}
-        >
-          {text}
-        </button>
-      </div>
+      <button
+        type="button"
+        className="buttonDiv-notched-topLeft"
+        onClick={on_click}
+        disabled={deactivated}
+        value={value}
+      >
+        {text}
+      </button>
     </ConditionalParent>
   );
 };
@@ -63,6 +61,7 @@ export interface ToggleButtonProps extends BaseButtonProps {
   off_value?: any;
 }
 
+// TODO: make ToggleButton. This is not a good toggle
 export const ToggleButton = ({
   text,
   tooltip_text,
