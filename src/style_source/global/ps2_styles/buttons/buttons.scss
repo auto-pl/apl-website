@@ -6,11 +6,25 @@ $notchSize: 4px;
 
 @mixin HasNotch {
   $takeOff: calc(100% - #{$notchSize});
+  $row: #{0% 100%};
+
   clip-path: polygon(
-    0% $notchSize,
-    $notchSize 0%,
-    $takeOff 0%,
-    100% $notchSize
+    // Top left
+    $row,
+    // Top left
+    100% 0%,
+    // Top right
+    $row,
+    // Top right
+    100% 0%,
+    // Bottom right
+    $row,
+    // Bottom right
+    100% 0%,
+    // Bottom left
+    $row,
+    // Bottom left
+    100% 0%
   );
 }
 
