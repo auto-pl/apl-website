@@ -10,8 +10,8 @@
   border: 1px rgba(185, 190, 190, 0.9) solid;
   clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.buttonDiv-notched-topLeft::hover {
-  background-color: #303030;
+.buttonDiv-notched-topLeft:hover {
+  background-color: #103333;
 }
 
 .button-active {

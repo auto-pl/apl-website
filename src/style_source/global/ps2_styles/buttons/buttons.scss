@@ -19,8 +19,8 @@
   @include border-button;
   @include HasLeftNotch;
 
-  &::hover {
-    background-color: #303030;
+  &:hover {
+    background-color: #103333;
   }
 }
 
