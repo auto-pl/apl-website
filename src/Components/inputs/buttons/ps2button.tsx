@@ -37,7 +37,7 @@ export const Button: FC<ButtonProps> = ({
     <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
       <button
         type="button"
-        className="buttonDiv-notched-topLeft"
+        className="buttonDiv-notched-topLeft font-primary"
         onClick={on_click}
         disabled={deactivated}
         value={value}
