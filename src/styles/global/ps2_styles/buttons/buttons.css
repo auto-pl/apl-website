@@ -12,7 +12,7 @@
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
-  clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0% 100%);
 }
 .buttonDiv-notched-topLeft:hover {
   background-color: #103333;
