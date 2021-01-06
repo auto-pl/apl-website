@@ -1,31 +1,9 @@
-$notchSize: 4px;
-
 @mixin border-button {
   border: 1px rgba(185, 190, 190, 0.9) solid;
 }
 
-@mixin HasNotch {
-  $takeOff: calc(100% - #{$notchSize});
-  $row: #{0% 100%};
-
-  clip-path: polygon(
-    // Top left
-    $row,
-    // Top left
-    100% 0%,
-    // Top right
-    $row,
-    // Top right
-    100% 0%,
-    // Bottom right
-    $row,
-    // Bottom right
-    100% 0%,
-    // Bottom left
-    $row,
-    // Bottom left
-    100% 0%
-  );
+@mixin HasLeftNotch {
+  clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .buttonDiv-notched-topLeft {
@@ -37,9 +15,9 @@ $notchSize: 4px;
   cursor: pointer;
 
   background-color: #202020;
-  padding: $notchSize;
+  padding-left: 4%;
   @include border-button;
-  @include HasNotch;
+  @include HasLeftNotch;
 
   &::hover {
     background-color: #303030;
