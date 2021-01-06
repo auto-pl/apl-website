@@ -26,15 +26,16 @@ export const Button: FC<ButtonProps> = ({
   value = "",
 }: ButtonProps) => {
   const wrapper_func = (children: ReactNode) => (
-    <Tooltip
-      content={tooltip_text}
-      tipContentClassName="container container-body container-inline font-primary"
-    >
+    <Tooltip content={tooltip_text} padding="0px">
       {children}
     </Tooltip>
   );
+  const debugger_ = (children: ReactNode) => {
+    console.log(children);
+    return wrapper_func(children);
+  };
   return (
-    <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
+    <ConditionalParent condition={!!tooltip_text} wrapper={debugger_}>
       <button
         type="button"
         className="buttonDiv-notched-topLeft font-primary"
