@@ -1,17 +1,37 @@
-/* Error: expected "{".
- *    ,
- * 29 |   #505050 cursor: default color: #202020 !important text-shadow: 0 0 10px
- *    |                                          ^
- *    '
- *   src\style_source\global\ps2_styles\buttons\buttons.scss 29:42  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a    \2577 \a 29 \2502    #505050 cursor: default color: #202020 !important text-shadow: 0 0 10px\d\a    \2502                                           ^\a    \2575 \a   src\\style_source\\global\\ps2_styles\\buttons\\buttons.scss 29:42  root stylesheet';
+.buttonDiv-notched-topLeft {
+  width: auto;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #202020;
+  padding: 4px;
+  border: 1px rgba(185, 190, 190, 0.9) solid;
+  clip-path: polygon(0% 4px, 4px 0%, calc(100% - 4px) 0%, 100% 4px);
 }
+.buttonDiv-notched-topLeft::hover {
+  background-color: #303030;
+}
+
+.button-active {
+  background-color: #505050;
+  cursor: default;
+  color: #202020 !important;
+  text-shadow: 0 0 10px #505050 !important;
+}
+.button-active::hover {
+  background-color: #505050;
+}
+
+.button-disabled {
+  background-color: #303030;
+  cursor: default;
+  color: #101010 !important;
+  text-shadow: 0 0 5px #505050 !important;
+}
+.button-disabled::hover {
+  background-color: #303030;
+}
+
+/*# sourceMappingURL=buttons.css.map */
