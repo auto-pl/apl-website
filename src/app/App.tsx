@@ -5,6 +5,11 @@ import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
 
 function App() {
+  // Set the title after the component is mounted
+  React.useEffect(() => {
+    document.title = "AutoPL";
+  });
+
   return (
     <div>
       {/* put your tests here */}
