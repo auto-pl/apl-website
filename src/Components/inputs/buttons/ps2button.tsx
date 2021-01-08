@@ -18,7 +18,7 @@ export interface ButtonProps extends BaseButtonProps {
   value?: any;
 }
 
-export const Button: FC<ButtonProps> = ({
+export const PS2Button: FC<ButtonProps> = ({
   text,
   tooltip_text,
   on_click,
@@ -63,7 +63,7 @@ export interface ToggleButtonProps extends BaseButtonProps {
 }
 
 // TODO: make ToggleButton. This is not a good toggle
-export const ToggleButton = ({
+export const PS2ToggleButton = ({
   text,
   tooltip_text,
   on_click,
