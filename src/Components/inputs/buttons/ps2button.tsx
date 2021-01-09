@@ -76,7 +76,7 @@ export const PS2ToggleButton = ({
   const click_handler: typeof on_click = on_click || (() => {});
 
   return (
-    <Button
+    <PS2Button
       deactivated={deactivated}
       on_click={(e) => {
         toggle();
