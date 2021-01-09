@@ -26,7 +26,18 @@ export const PS2Button: FC<ButtonProps> = ({
   value = "",
 }: ButtonProps) => {
   const wrapper_func = (children: ReactNode) => (
-    <Tooltip content={tooltip_text} padding="0px">
+    <Tooltip
+      tagName="button"
+      styles={{
+        borderStyle: "none",
+        paddingLeft: "0px",
+        paddingRight: "0px",
+        paddingTop: "0px",
+        background: "transparent",
+        textAlign: "justify",
+      }}
+      content={tooltip_text}
+    >
       {children}
     </Tooltip>
   );
