@@ -1,5 +1,5 @@
 // this file will have the hover menu for hexes
-import React, { FC, ReactNode, CSSProperties, memo } from "react";
+import React, { ReactNode, CSSProperties, memo } from "react";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
 
