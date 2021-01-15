@@ -2,25 +2,20 @@
   width: auto;
   position: relative;
   display: inline-block;
-  padding: 5px 8px 5px 12px;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 2px;
   cursor: pointer;
   background-color: #202020;
+  padding-left: 18px;
   border: 1px rgba(185, 190, 190, 0.9) solid;
-}
-.buttonDiv-notched-topLeft::before {
-  content: "";
-  position: absolute;
-  margin: -13px -20px;
-  width: 15px;
-  height: 15px;
-  transform: rotate(45deg);
-  background-color: #444444;
-  border-right: 1px rgba(185, 190, 190, 0.9) solid;
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
 .buttonDiv-notched-topLeft:hover {
-  background-color: #303030;
+  background-color: #103333;
 }
 
 .button-active {
@@ -29,7 +24,7 @@
   color: #202020 !important;
   text-shadow: 0 0 10px #505050 !important;
 }
-.button-active:hover {
+.button-active::hover {
   background-color: #505050;
 }
 
@@ -39,7 +34,7 @@
   color: #101010 !important;
   text-shadow: 0 0 5px #505050 !important;
 }
-.button-disabled:hover {
+.button-disabled::hover {
   background-color: #303030;
 }
 

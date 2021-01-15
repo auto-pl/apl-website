@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  PS2Button,
+  PS2ToggleButton,
+} from "../Components/inputs/buttons/ps2button";
 import "../styles/global/ps2_styles/text.css";
 import "../styles/global/ps2_styles/background.css";
 import "../styles/global/ps2_styles/containers.css";
@@ -10,6 +14,11 @@ import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
 
 function App() {
+  // Set the title after the component is mounted
+  React.useEffect(() => {
+    document.title = "AutoPL";
+  });
+
   return (
     <div className="background wrapper">
       {/* put your tests here */}

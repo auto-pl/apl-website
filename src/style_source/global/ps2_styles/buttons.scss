@@ -1,0 +1,52 @@
+@mixin border-button {
+  border: 1px rgba(185, 190, 190, 0.9) solid;
+}
+
+$left_notch_size: 14px;
+@mixin HasLeftNotch {
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon($left_notch_size 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.buttonDiv-notched-topLeft {
+  width: auto;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 2px;
+  cursor: pointer;
+
+  background-color: #202020;
+  padding-left: $left_notch_size + 4;
+  @include border-button;
+  @include HasLeftNotch;
+
+  &:hover {
+    background-color: #103333;
+  }
+}
+
+.button-active {
+  background-color: #505050;
+  cursor: default;
+  color: #202020 !important;
+  text-shadow: 0 0 10px #505050 !important;
+
+  &::hover {
+    background-color: #505050;
+  }
+}
+
+.button-disabled {
+  background-color: #303030;
+  cursor: default;
+  color: #101010 !important;
+  text-shadow: 0 0 5px #505050 !important;
+
+  &::hover {
+    background-color: #303030;
+  }
+}
