@@ -26,37 +26,22 @@ export const PS2Button: FC<ButtonProps> = ({
   value = "",
 }: ButtonProps) => {
   const wrapper_func = (children: ReactNode) => (
-    <Tooltip
-      tagName="button"
-      styles={{
-        borderStyle: "none",
-        paddingLeft: "0px",
-        paddingRight: "0px",
-        paddingTop: "0px",
-        background: "transparent",
-        textAlign: "justify",
-      }}
-      content={tooltip_text}
-    >
-      {children}
+    <Tooltip tagName="span" content={tooltip_text}>
+      <span style={{ width: "100%" }}>{children}</span>
     </Tooltip>
   );
-  const debugger_ = (children: ReactNode) => {
-    console.log(children);
-    return wrapper_func(children);
-  };
   return (
-    <ConditionalParent condition={!!tooltip_text} wrapper={debugger_}>
-      <button
-        type="button"
-        className="buttonDiv-notched-topLeft font-primary"
-        onClick={on_click}
-        disabled={deactivated}
-        value={value}
-      >
-        {text}
-      </button>
-    </ConditionalParent>
+    <button
+      type="button"
+      className="buttonDiv-notched-topLeft font-primary"
+      onClick={on_click}
+      disabled={deactivated}
+      value={value}
+    >
+      <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
+        {text || <span></span>}
+      </ConditionalParent>
+    </button>
   );
 };
 
