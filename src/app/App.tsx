@@ -31,6 +31,7 @@ function App() {
           Join MUMS on Cobalt VS. It is the greatest outfit to have ever graced
           Cobaltium.
         </TextContainer>
+        <PS2Button tooltip_text="join them">MUMS</PS2Button>
       </div>
     </div>
   );
