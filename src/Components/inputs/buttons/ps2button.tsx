@@ -1,11 +1,11 @@
-import React, { FC, useState, MouseEventHandler } from "react";
+import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
 import ReactTooltip from "react-tooltip";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
 import "../../../styles/global/ps2_styles/containers.css";
 
 export interface BaseButtonProps {
-  text?: string;
+  children: ReactNode;
   tooltip_text?: string;
   on_click?: MouseEventHandler<HTMLButtonElement>;
   deactivated?: boolean;
@@ -19,7 +19,7 @@ export interface ButtonProps extends BaseButtonProps {
 }
 
 export const PS2Button: FC<ButtonProps> = ({
-  text,
+  children,
   tooltip_text,
   on_click,
   deactivated = false,
@@ -35,7 +35,7 @@ export const PS2Button: FC<ButtonProps> = ({
         value={value}
         data-tip={tooltip_text}
       >
-        {text}
+        {children}
       </button>
       <ReactTooltip className="font-primary container" />
     </span>
@@ -58,7 +58,7 @@ export interface ToggleButtonProps extends BaseButtonProps {
 
 // TODO: make ToggleButton. This is not a good toggle
 export const PS2ToggleButton = ({
-  text,
+  children,
   tooltip_text,
   on_click,
   deactivated,
@@ -76,7 +76,7 @@ export const PS2ToggleButton = ({
         toggle();
         click_handler(e);
       }}
-      text={text}
+      children={children}
       tooltip_text={tooltip_text}
       value={toggled ? on_value : off_value}
     />
