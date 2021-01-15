@@ -1,5 +1,4 @@
 import React from "react";
-import Tooltip from "react-tooltip-lite";
 import {
   PS2Button,
   PS2ToggleButton,
@@ -34,28 +33,6 @@ function App() {
           on_value="v"
           off_value="5"
         />
-        <Tooltip tagName="button" content={<div>Join MUMS</div>}>
-          <button>Join MUMS</button>
-        </Tooltip>
-        <Tooltip
-          content={
-            <div>
-              <h4 className="tip-heading">
-                An unordered list to demo some html content
-              </h4>
-              <ul className="tip-list">
-                <li>One</li>
-                <li>Two</li>
-                <li>Three</li>
-                <li>Four</li>
-                <li>Five</li>
-              </ul>
-            </div>
-          }
-          tagName="span"
-        >
-          Target content for big html tip
-        </Tooltip>
       </div>
     </div>
   );

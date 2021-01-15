@@ -1,8 +1,8 @@
-import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
-import Tooltip from "react-tooltip-lite";
-import { ConditionalParent } from "../../HOCs/conditional_wrappers";
+import React, { FC, useState, MouseEventHandler } from "react";
+import ReactTooltip from "react-tooltip";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
 import "../../../styles/global/ps2_styles/text/text.css";
+import "../../../styles/global/ps2_styles/containers/containers.css";
 
 export interface BaseButtonProps {
   text?: string;
@@ -25,24 +25,22 @@ export const PS2Button: FC<ButtonProps> = ({
   deactivated = false,
   value = "",
 }: ButtonProps) => {
-  const wrapper_func = (children: ReactNode) => (
-    <Tooltip tagName="span" content={tooltip_text}>
-      <span style={{ width: "100%" }}>{children}</span>
-    </Tooltip>
-  );
   return (
-    <button
-      type="button"
-      className="buttonDiv-notched-topLeft font-primary"
-      onClick={on_click}
-      disabled={deactivated}
-      value={value}
-    >
-      <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
-        {text || <span></span>}
-      </ConditionalParent>
-    </button>
+    <span>
+      <button
+        type="button"
+        className="buttonDiv-notched-topLeft font-primary"
+        onClick={on_click}
+        disabled={deactivated}
+        value={value}
+        data-tip={tooltip_text}
+      >
+        {text}
+      </button>
+      <ReactTooltip className="font-primary container" />
+    </span>
   );
+  // !FIX: the classes don't seem to be applying
 };
 
 export interface ToggleButtonProps extends BaseButtonProps {
