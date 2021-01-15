@@ -28,7 +28,11 @@ export function WithBaseHoverMenu<TargetProps extends WithBaseHoverMenuProps>(
             body_items={[
               <PopulationReport populations={props.base_state.population} />,
             ]}
-            options={{ fixed_position: "bottom right" }}
+            options={{
+              fixed_position: "bottom right",
+              width: "15.5%",
+              height: "40%",
+            }}
           />
         ) : null}
       </div>

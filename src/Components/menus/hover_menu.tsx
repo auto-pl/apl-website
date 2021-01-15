@@ -21,6 +21,8 @@ export interface HoverMenuProps {
      * Should be one of [bottom right, bottom left, top right, top left]
      */
     fixed_position?: position;
+    width?: string;
+    height?: string;
   };
 }
 
@@ -64,7 +66,11 @@ export const HoverMenu = memo((props: HoverMenuProps) => {
   return (
     <div
       className={`FadeIn ${get_position_class(props.options)}`}
-      style={base_style}
+      style={{
+        ...base_style,
+        width: props.options?.width || base_style.width,
+        height: props.options?.height || base_style.height,
+      }}
     >
       <p
         style={{
