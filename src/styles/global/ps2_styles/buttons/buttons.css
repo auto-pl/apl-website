@@ -3,17 +3,16 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 2px;
   cursor: pointer;
   background-color: #202020;
-  padding-left: 4%;
-  padding-right: 0px;
+  padding-left: 18px;
   border: 1px rgba(185, 190, 190, 0.9) solid;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
-  clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
 .buttonDiv-notched-topLeft:hover {
   background-color: #103333;

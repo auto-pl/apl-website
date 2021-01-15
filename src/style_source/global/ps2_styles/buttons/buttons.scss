@@ -2,12 +2,13 @@
   border: 1px rgba(185, 190, 190, 0.9) solid;
 }
 
+$left_notch_size: 14px;
 @mixin HasLeftNotch {
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
-  clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon($left_notch_size 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .buttonDiv-notched-topLeft {
@@ -15,12 +16,11 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 2px;
   cursor: pointer;
 
   background-color: #202020;
-  padding-left: 4%;
-  padding-right: 0px;
+  padding-left: $left_notch_size + 4;
   @include border-button;
   @include HasLeftNotch;
 
