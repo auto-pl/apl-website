@@ -33,9 +33,7 @@ export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
       1: { color: get_faction_colour(rows[2][0]) },
       2: { color: get_faction_colour(rows[3][0]) },
     },
-    chartArea: {
-      backgroundColor: "blue",
-    },
+    backgroundColor: "transparent",
     pieSliceText: "percentage",
     legend: "none",
   };
