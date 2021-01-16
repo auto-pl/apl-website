@@ -30,7 +30,7 @@
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.buttonDiv-notched-topLeft:after:hover {
+.buttonDiv-notched-topLeft:after::after:hover {
   background-color: #103333;
 }
 
