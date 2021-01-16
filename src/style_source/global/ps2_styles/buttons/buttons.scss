@@ -1,5 +1,7 @@
+$border-colour: rgba(185, 190, 190, 0.9);
+
 @mixin border-button {
-  border: 1px rgba(185, 190, 190, 0.9) solid;
+  border: 1px $border-colour solid !important;
 }
 
 $left_notch_size: 14px;
@@ -12,19 +14,37 @@ $left_notch_size: 14px;
 }
 
 .buttonDiv-notched-topLeft {
+  // This is the border
+  // NOTE: this is required because clip-path clips out borders
   width: auto;
+  height: auto;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
-
-  background-color: #202020;
+  background-color: $border-colour;
   padding-left: $left_notch_size + 4;
-  @include border-button;
   @include HasLeftNotch;
+  @include border-button;
 
-  &:hover {
+  // this is the background
+  &:after {
+    $dimension: 100%;
+    $offset: 0;
+
+    content: "";
+    left: $offset;
+    top: $offset;
+    position: absolute;
+    width: $dimension;
+    height: $dimension;
+    background-color: #202020;
+    z-index: -1;
+    @include HasLeftNotch;
+  }
+
+  &:after:hover {
     background-color: #103333;
   }
 }

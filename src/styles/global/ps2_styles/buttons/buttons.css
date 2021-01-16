@@ -1,20 +1,36 @@
 .buttonDiv-notched-topLeft {
   width: auto;
+  height: auto;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
-  background-color: #202020;
+  background-color: rgba(185, 190, 190, 0.9);
   padding-left: 18px;
-  border: 1px rgba(185, 190, 190, 0.9) solid;
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
+  border: 1px rgba(185, 190, 190, 0.9) solid !important;
+}
+.buttonDiv-notched-topLeft:after {
+  content: "";
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #202020;
+  z-index: -1;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.buttonDiv-notched-topLeft:hover {
+.buttonDiv-notched-topLeft:after:hover {
   background-color: #103333;
 }
 
