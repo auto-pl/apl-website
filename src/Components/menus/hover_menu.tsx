@@ -1,5 +1,7 @@
 // this file will have the hover menu for hexes
-import React, { ReactNode, CSSProperties, memo } from "react";
+import React, { ReactNode, CSSProperties, memo, createElement } from "react";
+import { Portal } from "../HOCs/portal";
+import { TextContainer } from "../containers/text_container";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
 
@@ -53,7 +55,6 @@ const get_position_class = (options: HoverMenuProps["options"]): string => {
 };
 
 const base_style: CSSProperties = {
-  border: "3px solid cyan",
   padding: "5px",
   position: "absolute",
   height: "40%",
@@ -64,28 +65,34 @@ const base_style: CSSProperties = {
 
 export const HoverMenu = memo((props: HoverMenuProps) => {
   return (
-    <div
-      className={`FadeIn ${get_position_class(props.options)}`}
-      style={{
-        ...base_style,
-        width: props.options?.width || base_style.width,
-        height: props.options?.height || base_style.height,
-      }}
-    >
-      <p
+    <Portal>
+      <div
+        className={`FadeIn ${get_position_class(props.options)}`}
         style={{
-          textAlign: "center",
-          margin: "0 0 5px 0",
-          width: "100%",
+          ...base_style,
+          width: props.options?.width || base_style.width,
+          height: props.options?.height || base_style.height,
         }}
       >
-        <b>{props.title}</b>
-      </p>
-      <div>
-        {props.body_items.map((e, i) => (
-          <span key={i}>{e}</span>
-        ))}
+        <TextContainer
+          header_settings={{ text: props.title }}
+          width={100}
+          height={100}
+        >
+          <p
+            style={{
+              textAlign: "center",
+              margin: "0 0 5px 0",
+              width: "100%",
+            }}
+          ></p>
+          <div>
+            {props.body_items.map((e, i) => (
+              <span key={i}>{e}</span>
+            ))}
+          </div>
+        </TextContainer>
       </div>
-    </div>
+    </Portal>
   );
 });
