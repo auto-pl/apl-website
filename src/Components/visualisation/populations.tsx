@@ -87,7 +87,7 @@ export const PopulationReport: FC<PopulationReportProps> = (props) => {
   return (
     <div style={population_report_style}>
       <EnemiesDetected populations={props.populations} />
-      <PopulationPieChart {...props} style={{ bottom: 0, left: 0 }} />
+      <PopulationPieChart {...props} />
     </div>
   );
 };
