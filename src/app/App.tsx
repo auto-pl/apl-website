@@ -3,6 +3,7 @@ import {
   PS2Button,
   PS2ToggleButton,
 } from "../Components/inputs/buttons/ps2button";
+import "../styles/global/ps2_styles/background/background.css";
 
 import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
@@ -14,7 +15,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="background wrapper">
       {/* put your tests here */}
       <div id="testing-code-goes-here">
         {/*
