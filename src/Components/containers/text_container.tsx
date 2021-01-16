@@ -83,6 +83,8 @@ export interface TextContainerProps {
   children?: ReactNode;
 }
 
+// !FIX: not enough components! Split the header and body into components and make TextContainer just hold them
+
 export const TextContainer: FC<TextContainerProps> = ({
   header_settings,
   inline = false,
