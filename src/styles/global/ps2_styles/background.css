@@ -10,6 +10,7 @@
   left: 0;
   top: 0;
   position: absolute;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=background.css.map */
