@@ -1,3 +1,14 @@
+@keyframes ButtonClick {
+  0% {
+    box-shadow: none;
+  }
+  75% {
+    box-shadow: 14px 0 #4dbb2b inset;
+  }
+  100% {
+    box-shadow: none;
+  }
+}
 .buttonDiv-notched-topLeft {
   width: auto;
   height: auto;
@@ -24,14 +35,22 @@
   height: 100%;
   background-color: #202020;
   z-index: -1;
+  transition: background-color 225ms ease-in;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.buttonDiv-notched-topLeft:after::after:hover {
+.buttonDiv-notched-topLeft:hover::after {
   background-color: #103333;
+}
+.buttonDiv-notched-topLeft:active::after {
+  animation-name: ButtonClick;
+  animation-duration: 100ms;
+}
+.buttonDiv-notched-topLeft:focus {
+  outline: none;
 }
 
 .button-active {
