@@ -24,7 +24,7 @@ const DropdownItem: FC<DropdownItemProps> = ({ value, label }) => {
   return <option value={value}>{label}</option>;
 };
 
-export const DropdownMenu: FC<DropdownMenuProps> = ({
+export const PS2DropdownMenu: FC<DropdownMenuProps> = ({
   label,
   on_change,
   items,
