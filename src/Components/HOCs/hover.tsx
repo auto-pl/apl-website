@@ -1,9 +1,9 @@
 import React, { ComponentType, useState, FC } from "react";
-import { HoverMenu, HoverMenuProps } from "../menus/hover_menu";
+import { HoverMenu } from "../menus/hover_menu";
 import { BaseState } from "../../interfaces/continent";
 import { PopulationReport } from "../visualisation/populations";
 
-export interface WithBaseHoverMenuProps {
+export interface withBaseHoverMenuProps {
   base_state: BaseState;
 }
 
@@ -11,9 +11,9 @@ export interface WithBaseHoverMenuProps {
  * Add a `HoverMenu` to the component. The menu will contain information about a base
  * @param TargetComponent The component to add the `HoverMenu` to
  */
-export function WithBaseHoverMenu<TargetProps extends WithBaseHoverMenuProps>(
+export function withBaseHoverMenu<TargetProps extends withBaseHoverMenuProps>(
   TargetComponent: ComponentType<TargetProps>
-): FC<TargetProps & WithBaseHoverMenuProps> {
+): FC<TargetProps & withBaseHoverMenuProps> {
   const ComponentWithBaseHoverMenu = (props: TargetProps) => {
     const [hovered, set_hovered] = useState(false);
     return (
@@ -28,7 +28,11 @@ export function WithBaseHoverMenu<TargetProps extends WithBaseHoverMenuProps>(
             body_items={[
               <PopulationReport populations={props.base_state.population} />,
             ]}
-            options={{ fixed_position: "bottom right" }}
+            options={{
+              fixed_position: "bottom right",
+              width: "15.5%",
+              height: "45%",
+            }}
           />
         ) : null}
       </div>

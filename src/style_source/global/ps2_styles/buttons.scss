@@ -1,0 +1,96 @@
+$border-colour: rgba(185, 190, 190, 0.9);
+$left_notch_size: 14px;
+
+@mixin border-button {
+  border: 1px $border-colour solid !important;
+}
+
+@keyframes ButtonClick {
+  0% {
+    box-shadow: none;
+  }
+
+  75% {
+    box-shadow: $left_notch_size 0 rgb(77, 187, 43) inset;
+  }
+
+  100% {
+    box-shadow: none;
+  }
+}
+
+@mixin HasLeftNotch {
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon($left_notch_size 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.buttonDiv-notched-topLeft {
+  // This is the border
+  // NOTE: this is required because clip-path clips out borders
+  width: auto;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 2px;
+  cursor: pointer;
+  background-color: $border-colour;
+  padding-left: $left_notch_size + 4;
+  @include HasLeftNotch;
+  @include border-button;
+
+  // this is the background
+  &:after {
+    $dimension: 100%;
+    $offset: 0;
+
+    content: "";
+    left: $offset;
+    top: $offset;
+    position: absolute;
+    width: $dimension;
+    height: $dimension;
+    background-color: #202020;
+    z-index: -1;
+    transition: background-color 225ms ease-in;
+    @include HasLeftNotch;
+  }
+
+  &:hover::after {
+    background-color: #103333;
+  }
+
+  &:active::after {
+    animation-name: ButtonClick;
+    animation-duration: 100ms;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-active {
+  background-color: #505050;
+  cursor: default;
+  color: #202020 !important;
+  text-shadow: 0 0 10px #505050 !important;
+
+  &::hover {
+    background-color: #505050;
+  }
+}
+
+.button-disabled {
+  background-color: #303030;
+  cursor: default;
+  color: #101010 !important;
+  text-shadow: 0 0 5px #505050 !important;
+
+  &::hover {
+    background-color: #303030;
+  }
+}

@@ -1,11 +1,11 @@
 import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
-import Tooltip from "react-tooltip-lite";
-import { ConditionalParent } from "../../HOCs/conditional_wrappers";
+import ReactTooltip from "react-tooltip";
 import "../../../styles/global/ps2_styles/buttons/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
+import "../../../styles/global/ps2_styles/containers.css";
 
 export interface BaseButtonProps {
-  text?: string;
+  children: ReactNode;
   tooltip_text?: string;
   on_click?: MouseEventHandler<HTMLButtonElement>;
   deactivated?: boolean;
@@ -18,36 +18,29 @@ export interface ButtonProps extends BaseButtonProps {
   value?: any;
 }
 
-export const Button: FC<ButtonProps> = ({
-  text,
+export const PS2Button: FC<ButtonProps> = ({
+  children,
   tooltip_text,
   on_click,
   deactivated = false,
   value = "",
 }: ButtonProps) => {
-  const wrapper_func = (children: ReactNode) => (
-    <Tooltip
-      content={tooltip_text}
-      tipContentClassName="container container-body container-inline font-primary"
-    >
-      {children}
-    </Tooltip>
-  );
   return (
-    <ConditionalParent condition={!!tooltip_text} wrapper={wrapper_func}>
-      <div className="buttonDiv-notched-topLeft">
-        <button
-          type="button"
-          className={`${deactivated ? "button-active" : "button-disabled"}`}
-          onClick={on_click}
-          disabled={deactivated}
-          value={value}
-        >
-          {text}
-        </button>
-      </div>
-    </ConditionalParent>
+    <>
+      <button
+        type="button"
+        className="buttonDiv-notched-topLeft font-primary"
+        onClick={on_click}
+        disabled={deactivated}
+        value={value}
+        data-tip={tooltip_text}
+      >
+        {children}
+      </button>
+      <ReactTooltip className="font-primary container" />
+    </>
   );
+  // !FIX: the classes don't seem to be applying
 };
 
 export interface ToggleButtonProps extends BaseButtonProps {
@@ -63,8 +56,9 @@ export interface ToggleButtonProps extends BaseButtonProps {
   off_value?: any;
 }
 
-export const ToggleButton = ({
-  text,
+// TODO: make ToggleButton. This is not a good toggle
+export const PS2ToggleButton = ({
+  children,
   tooltip_text,
   on_click,
   deactivated,
@@ -76,13 +70,13 @@ export const ToggleButton = ({
   const click_handler: typeof on_click = on_click || (() => {});
 
   return (
-    <Button
+    <PS2Button
       deactivated={deactivated}
       on_click={(e) => {
         toggle();
         click_handler(e);
       }}
-      text={text}
+      children={children}
       tooltip_text={tooltip_text}
       value={toggled ? on_value : off_value}
     />
