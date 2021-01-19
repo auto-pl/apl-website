@@ -12,7 +12,7 @@ import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
 const base_state = conts[0].base_states[0];
 
-const HoverTest = withBaseHoverMenu(({}) => (
+const HoverTest = withBaseHoverMenu(() => (
   <TextContainer>Base hover HOC test</TextContainer>
 ));
 
