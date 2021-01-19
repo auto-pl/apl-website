@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  PS2Button,
-  PS2ToggleButton,
-} from "../Components/inputs/buttons/ps2button";
+import { PS2Button } from "../Components/inputs/buttons/ps2button";
 import { withBaseHoverMenu } from "../Components/HOCs/hover";
 import "../styles/global/ps2_styles/text.css";
 import "../styles/global/ps2_styles/background.css";
