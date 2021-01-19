@@ -26,7 +26,7 @@ export const PS2Button: FC<ButtonProps> = ({
   value = "",
 }: ButtonProps) => {
   return (
-    <span>
+    <>
       <button
         type="button"
         className="buttonDiv-notched-topLeft font-primary"
@@ -38,7 +38,7 @@ export const PS2Button: FC<ButtonProps> = ({
         {text}
       </button>
       <ReactTooltip className="font-primary container" />
-    </span>
+    </>
   );
   // !FIX: the classes don't seem to be applying
 };
