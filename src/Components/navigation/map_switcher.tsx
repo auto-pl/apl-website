@@ -1,17 +1,15 @@
 import React, { useState, FC, CSSProperties } from "react";
-import { ContinentDetails } from "../../interfaces/continent";
+import { ContinentDetails, ContinentViews } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
 import {
-  faction_colours,
+  get_faction_colour,
   faction_logos,
 } from "../../Utils/globals/faction_globals";
 
+// !FIX: make good code this time, idiot
+
 interface MapSwitcherProps {
-  /**
-   * @member details: the information about the continent
-   * @member view_url: the URL to the view of the continent
-   */
-  continents: Array<{ view_url: string; details: ContinentDetails }>;
+  continents: ContinentViews;
 }
 
 interface ContinentItemProps {
@@ -75,7 +73,7 @@ const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
   };
 
   const locked_style: CSSProperties = {
-    backgroundColor: locked_by ? faction_colours.get(locked_by) : undefined,
+    backgroundColor: locked_by ? get_faction_colour(locked_by) : undefined,
     display: "inline-block",
     border: "1px solid grey",
     padding: "2px 4px 2px 4px",
@@ -121,7 +119,11 @@ export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
   };
 
   return (
-    <div id="MapSwitcher" onClick={() => set_clicked(!clicked)}>
+    <div
+      id="MapSwitcher"
+      style={{ verticalAlign: "center" }}
+      onClick={() => set_clicked(!clicked)}
+    >
       <span style={cont_name_style}>
         {/* <span style={up_arrow} /> */}
         {current_cont.name}

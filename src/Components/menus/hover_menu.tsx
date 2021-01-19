@@ -1,11 +1,13 @@
 // this file will have the hover menu for hexes
-import React, { FC, ReactNode, CSSProperties } from "react";
+import React, { ReactNode, CSSProperties, memo, createElement } from "react";
+import { Portal } from "../HOCs/portal";
+import { TextContainer } from "../containers/text_container";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
 
 type position = "bottom right" | "bottom left" | "top right" | "top left";
 
-interface HoverMenuProps {
+export interface HoverMenuProps {
   /**
    * The name of the menu to be placed at the top
    */
@@ -21,6 +23,8 @@ interface HoverMenuProps {
      * Should be one of [bottom right, bottom left, top right, top left]
      */
     fixed_position?: position;
+    width?: string;
+    height?: string;
   };
 }
 
@@ -51,7 +55,6 @@ const get_position_class = (options: HoverMenuProps["options"]): string => {
 };
 
 const base_style: CSSProperties = {
-  border: "3px solid cyan",
   padding: "5px",
   position: "absolute",
   height: "40%",
@@ -60,20 +63,36 @@ const base_style: CSSProperties = {
   zIndex: 1,
 };
 
-export const HoverMenu: FC<HoverMenuProps> = (props: HoverMenuProps) => {
+export const HoverMenu = memo((props: HoverMenuProps) => {
   return (
-    <div
-      className={`FadeIn ${get_position_class(props.options)}`}
-      style={base_style}
-    >
-      <span>
-        <b>{props.title}</b>
-      </span>
-      <div>
-        {props.body_items.map((e, i) => (
-          <span key={i}>{e}</span>
-        ))}
+    <Portal>
+      <div
+        className={`FadeIn ${get_position_class(props.options)}`}
+        style={{
+          ...base_style,
+          width: props.options?.width || base_style.width,
+          height: props.options?.height || base_style.height,
+        }}
+      >
+        <TextContainer
+          header_settings={{ text: props.title }}
+          width={100}
+          height={100}
+        >
+          <p
+            style={{
+              textAlign: "center",
+              margin: "0 0 5px 0",
+              width: "100%",
+            }}
+          ></p>
+          <div>
+            {props.body_items.map((e, i) => (
+              <span key={i}>{e}</span>
+            ))}
+          </div>
+        </TextContainer>
       </div>
-    </div>
+    </Portal>
   );
-};
+});

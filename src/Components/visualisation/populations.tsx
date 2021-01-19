@@ -12,36 +12,42 @@ interface PopulationProps {
 
 interface PopulationPieChartProps extends PopulationProps {
   /**
-   * Defaults to 200px
+   * Defaults to 180px
    */
   height?: string;
   /**
-   * Defaults to 250px
+   * Defaults to 180px
    */
   width?: string;
+
+  style?: CSSProperties;
 }
 
 export const PopulationPieChart: FC<PopulationPieChartProps> = (props) => {
-  const rows: Array<[string, any]> = [
-    ["Faction", "Number of players"] as [string, any],
+  const rows: Array<[string, string | number]> = [
+    ["Faction", "Number of players"] as [string, string],
   ].concat(Object.entries(props.populations));
   const options = {
-    title: "Faction population",
     slices: {
-      0: { color: get_faction_colour(rows[1][0], true) },
-      1: { color: get_faction_colour(rows[2][0], true) },
-      2: { color: get_faction_colour(rows[3][0], true) },
+      0: { color: get_faction_colour(rows[1][0]) },
+      1: { color: get_faction_colour(rows[2][0]) },
+      2: { color: get_faction_colour(rows[3][0]) },
     },
+    backgroundColor: "transparent",
+    pieSliceText: "percentage",
+    legend: "none",
   };
   return (
-    <Chart
-      chartType="PieChart"
-      height={props.height || "200px"}
-      width={props.width || "250px"}
-      loader={<div>ben was here</div>}
-      data={rows}
-      options={options}
-    />
+    <div style={props.style}>
+      <Chart
+        chartType="PieChart"
+        height={props.height || "180px"}
+        width={props.width || "180px"}
+        loader={<div>ben was here</div>}
+        data={rows}
+        options={options}
+      />
+    </div>
   );
 };
 
@@ -53,7 +59,10 @@ export const EnemiesDetected: FC<PopulationProps> = (props) => {
       {Object.entries(props.populations).map(([name, pop], i) => (
         <p
           key={i}
-          style={{ ...p_style, backgroundColor: get_faction_colour(name) }}
+          style={{
+            ...p_style,
+            backgroundColor: get_faction_colour(name),
+          }}
         >
           {name} detected: {pop}
         </p>
@@ -67,8 +76,7 @@ const population_report_style: CSSProperties = {
   width: "100%",
   textAlign: "center",
   verticalAlign: "middle",
-  left: 0,
-  right: 0,
+  position: "relative",
 };
 
 // Alias added to prevent confusion
