@@ -24,8 +24,8 @@ export const Map: FC<MapProps> = (props) => {
         style={{ zIndex: -1 }}
         alt="Amerish"
         src={Amerish}
-        width="80%"
-        height="80%"
+        width="90%"
+        height="90%"
       ></img>
     </div>
   );
