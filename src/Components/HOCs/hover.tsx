@@ -30,7 +30,7 @@ export function withBaseHoverMenu<TargetProps extends withBaseHoverMenuProps>(
             ]}
             options={{
               fixed_position: "bottom right",
-              width: "15.5%",
+              width: "10%",
               height: "45%",
             }}
           />
