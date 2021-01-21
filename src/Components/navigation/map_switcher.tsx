@@ -57,13 +57,9 @@ const ContinentItem: FC<ContinentItemProps> = ({
             src={faction_logos.get(locked_by)}
             height={logo_size}
             width={logo_size}
-            style={{ verticalAlign: "bottom" }}
           />
         ) : null}
-        <span
-          className="continent-item-text"
-          style={{ paddingLeft: locked_by ? undefined : logo_size }}
-        >
+        <span style={{ paddingLeft: locked_by ? undefined : logo_size }}>
           {name}
         </span>
       </a>
