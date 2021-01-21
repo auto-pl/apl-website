@@ -3,18 +3,10 @@ import "../styles/global/ps2_styles/text.css";
 import "../styles/global/ps2_styles/background.css";
 import "../styles/global/ps2_styles/positioning.css";
 
-import { TextContainer } from "../Components/containers/text_container";
-import { PS2Button } from "../Components/inputs/buttons/ps2button";
-import { withBaseHoverMenu } from "../Components/HOCs/hover";
-import { PS2DropdownMenu } from "../Components/inputs/ps2dropdown";
+import { Map } from "../Components/map/map";
 
 import { api } from "../Utils/api_interface";
 const conts = api.get_all_continents();
-const base_state = conts[0].base_states[0];
-
-const HoverTest = withBaseHoverMenu(() => (
-  <TextContainer>Base hover HOC test</TextContainer>
-));
 
 function App() {
   // Set the title after the component is mounted
@@ -26,24 +18,11 @@ function App() {
     <div className="background wrapper main-body">
       <div id="portals"></div>
       {/* put your tests here */}
-      <div className="left" id="testing-code-goes-here">
-        <TextContainer
-          width={30}
-          header_settings={{ text: "The Best Outfit Ever" }}
-          on_click={() => console.log("yes")}
-        >
-          Join MUMS on Cobalt VS. It is the greatest outfit to have ever graced
-          Cobaltium.
-        </TextContainer>
-        <PS2Button tooltip_text="join them">MUMS</PS2Button>
-        <HoverTest base_state={base_state} />
-        <PS2DropdownMenu
-          items={[
-            { label: "item1", value: "value1" },
-            { label: "item2", value: "value2" },
-            { label: "item3", value: "value4" },
-          ]}
-        ></PS2DropdownMenu>
+      <div id="testing-code-goes-here">
+        <Map
+          continents={conts}
+          view_urls={["amerish", "esamir", "indar", "hossin"]}
+        />
       </div>
     </div>
   );
