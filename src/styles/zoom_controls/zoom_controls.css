@@ -1,0 +1,10 @@
+.zoom-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  float: right;
+  position: absolute;
+  border: 1px rgba(185, 190, 190, 0.9) solid;
+}
+
+/*# sourceMappingURL=zoom_controls.css.map */
