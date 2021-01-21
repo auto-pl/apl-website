@@ -1,6 +1,6 @@
 import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
 import ReactTooltip from "react-tooltip";
-import "../../../styles/global/ps2_styles/buttons/buttons.css";
+import "../../../styles/global/ps2_styles/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
 import "../../../styles/global/ps2_styles/containers.css";
 

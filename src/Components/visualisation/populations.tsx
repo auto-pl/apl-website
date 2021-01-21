@@ -2,6 +2,7 @@ import React, { FC, CSSProperties } from "react";
 import { Chart } from "react-google-charts";
 import { get_faction_colour } from "../../Utils/globals/faction_globals";
 import { Population } from "../../interfaces/continent";
+import "../../styles/global/ps2_styles/positioning.css";
 
 interface PopulationProps {
   /**
