@@ -1,8 +1,7 @@
 .zoom-container {
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  float: right;
   position: absolute;
   border: 1px rgba(185, 190, 190, 0.9) solid;
 }
