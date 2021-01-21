@@ -5,6 +5,7 @@ import { faction_logos } from "../../Utils/globals/faction_globals";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/map_switcher/map_switcher.css";
 import "../../styles/global/ps2_styles/sizing.css";
+import "../../styles/global/ps2_styles/text.css";
 
 interface MapSwitcherProps {
   continents: ContinentViews;
@@ -40,6 +41,7 @@ const ContinentItem: FC<ContinentItemProps> = ({
 }) => {
   const { locked_by, name } = continent_record;
   const get_faction_class = (faction_name: string) => `locked-${faction_name}`;
+  const logo_size = "32px";
 
   return (
     <TextContainer
@@ -48,16 +50,22 @@ const ContinentItem: FC<ContinentItemProps> = ({
       }`}
       on_click={() => set_cont(continent_record)}
     >
-      <a href={url}>
+      <a className="font-primary" href={url}>
         {locked_by ? (
           <img
             alt={`${locked_by} logo`}
             src={faction_logos.get(locked_by)}
-            height="64px"
-            width="64px"
+            height={logo_size}
+            width={logo_size}
+            style={{ verticalAlign: "bottom" }}
           />
         ) : null}
-        {name}
+        <span
+          className="continent-item-text"
+          style={{ paddingLeft: locked_by ? undefined : logo_size }}
+        >
+          {name}
+        </span>
       </a>
     </TextContainer>
   );
