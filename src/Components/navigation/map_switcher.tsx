@@ -4,7 +4,7 @@ import { get_active_continent } from "../../Utils/apitils";
 import { faction_logos } from "../../Utils/globals/faction_globals";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/map_switcher/map_switcher.css";
-import "../../styles/global/ps2_styles/sizing.css";
+import "../../styles/global/ps2_styles/positioning.css";
 import "../../styles/global/ps2_styles/text.css";
 
 interface MapSwitcherProps {
@@ -50,7 +50,7 @@ const ContinentItem: FC<ContinentItemProps> = ({
       }`}
       on_click={() => set_cont(continent_record)}
     >
-      <a className="font-primary" href={url}>
+      <a className="font-primary pair-text-image" href={url}>
         {locked_by ? (
           <img
             alt={`${locked_by} logo`}
