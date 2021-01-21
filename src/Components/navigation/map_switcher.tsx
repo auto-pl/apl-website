@@ -76,6 +76,7 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
             selected={current_cont === cont.details}
             set_cont={(c) => set_current_cont(c)}
             url={cont.view_url}
+            key={i}
           />
         ))}
       </details>
