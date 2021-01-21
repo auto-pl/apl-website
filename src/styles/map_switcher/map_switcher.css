@@ -1,7 +1,7 @@
 .switcher {
   left: 37%;
-  position: relative;
-  zIndex: 1;
+  position: absolute;
+  z-index: 1;
 }
 
 .continent-item {
@@ -11,22 +11,6 @@
 
 .selected {
   opacity: 0.9;
-}
-
-.locked, .locked-tr, .locked-nc, .locked-vs {
-  background-color: green;
-}
-
-.locked-vs {
-  background-color: #612597;
-}
-
-.locked-nc {
-  background-color: #1d4698;
-}
-
-.locked-tr {
-  background-color: #612597;
 }
 
 details:focus {

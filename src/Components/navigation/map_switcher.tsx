@@ -1,7 +1,10 @@
 import React, { useState, FC } from "react";
 import { ContinentDetails, ContinentViews } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
-import { faction_logos } from "../../Utils/globals/faction_globals";
+import {
+  get_faction_colour,
+  faction_logos,
+} from "../../Utils/globals/faction_globals";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/map_switcher/map_switcher.css";
 import "../../styles/global/ps2_styles/positioning.css";
@@ -48,6 +51,9 @@ const ContinentItem: FC<ContinentItemProps> = ({
       class_name={`continent-item ${selected ? "selected" : ""} ${
         locked_by ? get_faction_class(locked_by) : ""
       }`}
+      body_background_colour={
+        locked_by ? get_faction_colour(locked_by, false) : undefined
+      }
       on_click={() => set_cont(continent_record)}
     >
       <a className="font-primary pair-text-image" href={url}>
@@ -71,8 +77,8 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
   const active_cont = get_active_continent();
   const [current_cont, set_current_cont] = useState(active_cont);
   return (
-    <TextContainer class_name="switcher">
-      <details style={{ outline: "none" }}>
+    <TextContainer class_name="switcher" height="auto">
+      <details>
         <summary>{active_cont.name}</summary>
         {continents.map((cont, i) => (
           <ContinentItem

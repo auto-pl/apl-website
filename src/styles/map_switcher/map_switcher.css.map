@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../style_source/map_switcher/map_switcher.sass","../../style_source/global/ps2_styles/variables.sass"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;;;AAEJ;EACI;EACA;;;AAEJ;EACI;;;AAGJ;EACI;;;AAEJ;EAEI,kBCjBiB;;;ADmBrB;EAEI,kBCvBiB;;;ADyBrB;EAEI,kBCzBiB;;;AD2BrB;EACI;;;AAEJ;EACI","file":"map_switcher.css"}
+{"version":3,"sourceRoot":"","sources":["../../style_source/map_switcher/map_switcher.sass"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;;;AAEJ;EACI;EACA;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI","file":"map_switcher.css"}
