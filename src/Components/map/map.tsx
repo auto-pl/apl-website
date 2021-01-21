@@ -5,15 +5,6 @@ import {
 } from "../../interfaces/continent";
 import { MapSwitcher } from "../navigation/map_switcher";
 import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
-import {
-  MapContainer,
-  TileLayerProps,
-  MapConsumer,
-  TileLayer,
-  Polyline,
-  useMap,
-  useMapEvent,
-} from "react-leaflet";
 
 interface MapProps {
   continents: Array<ContinentDetails>;
@@ -28,15 +19,7 @@ export const Map: FC<MapProps> = (props) => {
   return (
     <div>
       <MapSwitcher continents={views} />
-      <MapContainer
-        center={[0, 0]}
-        zoom={0}
-        scrollWheelZoom={true}
-        dragging={true}
-        doubleClickZoom={true}
-      >
-        <TileLayer url={Amerish}></TileLayer>
-      </MapContainer>
+      <img alt="Amerish" src={Amerish}></img>
     </div>
   );
 };
