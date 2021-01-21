@@ -43,17 +43,10 @@ export interface TextContainerProps {
    * Defaults to 2
    */
   font_size?: FontSize;
-  header_settings?: {
-    /**
-     * The header's contents
-     */
-    text: string;
-    /**
-     * The size of the header's font.
-     * Defaults to 3.
-     */
-    font_size?: FontSize;
-  };
+  /**
+   * A `ContainerHeader`
+   */
+  header?: ReactNode;
   /**
    * Whether the container should be displayed inline with other elements.
    * Defaults to `false`
@@ -87,10 +80,28 @@ export interface TextContainerProps {
   body_background_colour?: string;
 }
 
-// !FIX: not enough components! Split the header and body into components and make TextContainer just hold them
+export interface ContainerHeaderProps {
+  children: ReactNode;
+  /**
+   * Defaults to 3
+   */
+  font_size?: FontSize;
+}
+
+export const ContainerHeader: FC<ContainerHeaderProps> = ({
+  children,
+  font_size,
+}) => {
+  return (
+    <div className={`h-10 container-header font-size-${font_size || 3}`}>
+      {/* The header */}
+      {children}
+    </div>
+  );
+};
 
 export const TextContainer: FC<TextContainerProps> = ({
-  header_settings,
+  header,
   inline = false,
   x_scrollable = false,
   y_scrollable = false,
@@ -114,16 +125,7 @@ export const TextContainer: FC<TextContainerProps> = ({
       style={style}
     >
       <div className="container-glow">
-        {/* The header */}
-        {header_settings ? (
-          <div
-            className={`h-10 container-header font-size-${
-              header_settings.font_size || 3
-            }`}
-          >
-            {header_settings.text}
-          </div>
-        ) : null}
+        {header}
         {/* Scrolling support */}
         <div
           className={`w-100 h-85 ${y_scrollable ? "overflow-y-scroll" : ""} ${
