@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, ReactNode } from "react";
+import React, { CSSProperties, FC, MouseEventHandler, ReactNode } from "react";
 import "../../styles/global/ps2_styles/containers.css";
 import "../../styles/global/ps2_styles/text.css";
 import "../../styles/global/ps2_styles/sizing.css";
@@ -81,6 +81,8 @@ export interface TextContainerProps {
   on_hover?: MouseEventHandler;
   on_click?: MouseEventHandler;
   children?: ReactNode;
+  style?: CSSProperties;
+  class_name?: string;
 }
 
 // !FIX: not enough components! Split the header and body into components and make TextContainer just hold them
@@ -96,14 +98,17 @@ export const TextContainer: FC<TextContainerProps> = ({
   on_click,
   font_size = 2,
   children,
+  style,
+  class_name,
 }) => {
   return (
     <div
       className={`container h-${height} w-${width} font-primary ${
         inline ? "container-inline" : ""
-      }`}
+      } ${class_name}`}
       onClick={on_click}
       onMouseOver={on_hover}
+      style={style}
     >
       {/* The header */}
       {header_settings ? (
