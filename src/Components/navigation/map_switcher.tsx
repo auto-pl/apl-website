@@ -1,12 +1,10 @@
-import React, { useState, FC, CSSProperties } from "react";
+import React, { useState, FC } from "react";
 import { ContinentDetails, ContinentViews } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
-import {
-  get_faction_colour,
-  faction_logos,
-} from "../../Utils/globals/faction_globals";
-
-// !FIX: make good code this time, idiot
+import { faction_logos } from "../../Utils/globals/faction_globals";
+import { TextContainer } from "../containers/text_container";
+import "../../styles/map_switcher/map_switcher.css";
+import "../../styles/global/ps2_styles/sizing.css";
 
 interface MapSwitcherProps {
   continents: ContinentViews;
@@ -34,111 +32,53 @@ interface ContinentItemProps {
   url: string;
 }
 
-// TODO: add styles
-const continent_item_overlay_style: CSSProperties = {};
-const continent_item_link_style: CSSProperties = {
-  display: "inline-block",
-};
-
-/**
- * A link to display another continent
- */
-const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
-  const div_style: CSSProperties = {
-    ...continent_item_overlay_style,
-    verticalAlign: "middle",
-    height: "32px",
-  };
-
-  const locked_by = props.continent_record.locked_by;
-
-  let locked_icon = null;
-  if (locked_by) {
-    locked_icon = (
-      <img
-        src={faction_logos.get(locked_by)}
-        alt={`Locked by ${locked_by}`}
-        height={"32px"}
-        width={"32px"}
-        style={{ position: "relative", top: "10px" }}
-      ></img>
-    );
-  }
-
-  const selected_style: CSSProperties = {
-    backgroundColor: props.selected ? "rgba(0, 0, 0, 0.25)" : undefined,
-    width: "100%",
-    verticalAlign: "middle",
-    display: "justify",
-  };
-
-  const locked_style: CSSProperties = {
-    backgroundColor: locked_by ? get_faction_colour(locked_by) : undefined,
-    display: "inline-block",
-    border: "1px solid grey",
-    padding: "2px 4px 2px 4px",
-    width: "20%",
-  };
+const ContinentItem: FC<ContinentItemProps> = ({
+  continent_record,
+  selected,
+  set_cont,
+  url,
+}) => {
+  const { locked_by, name } = continent_record;
+  const get_faction_class = (faction_name: string) => `locked-${faction_name}`;
 
   return (
-    <div
-      style={div_style}
-      onClick={() => props.set_cont(props.continent_record)}
+    <TextContainer
+      class_name={`continent-item ${selected ? "selected" : ""} ${
+        locked_by ? get_faction_class(locked_by) : ""
+      }`}
+      on_click={() => set_cont(continent_record)}
     >
-      <span style={locked_style}>
-        <div style={selected_style}>
-          <a href={props.url} style={continent_item_link_style}>
-            {locked_icon}
-            <span>{props.continent_record.name}</span>
-          </a>
-        </div>
-      </span>
-    </div>
+      <a href={url}>
+        {locked_by ? (
+          <img
+            alt={`${locked_by} logo`}
+            src={faction_logos.get(locked_by)}
+            height="64px"
+            width="64px"
+          />
+        ) : null}
+        {name}
+      </a>
+    </TextContainer>
   );
 };
 
-const default_cont = get_active_continent();
-const up_arrow: CSSProperties = {
-  width: 0,
-  height: 0,
-  borderStyle: "solid",
-  borderWidth: "0 16px 32px 16px",
-  borderColor: "transparent transparent #7048e8 transparent",
-  position: "relative",
-};
-
-export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
-  const [current_cont, set_current_cont] = useState(default_cont);
-  const [clicked, set_clicked] = useState(false);
-
-  const cont_name_style: CSSProperties = {
-    border: "2px solid black",
-    width: "20%",
-    display: "inline-block",
-    marginBottom: "4px",
-  };
-
+export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
+  const active_cont = get_active_continent();
+  const [current_cont, set_current_cont] = useState(active_cont);
   return (
-    <div
-      id="MapSwitcher"
-      style={{ verticalAlign: "center" }}
-      onClick={() => set_clicked(!clicked)}
-    >
-      <span style={cont_name_style}>
-        {/* <span style={up_arrow} /> */}
-        {current_cont.name}
-      </span>
-      {clicked
-        ? props.continents.map((cont, i) => (
-            <ContinentItem
-              continent_record={cont.details}
-              key={i}
-              selected={cont.details.name === current_cont.name}
-              set_cont={set_current_cont}
-              url={cont.view_url}
-            />
-          ))
-        : null}
-    </div>
+    <TextContainer>
+      <details style={{ outline: "none" }}>
+        <summary>{active_cont.name}</summary>
+        {continents.map((cont, i) => (
+          <ContinentItem
+            continent_record={cont.details}
+            selected={current_cont === cont.details}
+            set_cont={(c) => set_current_cont(c)}
+            url={cont.view_url}
+          />
+        ))}
+      </details>
+    </TextContainer>
   );
 };

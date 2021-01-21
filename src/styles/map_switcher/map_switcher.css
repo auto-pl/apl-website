@@ -1,0 +1,27 @@
+.continent-item {
+  text-align: center;
+  width: 80%;
+  display: inline-block;
+}
+
+.selected {
+  opacity: 0.9;
+}
+
+.locked, .locked-tr, .locked-nc, .locked-vs {
+  background-color: green;
+}
+
+.locked-vs {
+  background-color: #612597;
+}
+
+.locked-nc {
+  background-color: #1d4698;
+}
+
+.locked-tr {
+  background-color: #612597;
+}
+
+/*# sourceMappingURL=map_switcher.css.map */

@@ -1,0 +1,24 @@
+@use "../global/ps2_styles/variables"
+
+.continent-item
+    text-align: center
+    width: 80%
+    display: inline-block
+
+.selected
+    opacity: 0.9
+
+.locked
+    background-color: green  // placeholder
+
+.locked-vs
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-VS
+
+.locked-nc
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-NC
+
+.locked-tr
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-VS
