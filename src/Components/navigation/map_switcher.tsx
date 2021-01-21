@@ -67,7 +67,7 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
   const active_cont = get_active_continent();
   const [current_cont, set_current_cont] = useState(active_cont);
   return (
-    <TextContainer>
+    <TextContainer class_name="switcher">
       <details style={{ outline: "none" }}>
         <summary>{active_cont.name}</summary>
         {continents.map((cont, i) => (
