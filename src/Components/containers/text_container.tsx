@@ -113,24 +113,31 @@ export const TextContainer: FC<TextContainerProps> = ({
       onMouseOver={on_hover}
       style={style}
     >
-      {/* The header */}
-      {header_settings ? (
+      <div className="container-glow">
+        {/* The header */}
+        {header_settings ? (
+          <div
+            className={`h-10 container-header font-size-${
+              header_settings.font_size || 3
+            }`}
+          >
+            {header_settings.text}
+          </div>
+        ) : null}
+        {/* Scrolling support */}
         <div
-          className={`h-10 container-header font-size-${
-            header_settings.font_size || 3
+          className={`w-100 h-85 ${y_scrollable ? "overflow-y-scroll" : ""} ${
+            x_scrollable ? "overflow-x-scroll" : ""
           }`}
         >
-          {header_settings.text}
+          {/* The contents */}
+          <div
+            className={`container-body font-size${font_size}`}
+            style={{ backgroundColor: body_background_colour }}
+          >
+            {children}
+          </div>
         </div>
-      ) : null}
-      {/* Scrolling support */}
-      <div
-        className={`w-100 h-85 ${y_scrollable ? "overflow-y-scroll" : ""} ${
-          x_scrollable ? "overflow-x-scroll" : ""
-        }`}
-      >
-        {/* The contents */}
-        <div className={`container-body font-size${font_size}`}>{children}</div>
       </div>
     </div>
   );
