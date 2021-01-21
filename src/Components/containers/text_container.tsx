@@ -84,6 +84,7 @@ export interface TextContainerProps {
   children?: ReactNode;
   style?: CSSProperties;
   class_name?: string;
+  body_background_colour?: string;
 }
 
 // !FIX: not enough components! Split the header and body into components and make TextContainer just hold them
@@ -101,6 +102,7 @@ export const TextContainer: FC<TextContainerProps> = ({
   children,
   style,
   class_name,
+  body_background_colour,
 }) => {
   return (
     <div
