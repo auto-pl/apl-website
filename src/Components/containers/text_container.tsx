@@ -25,12 +25,13 @@ type Height =
   | 85
   | 90
   | 95
-  | 100;
+  | 100
+  | "auto";
 
 /**
  * A percentage of the screen
  */
-type Width = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
+type Width = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | "auto";
 
 /**
  * Measured in vh
