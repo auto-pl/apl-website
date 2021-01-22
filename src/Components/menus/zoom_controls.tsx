@@ -1,5 +1,5 @@
-import React, { FC, ReactNode, useState, MouseEventHandler } from "react";
-import { Portal } from "../HOCs/portal";
+import React, { FC, useState, MouseEventHandler } from "react";
+import { Portal } from "../wrappers/portal";
 import "../../styles/global/ps2_styles/text.css";
 import "../../styles/zoom_controls/zoom_controls.css";
 
@@ -22,6 +22,7 @@ export const ZoomControls: FC<ZoomControlsProps> = ({
   on_zoom_out = () => {},
 }) => {
   const [zoom_level, set_zoom_level] = useState(0);
+
   const zoom_in: MouseEventHandler = (e) => {
     set_zoom_level(zoom_level + 1);
     on_zoom_in(zoom_level);

@@ -1,6 +1,6 @@
 // this file will have the hover menu for hexes
 import React, { ReactNode, CSSProperties, memo } from "react";
-import { Portal } from "../HOCs/portal";
+import { Portal } from "../wrappers/portal";
 import { TextContainer, ContainerHeader } from "../containers/text_container";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
