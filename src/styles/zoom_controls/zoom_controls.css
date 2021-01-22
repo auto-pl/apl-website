@@ -5,13 +5,14 @@
   position: absolute;
   border: 1px rgba(185, 190, 190, 0.9) solid;
 }
-.zoom-container:first-child {
-  border-bottom: 1px rgba(185, 190, 190, 0.9) solid;
-}
 
 .zoom-button {
   padding: 5px;
   font-size: 16px;
+  cursor: pointer;
+}
+.zoom-button:first-child {
+  border-bottom: 1px rgba(185, 190, 190, 0.9) solid;
 }
 
 /*# sourceMappingURL=zoom_controls.css.map */
