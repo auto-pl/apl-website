@@ -34,8 +34,12 @@ export const ZoomControls: FC<ZoomControlsProps> = ({
   return (
     <Portal>
       <div className="font-primary zoom-container">
-        <span onClick={zoom_in}>+</span>
-        <span onClick={zoom_out}>-</span>
+        <span className="zoom-button" onClick={zoom_in}>
+          +
+        </span>
+        <span className="zoom-button" onClick={zoom_out}>
+          -
+        </span>
       </div>
     </Portal>
   );

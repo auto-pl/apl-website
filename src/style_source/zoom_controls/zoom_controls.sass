@@ -1,8 +1,17 @@
 @use "../global/ps2_styles/variables"
 
+$border: 1px variables.$COLOR-BORDER solid
+
 .zoom-container
     display: flex
     flex-direction: column
     text-align: center
     position: absolute
-    border: 1px variables.$COLOR-BORDER solid
+    border: $border
+
+    &:first-child
+        border-bottom: $border
+
+.zoom-button
+    padding: 5px
+    font-size: 16px
