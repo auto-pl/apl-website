@@ -7,19 +7,30 @@ export interface PortalProps {
 
 // Credit: https://blog.logrocket.com/learn-react-portals-by-example/
 export const Portal = ({ children }: PortalProps) => {
-  const mount = document.getElementById("portals");
+  let mount = document.getElementById("portals");
   const element = document.createElement("div");
-  if (!mount)
-    throw new Error(
-      "Could not mount Portal. Check app.tsx for a div with id=portals"
-    );
+
+  if (!mount) mount = repair_dom();
 
   useEffect(() => {
-    mount.appendChild(element);
+    (mount as HTMLElement).appendChild(element);
+
     return () => {
-      mount.removeChild(element);
+      (mount as HTMLElement).removeChild(element);
     };
   }, [element, mount]);
 
   return createPortal(children, element);
 };
+
+/**
+ * Create the portals div if it failed to create
+ * @param mount The
+ */
+function repair_dom(): HTMLDivElement {
+  const body = document.getElementsByTagName("body")[0];
+  const new_mount = document.createElement("div");
+  new_mount.id = "portals";
+  body.appendChild(new_mount);
+  return new_mount;
+}
