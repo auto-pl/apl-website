@@ -1,4 +1,5 @@
 @use "../global/ps2_styles/variables"
+@use "../global/fixins"
 
 .switcher
     left: 37%
@@ -12,8 +13,5 @@
 .selected
     opacity: 0.9
 
-details:focus
-    outline: none
-
-summary:focus
-    outline: none
+details, summary
+    @include fixins.no-focus-outline

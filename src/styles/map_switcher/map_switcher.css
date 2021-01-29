@@ -13,11 +13,7 @@
   opacity: 0.9;
 }
 
-details:focus {
-  outline: none;
-}
-
-summary:focus {
+details:focus, summary:focus {
   outline: none;
 }
 
