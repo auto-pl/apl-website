@@ -26,6 +26,7 @@ export interface ContinentView {
 }
 
 export type ContinentViews = Array<ContinentView>;
+export type Continents = Array<ContinentDetails>;
 
 /**
  * Convert a list of `ContinentDetails` to `ContinentView`

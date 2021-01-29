@@ -1,9 +1,9 @@
-import { ContinentDetails, Population } from "./continent";
+import { Continents, Population } from "./continent";
 
 export type Region = "NA WEST" | "NA EAST" | "EU" | "AS";
 
 export interface Server {
-  continents: ContinentDetails;
+  continents: Continents;
   name: string;
   id: string;
   population: Population;
