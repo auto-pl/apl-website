@@ -13,8 +13,15 @@
   opacity: 0.9;
 }
 
+details, summary {
+  cursor: pointer;
+}
 details:focus, summary:focus {
   outline: none;
+}
+
+details:open {
+  cursor: arrow;
 }
 
 /*# sourceMappingURL=map_switcher.css.map */
