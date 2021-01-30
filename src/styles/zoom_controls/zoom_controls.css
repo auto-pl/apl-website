@@ -16,6 +16,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #051010;
+  border: none;
   cursor: pointer;
 }
 .zoom-button:first-child {
