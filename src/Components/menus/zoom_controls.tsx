@@ -10,16 +10,23 @@ export interface ZoomControlsProps {
    * Does nothing by default
    */
   on_zoom_in?: ZoomHandler;
+
   /**
    * Does nothing by default
    */
   on_zoom_out?: ZoomHandler;
+
+  /**
+   * Does nothing by default.
+   */
+  on_zoom_reset?: ZoomHandler;
 }
 
 export const ZoomControls: FC<ZoomControlsProps> = ({
   children,
   on_zoom_in = () => {},
   on_zoom_out = () => {},
+  on_zoom_reset = () => {},
 }) => {
   const [zoom_level, set_zoom_level] = useState(0);
 
@@ -31,6 +38,10 @@ export const ZoomControls: FC<ZoomControlsProps> = ({
     set_zoom_level(zoom_level - 1);
     on_zoom_out(zoom_level);
   };
+  const reset: MouseEventHandler = (e) => {
+    set_zoom_level(0);
+    on_zoom_reset(zoom_level);
+  };
 
   return (
     <Portal>
@@ -40,6 +51,9 @@ export const ZoomControls: FC<ZoomControlsProps> = ({
         </button>
         <button className="zoom-button font-primary" onClick={zoom_out}>
           -
+        </button>
+        <button className="zoom-button font-primary" onClick={reset}>
+          x
         </button>
       </div>
     </Portal>

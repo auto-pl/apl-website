@@ -13,6 +13,7 @@ $size: 10%
     top: 40%
     left: 98%
     height: $size
+    width: 1%
 
 .zoom-button
     padding: 5px
@@ -25,5 +26,5 @@ $size: 10%
     border: none
     @include fixins.clickable
 
-    &:first-child
+    &:not(:last-child) // borders between buttons
         border-bottom: $border

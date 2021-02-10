@@ -7,6 +7,7 @@
   top: 40%;
   left: 98%;
   height: 10%;
+  width: 1%;
 }
 
 .zoom-button {
@@ -20,7 +21,7 @@
   border: none;
   cursor: pointer;
 }
-.zoom-button:first-child {
+.zoom-button:not(:last-child) {
   border-bottom: 1px rgba(185, 190, 190, 0.9) solid;
 }
 
