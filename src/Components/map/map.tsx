@@ -3,6 +3,7 @@ import {
   ContinentDetails,
   to_continent_view,
 } from "../../interfaces/continent";
+import { Zoomer } from "../wrappers/zoom";
 import { ZoomControls } from "../menus/zoom_controls";
 import { MapSwitcher } from "../navigation/map_switcher";
 import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
@@ -22,13 +23,15 @@ export const Map: FC<MapProps> = (props) => {
     <div className="horizontalCenter">
       <ZoomControls />
       <MapSwitcher continents={views} />
-      <img
-        style={{ zIndex: -1 }}
-        alt="Amerish"
-        src={Amerish}
-        width="90%"
-        height="90%"
-      ></img>
+      <Zoomer>
+        <img
+          style={{ zIndex: -1 }}
+          alt="Amerish"
+          src={Amerish}
+          width="90%"
+          height="90%"
+        ></img>
+      </Zoomer>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { FC, ReactNode, ComponentType } from "react";
+import React, { FC, ReactNode } from "react";
 import { ZoomControls } from "../menus/zoom_controls";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-export interface WithZoomProps {
+export interface ZoomerProps {
   /**
    * These will be wrapped in a div whose dimensions and offsets are changed.
    */
@@ -16,16 +16,19 @@ type TransformArgs = {
   resetTransform: TransformCallback;
 };
 
-export function withZoom<TargetProps extends WithZoomProps>(
-  TargetComponent: ComponentType<TargetProps>
-): FC<TargetProps> {
-  const WrappedComponent = (props: TargetProps) => {
-    return (
-      <TransformWrapper>
-        {({ zoomIn, zoomOut, resetTransform }: TransformArgs) => {
-          <></>;
-        }}
-      </TransformWrapper>
-    );
-  };
-}
+export const Zoomer: FC<ZoomerProps> = ({ children }) => {
+  return (
+    <TransformWrapper>
+      {({ zoomIn, zoomOut, resetTransform }: TransformArgs) => {
+        <>
+          <ZoomControls
+            on_zoom_in={zoomIn}
+            on_zoom_out={zoomOut}
+            on_zoom_reset={resetTransform}
+          />
+          <TransformComponent>{children}</TransformComponent>
+        </>;
+      }}
+    </TransformWrapper>
+  );
+};
