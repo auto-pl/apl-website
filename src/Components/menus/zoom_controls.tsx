@@ -20,6 +20,7 @@ enum ButtonEvent {
   RESET,
 }
 
+// !FIX: listeners are called twice
 const get_reducer = (listeners: {
   zoom_in: ZoomListener;
   zoom_out: ZoomListener;
