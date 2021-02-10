@@ -65,17 +65,15 @@ export const ZoomControls: FC<ZoomControlsProps> = ({
     }),
     0
   );
-  const buttons_contents: Array<
-    [string, MouseEventHandler, ZoomListener, ButtonEvent]
-  > = [
-    ["+", zoom_in, on_zoom_in, ButtonEvent.ZOOM_IN],
-    ["-", zoom_out, on_zoom_out, ButtonEvent.ZOOM_OUT],
-    ["x", zoom_reset, on_zoom_reset, ButtonEvent.RESET],
+  const buttons_contents: Array<[string, MouseEventHandler, ButtonEvent]> = [
+    ["+", zoom_in, ButtonEvent.ZOOM_IN],
+    ["-", zoom_out, ButtonEvent.ZOOM_OUT],
+    ["x", zoom_reset, ButtonEvent.RESET],
   ];
   return (
     <Portal>
       <div className="zoom-container">
-        {buttons_contents.map(([text, handler, listener, action_type], i) => (
+        {buttons_contents.map(([text, handler, action_type], i) => (
           <button
             key={i}
             className="font-primary zoom-button"
