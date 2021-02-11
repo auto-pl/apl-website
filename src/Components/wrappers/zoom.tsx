@@ -16,7 +16,6 @@ type TransformArgs = {
   resetTransform: TransformCallback;
 };
 
-// !FIX: the controls blink when dragging
 export const Zoomer: FC<ZoomerProps> = ({ children }) => {
   const inner: FC<TransformArgs> = ({
     zoomIn,
