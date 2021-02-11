@@ -29,9 +29,6 @@ export const Zoomer: FC<ZoomerProps> = ({ children }) => {
           zoom_in={zoomIn}
           zoom_out={zoomOut}
           zoom_reset={resetTransform}
-          on_zoom_in={(z) => console.log(z)}
-          on_zoom_out={(z) => console.log(z)}
-          on_zoom_reset={(z) => console.log(z)}
         />
         <TransformComponent>{children}</TransformComponent>
       </>
