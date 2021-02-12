@@ -29,7 +29,6 @@ export const Map: FC<MapProps> = (props) => {
           <img
             style={{
               zIndex: -1,
-              visibility: "hidden",
             }}
             id="MAP_IMG"
             alt="Amerish"
