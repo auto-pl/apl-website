@@ -63,6 +63,7 @@ export const Map: FC<MapProps> = (props) => {
             width="90%"
             height="90%"
             onLoad={() => dispatch(ActionType.LOAD_STOP)}
+            loading="lazy"
           ></img>
         </Zoomer>
       </div>
