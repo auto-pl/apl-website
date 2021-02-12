@@ -1,10 +1,9 @@
-import React, { FC, useReducer } from "react";
+import React, { FC, useReducer, CSSProperties } from "react";
 import {
   ContinentDetails,
   to_continent_view,
 } from "../../interfaces/continent";
 import Skeleton from "react-loading-skeleton";
-import LazyLoad from "react-lazyload";
 import { Zoomer } from "../wrappers/zoom";
 import { MapSwitcher } from "../navigation/map_switcher";
 import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
@@ -41,18 +40,23 @@ const initial_state: MapState = {
   map_loaded: false,
 };
 
+// TODO: style the loading screen
 export const Map: FC<MapProps> = (props) => {
   const [state, dispatch] = useReducer(reducer, initial_state);
   const views = to_continent_view(props.continents, props.view_urls);
-  console.log(state);
   return (
     <div className="horizontalCenter">
       <MapSwitcher continents={views} />
       <div>
-        {state.map_loaded ? <Skeleton height={800} /> : null}
+        {state.map_loaded ? null : (
+          <Skeleton style={{ zIndex: -2 }} height={800} />
+        )}
         <Zoomer>
           <img
-            style={{ zIndex: -1, visibility: "hidden" }}
+            style={{
+              zIndex: -1,
+              visibility: "hidden",
+            }}
             id="MAP_IMG"
             alt="Amerish"
             src={Amerish}
