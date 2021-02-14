@@ -39,11 +39,7 @@ export const Map: FC<MapProps> = (props) => {
             loading="lazy"
           ></img>
         </Zoomer>
-        <PS2Loader
-          class_name="horizontalCenter"
-          style={{ position: "absolute" }}
-          loading={loading}
-        />
+        <PS2Loader loading={loading} />
       </div>
     </div>
   );
