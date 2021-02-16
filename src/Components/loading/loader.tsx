@@ -1,5 +1,6 @@
 import React, { CSSProperties, FC, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
+import "../../styles/loaders/PropagateLoader.css";
 
 export interface PS2LoaderProps {
   loading: boolean;
@@ -34,12 +35,18 @@ export const PS2Loader: FC<PS2LoaderProps> = ({
     if (loading) return;
     const element = document.getElementById(target_id);
     if (!element) return;
-    element.parentElement?.removeChild(element);
+    // transition out
+    element.classList.add("finished");
+    new Promise((r) => setTimeout(r, 550)).then(() =>
+      element.parentElement?.removeChild(element)
+    );
   }, [target_id, loading]);
 
   return (
     <div
-      className={`${class_name ?? ""} ${center ? "horizontalCenter" : ""}`}
+      className={`${class_name ?? ""} ${
+        center ? "horizontalCenter" : ""
+      } starting`}
       style={style}
       id={target_id}
     >
