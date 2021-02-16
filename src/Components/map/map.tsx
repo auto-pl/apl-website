@@ -9,7 +9,7 @@ import { Zoomer } from "../wrappers/zoom";
 import { MapSwitcher } from "../navigation/map_switcher";
 import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
 import "../../styles/global/ps2_styles/positioning.css";
-import "../../styles/global/map/map.css";
+import "../../styles/map/map.css";
 
 export interface MapProps {
   continents: Array<ContinentDetails>;
