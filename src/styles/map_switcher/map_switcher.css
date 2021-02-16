@@ -1,7 +1,8 @@
 .switcher {
-  left: 37%;
+  left: 20%;
   position: absolute;
   z-index: 1;
+  max-width: 200px;
 }
 
 .continent-item {

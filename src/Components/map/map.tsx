@@ -22,7 +22,7 @@ export const Map: FC<MapProps> = (props) => {
   const views = to_continent_view(props.continents, props.view_urls);
   const [loading, set_loading] = useState(true);
   return (
-    <div className="horizontalCenter">
+    <div className="horizontalCenter" style={{ height: "100%", width: "100%" }}>
       <MapSwitcher continents={views} />
       <div>
         <Zoomer>
@@ -33,13 +33,13 @@ export const Map: FC<MapProps> = (props) => {
             id="MAP_IMG"
             alt="Amerish"
             src={Amerish}
-            width="90%"
-            height="90%"
-            onLoad={() => set_loading(false)}
+            width="50%"
+            height="50%"
+            onLoad={() => set_loading(true)}
             loading="lazy"
           ></img>
         </Zoomer>
-        <PS2Loader loading={loading} />
+        <PS2Loader style={{ top: "50%" }} loading={loading} />
       </div>
     </div>
   );
