@@ -46,7 +46,7 @@ export const PS2Loader: FC<PS2LoaderProps> = ({
     <div
       className={`${class_name ?? ""} ${
         center ? "horizontalCenter" : ""
-      } starting`}
+      } loader starting`}
       style={style}
       id={target_id}
     >
