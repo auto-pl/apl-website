@@ -1,7 +1,8 @@
-.switcher {
+.map-switcher {
   left: 20%;
   position: absolute;
   z-index: 1;
+  min-width: 250px;
 }
 
 .selected {

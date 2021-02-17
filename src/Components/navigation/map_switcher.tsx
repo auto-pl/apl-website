@@ -94,5 +94,9 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
     ),
   }));
 
-  return <Switcher header_text={active_cont.name} items={items} />;
+  return (
+    <div className="map-switcher">
+      <Switcher header_text={active_cont.name} items={items} />
+    </div>
+  );
 };
