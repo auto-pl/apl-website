@@ -3,9 +3,11 @@ import {
   ContinentDetails,
   ContinentIds as CI,
 } from "../interfaces/continent";
+import { Server, ServerGetter } from "../interfaces/server";
 
 interface apiT {
   get_all_continents: ContinentGetter;
+  get_all_servers: ServerGetter;
 }
 
 const dummy_continents: Array<ContinentDetails> = [
@@ -119,10 +121,63 @@ const dummy_continents: Array<ContinentDetails> = [
   },
 ];
 
+const dummy_servers: Array<Server> = [
+  {
+    name: "Miller",
+    id: "2",
+    region: "EU",
+    population: {
+      NC: 400,
+      TR: 380,
+      VS: 350,
+    },
+    continents: dummy_continents,
+  },
+  {
+    name: "Emerald",
+    id: "4",
+    region: "NA EAST",
+    population: {
+      NC: 100,
+      TR: 140,
+      VS: 260,
+    },
+    continents: dummy_continents,
+  },
+  {
+    name: "Connery",
+    id: "6",
+    region: "NA WEST",
+    population: {
+      NC: 20,
+      TR: 10,
+      VS: 30,
+    },
+    continents: dummy_continents,
+  },
+  {
+    name: "Soltech",
+    id: "6",
+    region: "AS",
+    population: {
+      NC: 800,
+      TR: 400,
+      VS: 200,
+    },
+    continents: dummy_continents,
+  },
+];
+
 export const api: apiT = {
   get_all_continents: (key?) => {
     // make api call for all continents
     const result = dummy_continents;
+    if (!key) return result;
+    return result.filter(key);
+  },
+  get_all_servers: (key?) => {
+    // make API call
+    const result = dummy_servers;
     if (!key) return result;
     return result.filter(key);
   },
