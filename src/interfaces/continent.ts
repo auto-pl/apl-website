@@ -2,22 +2,22 @@ import { ApiGetter } from "./api";
 import { Outfit } from "./player";
 
 export interface Population {
-  NC: number;
-  TR: number;
-  VS: number;
+  readonly NC: number;
+  readonly TR: number;
+  readonly VS: number;
 }
 
 /**
  * An object that represents all information about a continent
  */
 export interface ContinentDetails {
-  name: string;
-  population: Population;
+  readonly name: string;
+  readonly population: Population;
   /**
    * The faction that locked the continent.
    */
-  locked_by: string | null;
-  base_states: Array<BaseState>;
+  readonly locked_by: string | null;
+  readonly base_states: Array<BaseState>;
 }
 
 export interface ContinentView {
@@ -51,24 +51,24 @@ export type faction = "NC" | "TR" | "VS" | "NS";
  * Represents a base.
  */
 export interface BaseState {
-  name: string;
-  id: string;
+  readonly name: string;
+  readonly id: string;
   /**
    * Should be one of the following: [NC, TR, VS, NS]
    * Neutral is NS
    */
-  faction: faction;
-  continent_id: number;
+  readonly faction: faction;
+  readonly continent_id: number;
   /**
    * How long since it was last capped in ms
    */
-  time_held: number;
-  captured_by: null | Outfit;
-  population: Population;
+  readonly time_held: number;
+  readonly captured_by: null | Outfit;
+  readonly population: Population;
   /**
    * This is the priority level assigned by the AI.
    */
-  priority_level: number;
+  readonly priority_level: number;
 }
 
 export type ContinentGetter = ApiGetter<ContinentDetails>;
