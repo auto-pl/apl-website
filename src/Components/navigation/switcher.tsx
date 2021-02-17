@@ -1,37 +1,43 @@
-import React, { ComponentType, FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, useState } from "react";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/components/switcher/switcher.css";
 
 export interface SwitcherItem {
-  name: string;
+  text: string;
   body: ReactNode;
 }
 
 export interface SwitcherProps {
   items: Array<SwitcherItem>;
-  /** The item to initially display at the top of the switcher.
-   * Defaults tot he first item of `items`
+  /** The text to initially display at the top of the switcher.
+   * Defaults to the text of the first item of `items`
    */
-  first_item?: SwitcherItem;
+  header_text?: string;
   /** This callback will be called when a new item is selected. */
   on_select?: (item: SwitcherItem) => void;
 }
 
 export const Switcher: FC<SwitcherProps> = ({
   items,
-  first_item,
+  header_text,
   on_select = () => {},
 }) => {
-  const [selected_item, set_selected_item] = useState(first_item ?? items[0]);
+  // handle header
+  const header_item = { text: header_text, body: <span>{header_text}</span> };
+  const [selected_item, set_selected_item] = useState(
+    header_item.text ? header_item : items[0]
+  );
+
   const on_select_cb = (i: number) => {
     const selected = items[i];
     set_selected_item(selected);
     on_select(selected);
   };
+
   return (
     <TextContainer class_name="switcher">
       <details>
-        <summary>{selected_item.name}</summary>
+        <summary>{selected_item.text}</summary>
         {items.map((e, i) => (
           <TextContainer
             key={i}
