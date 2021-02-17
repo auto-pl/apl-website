@@ -20,6 +20,17 @@ const meta: Meta = {
     header_text: {
       control: "text",
     },
+    style: {
+      table: {
+        category: "styling",
+      },
+    },
+    class_name: {
+      table: {
+        category: "styling",
+      },
+      control: "text",
+    },
   },
 };
 

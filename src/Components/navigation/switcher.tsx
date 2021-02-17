@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from "react";
+import React, { CSSProperties, FC, ReactNode, useState } from "react";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/components/switcher/switcher.css";
 
@@ -15,12 +15,22 @@ export interface SwitcherProps {
   header_text?: string;
   /** This callback will be called when a new item is selected. */
   on_select?: (item: SwitcherItem) => void;
+  /**
+   * Inline styles
+   */
+  style?: CSSProperties;
+  /**
+   * A CSS class name
+   */
+  class_name?: string;
 }
 
 export const Switcher: FC<SwitcherProps> = ({
   items,
   header_text,
   on_select = () => {},
+  style,
+  class_name,
 }) => {
   // handle header
   const header_item = { text: header_text, body: <span>{header_text}</span> };
@@ -35,7 +45,7 @@ export const Switcher: FC<SwitcherProps> = ({
   };
 
   return (
-    <TextContainer class_name="switcher">
+    <TextContainer style={style} class_name={`switcher ${class_name}`}>
       <details>
         <summary>{selected_item.text}</summary>
         {items.map((e, i) => (
