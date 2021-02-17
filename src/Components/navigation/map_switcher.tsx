@@ -5,6 +5,7 @@ import {
   get_faction_colour,
   faction_logos,
 } from "../../Utils/globals/faction_globals";
+import { Switcher } from "./switcher";
 import { TextContainer } from "../containers/text_container";
 import "../../styles/components/map_switcher/map_switcher.css";
 import "../../styles/global/ps2_styles/positioning.css";
@@ -47,14 +48,18 @@ const ContinentItem: FC<ContinentItemProps> = ({
   const logo_size = "32px";
 
   return (
-    <TextContainer
-      class_name={`continent-item ${selected ? "selected" : ""} ${
+    <div
+      className={`continent-item ${selected ? "selected" : ""} ${
         locked_by ? get_faction_class(locked_by) : ""
       }`}
-      body_background_colour={
-        locked_by ? get_faction_colour(locked_by, false) : undefined
-      }
-      on_click={() => set_cont(continent_record)}
+      style={{
+        backgroundColor: locked_by
+          ? get_faction_colour(locked_by, false)
+          : undefined,
+        height: "100%",
+        width: "100%",
+      }}
+      onClick={() => set_cont(continent_record)}
     >
       <a className="font-primary pair-text-image" href={url}>
         {locked_by ? (
@@ -69,27 +74,26 @@ const ContinentItem: FC<ContinentItemProps> = ({
           {name}
         </span>
       </a>
-    </TextContainer>
+    </div>
   );
 };
 
 export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
   const active_cont = get_active_continent();
   const [current_cont, set_current_cont] = useState(active_cont);
-  return (
-    <TextContainer class_name="switcher" height="auto">
-      <details>
-        <summary>{active_cont.name}</summary>
-        {continents.map((cont, i) => (
-          <ContinentItem
-            continent_record={cont.details}
-            selected={current_cont === cont.details}
-            set_cont={(c) => set_current_cont(c)}
-            url={cont.view_url}
-            key={i}
-          />
-        ))}
-      </details>
-    </TextContainer>
-  );
+
+  const items = continents.map((cont, i) => ({
+    text: cont.details.name,
+    body: (
+      <ContinentItem
+        continent_record={cont.details}
+        selected={current_cont === cont.details}
+        set_cont={(c) => set_current_cont(c)}
+        url={cont.view_url}
+        key={i}
+      />
+    ),
+  }));
+
+  return <Switcher style={{ height: "auto" }} items={items} />;
 };
