@@ -1,6 +1,5 @@
-import React, { CSSProperties, FC, useEffect } from "react";
+import React, { CSSProperties, FC } from "react";
 import { PropagateLoader } from "react-spinners";
-import "../../styles/loaders/PropagateLoader.css";
 
 export interface PS2LoaderProps {
   loading: boolean;
@@ -29,24 +28,9 @@ export const PS2Loader: FC<PS2LoaderProps> = ({
   id,
 }) => {
   const target_id = id ?? `PS2Loader${random_num()}`;
-
-  // delete the container after the loading finishes
-  useEffect(() => {
-    if (loading) return;
-    const element = document.getElementById(target_id);
-    if (!element) return;
-    // transition out
-    element.classList.add("finished");
-    new Promise((r) => setTimeout(r, 550)).then(() =>
-      element.parentElement?.removeChild(element)
-    );
-  }, [target_id, loading]);
-
   return (
     <div
-      className={`${class_name ?? ""} ${
-        center ? "horizontalCenter" : ""
-      } loader starting`}
+      className={`${class_name ?? ""} ${center ? "horizontalCenter" : ""}`}
       style={style}
       id={target_id}
     >
