@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../../style_source/components/map_switcher/map_switcher.sass","../../../style_source/global/fixins.sass"],"names":[],"mappings":"AAGA;EACI;EACA;EACA;EACA;;;AAEJ;EACI;EACA;;;AAEJ;EACI;;;AAEJ;ECTI;;AAJA;EACI;;;ADgBR;EACI","file":"map_switcher.css"}
+{"version":3,"sourceRoot":"","sources":["../../../style_source/components/map_switcher/map_switcher.sass"],"names":[],"mappings":"AAGA;EACI;EACA;EACA;;;AAEJ;EACI","file":"map_switcher.css"}

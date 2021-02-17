@@ -2,27 +2,10 @@
   left: 20%;
   position: absolute;
   z-index: 1;
-  max-width: 200px;
-}
-
-.continent-item {
-  text-align: center;
-  width: 80%;
 }
 
 .selected {
   opacity: 0.9;
-}
-
-details, summary {
-  cursor: pointer;
-}
-details:focus, details:active, details:visited, details:active, summary:focus, summary:active, summary:visited, summary:active {
-  outline: none;
-}
-
-details:open {
-  cursor: arrow;
 }
 
 /*# sourceMappingURL=map_switcher.css.map */
