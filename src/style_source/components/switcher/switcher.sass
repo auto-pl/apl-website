@@ -1,0 +1,16 @@
+@use "../../global/ps2_styles/variables"
+@use "../../global/fixins"
+
+.switcher
+    max-width: 200px
+
+.item
+    text-align: center
+    width: 80%
+
+details, summary
+    @include fixins.no-focus-outline
+    @include fixins.clickable
+
+details:open
+    cursor: arrow

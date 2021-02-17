@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"switcher.css"}
+{"version":3,"sourceRoot":"","sources":["../../../style_source/components/switcher/switcher.sass","../../../style_source/global/fixins.sass"],"names":[],"mappings":"AAGA;EACI;;;AAEJ;EACI;EACA;;;AAEJ;ECHI;;AAJA;EACI;;;ADUR;EACI","file":"switcher.css"}

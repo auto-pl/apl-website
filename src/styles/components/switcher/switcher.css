@@ -1,3 +1,21 @@
+.switcher {
+  max-width: 200px;
+}
 
+.item {
+  text-align: center;
+  width: 80%;
+}
+
+details, summary {
+  cursor: pointer;
+}
+details:focus, details:active, details:visited, details:active, summary:focus, summary:active, summary:visited, summary:active {
+  outline: none;
+}
+
+details:open {
+  cursor: arrow;
+}
 
 /*# sourceMappingURL=switcher.css.map */
