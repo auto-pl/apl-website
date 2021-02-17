@@ -16,7 +16,7 @@ const dummy_continents: Array<ContinentDetails> = [
       VS: 180,
       NC: 220,
     },
-    base_states: [
+    base_states: async () => [
       {
         name: "Hvar",
         faction: "TR",
@@ -57,7 +57,7 @@ const dummy_continents: Array<ContinentDetails> = [
       VS: 140,
       NC: 130,
     },
-    base_states: [
+    base_states: async () => [
       {
         name: "Heyoka Chemical Lab",
         faction: "VS",
@@ -78,7 +78,7 @@ const dummy_continents: Array<ContinentDetails> = [
       VS: 70,
       NC: 30,
     },
-    base_states: [
+    base_states: async () => [
       {
         name: "Pale Canyon Chemical",
         faction: "NC",
@@ -99,7 +99,7 @@ const dummy_continents: Array<ContinentDetails> = [
       VS: 300,
       NC: 300,
     },
-    base_states: [
+    base_states: async () => [
       {
         name: "Chac Fusion",
         faction: "NS",

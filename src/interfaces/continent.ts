@@ -17,7 +17,7 @@ export interface ContinentDetails {
    * The faction that locked the continent.
    */
   readonly locked_by: string | null;
-  readonly base_states: Array<BaseState>;
+  readonly base_states: () => Promise<Array<BaseState>>;
 }
 
 export interface ContinentView {
