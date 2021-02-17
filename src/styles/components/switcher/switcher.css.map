@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../../style_source/components/switcher/switcher.sass","../../../style_source/global/fixins.sass"],"names":[],"mappings":"AAGA;EACI;EACA;;;AAEJ;EACI;EACA;;;AAEJ;ECJI;;AAJA;EACI;;;ADWR;EACI","file":"switcher.css"}
+{"version":3,"sourceRoot":"","sources":["../../../style_source/components/switcher/switcher.sass","../../../style_source/global/fixins.sass"],"names":[],"mappings":"AAGA;EACI;EACA;EACA;EACA;;;AAEJ;EACI;EACA;;;AAEJ;ECNI;;AAJA;EACI;;;ADaR;EACI","file":"switcher.css"}
