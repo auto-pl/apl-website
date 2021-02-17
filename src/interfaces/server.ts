@@ -3,12 +3,14 @@ import { ApiGetter } from "./api";
 
 export type Region = "NA WEST" | "NA EAST" | "EU" | "AS";
 
+export type Servers = Array<Server>;
+
 export interface Server {
-  readonly continents: Continents;
   readonly name: string;
   readonly id: string;
-  readonly population: Population;
   readonly region: Region;
+  readonly population: Population;
+  readonly continents: Continents;
 }
 
 export type ServerGetter = ApiGetter<Server>;
