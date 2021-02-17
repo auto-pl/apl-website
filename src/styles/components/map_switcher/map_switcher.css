@@ -17,7 +17,7 @@
 details, summary {
   cursor: pointer;
 }
-details:focus, summary:focus {
+details:focus, details:active, details:visited, details:active, summary:focus, summary:active, summary:visited, summary:active {
   outline: none;
 }
 
