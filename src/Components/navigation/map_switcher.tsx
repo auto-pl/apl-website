@@ -94,11 +94,5 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continents }) => {
     ),
   }));
 
-  return (
-    <Switcher
-      header_text={active_cont.name}
-      style={{ height: "auto" }}
-      items={items}
-    />
-  );
+  return <Switcher header_text={active_cont.name} items={items} />;
 };
