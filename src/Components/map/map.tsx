@@ -7,9 +7,11 @@ import { TextContainer } from "../containers/text_container";
 import { PS2Loader } from "../loading/loader";
 import { Zoomer } from "../wrappers/zoom";
 import { MapSwitcher } from "../navigation/map_switcher";
+import { ServerSwitcher } from "../navigation/server_switcher";
 import Amerish from "../../app/Resources/Images/Maps/Amerish/LOD0.png";
 import "../../styles/global/ps2_styles/positioning.css";
 import "../../styles/components/map/map.css";
+import { api } from "../../Utils/api_interface";
 
 export interface MapProps {
   continents: Array<ContinentDetails>;
@@ -33,28 +35,36 @@ export const Map: FC<MapProps> = (props) => {
   };
 
   return (
-    <div className="horizontalCenter" style={{ height: "100%", width: "100%" }}>
-      <MapSwitcher continents={views} />
-      <div>
-        <Zoomer>
-          <img
-            style={{
-              zIndex: -1,
-            }}
-            className="map"
-            id="MAP_IMG"
-            alt="Amerish"
-            src={Amerish}
-            width="50%"
-            height="50%"
-            onLoad={on_load}
-            loading="lazy"
-          ></img>
-        </Zoomer>
-        <PS2Loader style={{ top: "50%" }} loading={loading} />
-        {error ? (
-          <TextContainer>Map failed to load. Please refresh</TextContainer>
-        ) : null}
+    <div>
+      <span className="left">
+        <ServerSwitcher servers={api.get_all_servers()} />
+      </span>
+      <div
+        className="horizontalCenter"
+        style={{ height: "100%", width: "100%" }}
+      >
+        <MapSwitcher continents={views} />
+        <div>
+          <Zoomer>
+            <img
+              style={{
+                zIndex: -1,
+              }}
+              className="map"
+              id="MAP_IMG"
+              alt="Amerish"
+              src={Amerish}
+              width="50%"
+              height="50%"
+              onLoad={on_load}
+              loading="lazy"
+            ></img>
+          </Zoomer>
+          <PS2Loader style={{ top: "50%" }} loading={loading} />
+          {error ? (
+            <TextContainer>Map failed to load. Please refresh</TextContainer>
+          ) : null}
+        </div>
       </div>
     </div>
   );
