@@ -136,7 +136,7 @@ const dummy_servers: Array<Server> = [
   {
     name: "Emerald",
     id: "4",
-    region: "NA EAST",
+    region: "NA",
     population: {
       NC: 100,
       TR: 140,
@@ -147,7 +147,7 @@ const dummy_servers: Array<Server> = [
   {
     name: "Connery",
     id: "6",
-    region: "NA WEST",
+    region: "NA",
     population: {
       NC: 20,
       TR: 10,

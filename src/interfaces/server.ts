@@ -1,7 +1,7 @@
 import { Continents, Population } from "./continent";
 import { ApiGetter } from "./api";
 
-export type Region = "NA WEST" | "NA EAST" | "EU" | "AS";
+export type Region = "NA" | "EU" | "AS";
 
 export type Servers = Array<Server>;
 
