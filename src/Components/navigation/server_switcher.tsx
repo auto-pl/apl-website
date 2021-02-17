@@ -6,10 +6,16 @@ export interface ServerSwitcherProps {
   servers: Array<server.Server>;
 }
 
-export const ServerSwitcher: FC<ServerSwitcherProps> = (props) => {
+export const ServerSwitcher: FC<ServerSwitcherProps> = ({ servers }) => {
   return (
-    <div>
-      <span></span>
-    </div>
+    <summary>
+      {servers.map((s) => (
+        <span>
+          <p>
+            {s.name} | {s.region}
+          </p>
+        </span>
+      ))}
+    </summary>
   );
 };
