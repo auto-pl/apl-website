@@ -1,0 +1,15 @@
+<div class="dropdown">
+  <button class="dropbtn">default continent</button>
+  <div class="dropdown-content">
+    <a onclick="changeContinent(this.id)" id="1">1 continent</a>
+    <a onclick="changeContinent(this.id)" id="2">2 continent</a>
+    <a onclick="changeContinent(this.id)" id="3">3 continent</a>
+  </div>
+</div>
+<script>
+  function changeContinent(clickedId) {
+    document.getElementsByClassName(
+      "dropbtn"
+    )[0].innerHTML = document.getElementById(clickedId).innerHTML;
+  }
+</script>
