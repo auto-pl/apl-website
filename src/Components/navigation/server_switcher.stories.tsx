@@ -4,7 +4,7 @@ import { ServerSwitcher, ServerSwitcherProps } from "./server_switcher";
 import { api } from "../../Utils/api_interface";
 
 const meta: Meta = {
-  title: "ServerSwitcher",
+  title: "Switchers/ServerSwitcher",
   component: ServerSwitcher,
 };
 

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { server } from "../../interfaces/interface_barrell";
-import { Switcher } from "./switcher";
+import { Switcher } from "./switcher/switcher";
 import "../../styles/components/server_switcher/server_switcher.css";
 
 export interface ServerSwitcherProps {

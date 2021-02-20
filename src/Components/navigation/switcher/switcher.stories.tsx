@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Switcher, SwitcherProps } from "./switcher";
 
 const meta: Meta = {
-  title: "Switcher",
+  title: "Switchers/Base Switcher/Switcher",
   component: Switcher,
   argTypes: {
     items: {

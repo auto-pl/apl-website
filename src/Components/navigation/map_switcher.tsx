@@ -5,7 +5,7 @@ import {
   get_faction_colour,
   faction_logos,
 } from "../../Utils/globals/faction_globals";
-import { Switcher } from "./switcher";
+import { Switcher } from "./switcher/switcher";
 import "../../styles/components/map_switcher/map_switcher.css";
 import "../../styles/global/ps2_styles/positioning.css";
 import "../../styles/global/ps2_styles/text.css";
