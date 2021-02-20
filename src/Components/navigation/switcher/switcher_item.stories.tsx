@@ -10,12 +10,18 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<SwitcherItemProps> = (args) => <SwitcherItem {...args} />;
-export const Default = Template.bind({});
+export const TextOnly = Template.bind({});
+TextOnly.args = {
+  name: "UmU",
+  body: <span>Strasbourg, France</span>,
+};
+
+export const WithCustomElements = Template.bind({});
 const cheese_icon_link =
   "https://b.thumbs.redditmedia.com/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png";
 const apple_icon_link =
   "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32349-red-apple-icon.png";
-Default.args = {
+WithCustomElements.args = {
   name: "I am the text",
   body: (
     <span style={{ display: "inline-block" }}>
