@@ -1,5 +1,9 @@
 import React, { FC, ReactNode, memo, MouseEventHandler } from "react";
+import { PS2Button } from "../../inputs/buttons/ps2button";
 import "../../../styles/components/switcher/switcher.css";
+import "../../../styles/global/ps2_styles/text.css";
+
+export type OnSelectHandler = (name: string, index: number) => void;
 
 export interface SwitcherItemProps {
   /**
@@ -18,7 +22,7 @@ export interface SwitcherItemProps {
    * This will be called when the item is clicked.
    * The arguments are the same as the props.
    */
-  on_select?: (name: string, index: number) => void;
+  on_select?: OnSelectHandler;
 }
 
 /**
@@ -39,9 +43,9 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
   };
 
   return (
-    <button className="switcher-item" onClick={handle_click}>
+    <PS2Button class_name="switcher-item font-primary" on_click={handle_click}>
       {body}
-    </button>
+    </PS2Button>
   );
 };
 

@@ -1,24 +1,47 @@
-.switcher {
-  max-width: 200px;
+.switcher-container {
+  position: relative;
+  display: inline-block;
   min-width: 100px;
-  width: auto;
-  height: auto;
 }
 
-.item {
+.switcher-content-container {
+  transition: opacity 0.25s ease-out;
+  opacity: 0;
+  display: block;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: block;
+}
+
+.switcher-focused {
+  opacity: 1;
+}
+
+.switcher-header-btn,
+.switcher-item {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  opacity: 1;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
   text-align: center;
   width: 80%;
 }
-
-details, summary {
-  cursor: pointer;
-}
-details:focus, details:active, details:visited, details:active, summary:focus, summary:active, summary:visited, summary:active {
+.switcher-header-btn:focus, .switcher-header-btn:active, .switcher-header-btn:visited, .switcher-header-btn:active,
+.switcher-item:focus,
+.switcher-item:active,
+.switcher-item:visited,
+.switcher-item:active {
   outline: none;
-}
-
-details:open {
-  cursor: arrow;
 }
 
 /*# sourceMappingURL=switcher.css.map */
