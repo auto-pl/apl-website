@@ -1,4 +1,10 @@
-import React, { CSSProperties, FC, ReactNode, useState } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  ReactNode,
+  useState,
+  useCallback,
+} from "react";
 import { TextContainer } from "../../containers/text_container";
 import { SwitcherItem } from "./switcher_item";
 import "../../../styles/components/switcher/switcher.css";
@@ -37,11 +43,14 @@ export const Switcher: FC<SwitcherProps> = ({
   const initial_header = header_text ?? items[0].text;
   const [selected_item_text, set_selected_item_text] = useState(initial_header);
 
-  const on_item_select = (name: string, i: number) => {
-    const selected = items[i];
-    set_selected_item_text(selected.text);
-    on_select(selected);
-  };
+  const on_item_select: OnSelectHandler = useCallback(
+    (name, i) => {
+      const selected = items[i];
+      set_selected_item_text(selected.text);
+      on_select(selected);
+    },
+    [items, on_select]
+  );
 
   return (
     <TextContainer style={style} class_name={`switcher ${class_name}`}>
