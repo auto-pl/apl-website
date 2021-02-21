@@ -9,6 +9,7 @@ export interface BaseButtonProps {
   tooltip_text?: string;
   on_click?: MouseEventHandler<HTMLButtonElement>;
   deactivated?: boolean;
+  class_name?: string;
 }
 
 export interface ButtonProps extends BaseButtonProps {
@@ -24,12 +25,13 @@ export const PS2Button: FC<ButtonProps> = ({
   on_click,
   deactivated = false,
   value = "",
+  class_name,
 }: ButtonProps) => {
   return (
     <>
       <button
         type="button"
-        className="buttonDiv-notched-topLeft font-primary"
+        className={`buttonDiv-notched-topLeft font-primary ${class_name || ""}`}
         onClick={on_click}
         disabled={deactivated}
         value={value}
@@ -40,7 +42,6 @@ export const PS2Button: FC<ButtonProps> = ({
       <ReactTooltip className="font-primary container" />
     </>
   );
-  // !FIX: the classes don't seem to be applying
 };
 
 export interface ToggleButtonProps extends BaseButtonProps {
