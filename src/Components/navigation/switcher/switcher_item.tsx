@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, memo, MouseEventHandler } from "react";
-import { PS2Button } from "../../inputs/buttons/ps2button";
+import { TextContainer } from "../../containers/text_container";
 import "../../../styles/components/switcher/switcher.css";
 import "../../../styles/global/ps2_styles/text.css";
 
@@ -43,9 +43,11 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
   };
 
   return (
-    <PS2Button class_name="switcher-item font-primary" on_click={handle_click}>
-      {body}
-    </PS2Button>
+    <TextContainer>
+      <button className="switcher-item font-primary" onClick={handle_click}>
+        {body}
+      </button>
+    </TextContainer>
   );
 };
 
