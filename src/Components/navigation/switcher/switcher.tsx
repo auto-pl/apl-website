@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { TextContainer } from "../../containers/text_container";
 import { SwitcherItem, OnSelectHandler } from "./switcher_item";
+import classNames from "classnames";
 import "../../../styles/components/switcher/switcher.css";
 
 export interface SwitcherItemArgs {
@@ -35,12 +36,21 @@ export interface SwitcherProps {
 interface SwitcherItemsProps {
   items: Array<SwitcherItemArgs>;
   on_item_select: OnSelectHandler;
+  revealed: boolean;
 }
 
 // I extracted this into its own component to make `Switcher`'s return block cleaner
-const SwitcherItems: FC<SwitcherItemsProps> = ({ items, on_item_select }) => {
+const SwitcherItems: FC<SwitcherItemsProps> = ({
+  items,
+  on_item_select,
+  revealed,
+}) => {
   return (
-    <div className="switcher-content-container switcher-focused">
+    <div
+      className={classNames("switcher-content-container", {
+        "switcher-content-container-revealed": revealed,
+      })}
+    >
       {items.map((item, i) => (
         <SwitcherItem
           name={item.text}
@@ -61,10 +71,7 @@ export const Switcher: FC<SwitcherProps> = ({
   style,
   class_name,
 }) => {
-  // focus callbacks
-  const [focused, set_focused] = useState(false);
-  console.log(focused);
-
+  const [revealed, set_revealed] = useState(false);
   // handle header
   const initial_header = header_text ?? items[0].text;
   const [selected_item_text, set_selected_item_text] = useState(initial_header);
@@ -80,19 +87,17 @@ export const Switcher: FC<SwitcherProps> = ({
 
   return (
     <TextContainer style={style} class_name={`switcher ${class_name}`}>
+      {/* The click handler is in the div to make sure that the whole thing is covered */}
       <div
+        onClick={() => set_revealed(!revealed)}
         className="switcher-container"
-        onMouseLeave={() => set_focused(false)}
       >
-        <button
-          onClick={() => set_focused(!focused)}
-          className="switcher-header-button"
-        >
-          {selected_item_text}
-        </button>
-        {focused ? (
-          <SwitcherItems items={items} on_item_select={on_item_select} />
-        ) : null}
+        <button className="switcher-header-btn">{selected_item_text}</button>
+        <SwitcherItems
+          revealed={revealed}
+          items={items}
+          on_item_select={on_item_select}
+        />
       </div>
     </TextContainer>
   );

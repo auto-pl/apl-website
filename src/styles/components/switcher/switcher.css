@@ -1,7 +1,7 @@
 .switcher-container {
   position: relative;
   display: inline-block;
-  min-width: 100px;
+  min-width: 160px;
 }
 
 .switcher-content-container {
@@ -10,29 +10,23 @@
   display: block;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  display: block;
 }
 
-.switcher-focused {
+.switcher-content-container-revealed {
   opacity: 1;
+  display: block;
 }
 
 .switcher-header-btn,
 .switcher-item {
-  padding: 16px;
-  font-size: 16px;
   border: none;
   cursor: pointer;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  opacity: 1;
   padding: 16px;
+  display: block;
   font-size: 16px;
-  border: none;
   text-align: center;
   width: 80%;
 }
@@ -42,6 +36,13 @@
 .switcher-item:visited,
 .switcher-item:active {
   outline: none;
+}
+
+.switcher-header-btn {
+  width: 100%;
+  padding: 16px;
+  height: 100%;
+  margin: 0;
 }
 
 /*# sourceMappingURL=switcher.css.map */
