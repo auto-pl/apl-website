@@ -1,9 +1,16 @@
 import React, { FC, useState } from "react";
-import { Meta } from "@storybook/react/types-6-0";
+import { Meta, Story } from "@storybook/react/types-6-0";
 import { withClickOutsideDetection } from "./click_outside";
 
 const meta: Meta = {
   title: "withClickOutsideDetection",
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 };
 export default meta;
 
@@ -32,7 +39,7 @@ const WithDetection = () => {
   return <WrappedExample clicked_out={is_in} />;
 };
 
-export const Example = WithDetection;
+export const Example: Story<{}> = WithDetection;
 
 const WithDetectionAndDetach = () => {
   const [is_in, set_in] = useState(false);
@@ -51,4 +58,4 @@ const WithDetectionAndDetach = () => {
     </div>
   );
 };
-export const ExampleWithDetaching = WithDetectionAndDetach;
+export const ExampleWithDetaching: Story<{}> = WithDetectionAndDetach;
