@@ -9,24 +9,31 @@
     box-shadow: none;
   }
 }
-.buttonDiv-notched-topLeft {
+.ps2-button, .button-full, .button-notched-top-left {
   width: auto;
   height: auto;
+  min-height: 16px;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
   background-color: rgba(185, 190, 190, 0.9);
+  border: 1px rgba(185, 190, 190, 0.9) solid !important;
+}
+.ps2-button:focus, .button-full:focus, .button-notched-top-left:focus, .ps2-button:active, .button-full:active, .button-notched-top-left:active, .ps2-button:visited, .button-full:visited, .button-notched-top-left:visited, .ps2-button:active {
+  outline: none;
+}
+
+.button-notched-top-left {
   padding-left: 18px;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
-  border: 1px rgba(185, 190, 190, 0.9) solid !important;
 }
-.buttonDiv-notched-topLeft:after {
+.button-notched-top-left:after {
   content: "";
   left: 0;
   top: 0;
@@ -42,25 +49,15 @@
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.buttonDiv-notched-topLeft:hover::after {
+.button-notched-top-left:hover::after {
   background-color: #103333;
 }
-.buttonDiv-notched-topLeft:active::after {
+.button-notched-top-left:active::after {
   animation-name: ButtonClick;
   animation-duration: 100ms;
 }
-.buttonDiv-notched-topLeft:focus {
+.button-notched-top-left:focus {
   outline: none;
-}
-
-.button-active {
-  background-color: #505050;
-  cursor: default;
-  color: #202020 !important;
-  text-shadow: 0 0 10px #505050 !important;
-}
-.button-active::hover {
-  background-color: #505050;
 }
 
 .button-disabled {

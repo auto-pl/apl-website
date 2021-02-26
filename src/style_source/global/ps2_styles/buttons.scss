@@ -1,3 +1,5 @@
+@use "../fixins.sass";
+
 $border-colour: rgba(185, 190, 190, 0.9);
 $left_notch_size: 14px;
 
@@ -27,20 +29,26 @@ $left_notch_size: 14px;
   clip-path: polygon($left_notch_size 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.buttonDiv-notched-topLeft {
-  // This is the border
-  // NOTE: this is required because clip-path clips out borders
+.ps2-button {
   width: auto;
   height: auto;
+  min-height: 16px;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
   background-color: $border-colour;
+  @include border-button;
+  @include fixins.no-focus-outline;
+}
+
+.button-notched-top-left {
+  // This is the border
+  // NOTE: this is required because clip-path clips out borders
+  @extend .ps2-button;
   padding-left: $left_notch_size + 4;
   @include HasLeftNotch;
-  @include border-button;
 
   // this is the background
   &:after {
@@ -73,15 +81,8 @@ $left_notch_size: 14px;
   }
 }
 
-.button-active {
-  background-color: #505050;
-  cursor: default;
-  color: #202020 !important;
-  text-shadow: 0 0 10px #505050 !important;
-
-  &::hover {
-    background-color: #505050;
-  }
+.button-full {
+  @extend .ps2-button;
 }
 
 .button-disabled {
