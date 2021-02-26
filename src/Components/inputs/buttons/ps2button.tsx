@@ -23,7 +23,7 @@ export interface PS2ButtonProps {
   /**
    * Extra props for the button element.
    */
-  button_props?: Object;
+  ...button_props?: any[];
 }
 
 const decide_notch_class = (notch_location: NotchLocation): string => {
