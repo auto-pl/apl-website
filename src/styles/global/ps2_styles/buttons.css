@@ -9,7 +9,7 @@
     box-shadow: none;
   }
 }
-.ps2-button, .button-full, .button-notched-top-left {
+.ps2-button, .button-no-sides, .button-basic, .button-notched-top-left {
   width: auto;
   height: auto;
   min-height: 16px;
@@ -18,14 +18,15 @@
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
-  background-color: rgba(185, 190, 190, 0.9);
+  background-color: #202020;
   border: 1px rgba(185, 190, 190, 0.9) solid !important;
 }
-.ps2-button:focus, .button-full:focus, .button-notched-top-left:focus, .ps2-button:active, .button-full:active, .button-notched-top-left:active, .ps2-button:visited, .button-full:visited, .button-notched-top-left:visited, .ps2-button:active {
+.ps2-button:focus, .button-no-sides:focus, .button-basic:focus, .button-notched-top-left:focus, .ps2-button:active, .button-no-sides:active, .button-basic:active, .button-notched-top-left:active, .ps2-button:visited, .button-no-sides:visited, .button-basic:visited, .button-notched-top-left:visited, .ps2-button:active {
   outline: none;
 }
 
 .button-notched-top-left {
+  background-color: rgba(185, 190, 190, 0.9);
   padding-left: 18px;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/

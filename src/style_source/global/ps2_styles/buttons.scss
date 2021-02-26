@@ -1,7 +1,7 @@
 @use "../fixins.sass";
 
 $border-colour: rgba(185, 190, 190, 0.9);
-$left_notch_size: 14px;
+$notch_size: 14px;
 
 @mixin border-button {
   border: 1px $border-colour solid !important;
@@ -13,7 +13,7 @@ $left_notch_size: 14px;
   }
 
   75% {
-    box-shadow: $left_notch_size 0 rgb(77, 187, 43) inset;
+    box-shadow: $notch_size 0 rgb(77, 187, 43) inset;
   }
 
   100% {
@@ -26,7 +26,7 @@ $left_notch_size: 14px;
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
-  clip-path: polygon($left_notch_size 0, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon($notch_size 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .ps2-button {
@@ -38,7 +38,7 @@ $left_notch_size: 14px;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
-  background-color: $border-colour;
+  background-color: #202020;
   @include border-button;
   @include fixins.no-focus-outline;
 }
@@ -47,7 +47,8 @@ $left_notch_size: 14px;
   // This is the border
   // NOTE: this is required because clip-path clips out borders
   @extend .ps2-button;
-  padding-left: $left_notch_size + 4;
+  background-color: $border-colour;
+  padding-left: $notch_size + 4;
   @include HasLeftNotch;
 
   // this is the background
@@ -81,7 +82,12 @@ $left_notch_size: 14px;
   }
 }
 
-.button-full {
+// TODO: add a small top left and top right notch
+.button-basic {
+  @extend .ps2-button;
+}
+
+.button-no-sides {
   @extend .ps2-button;
 }
 
