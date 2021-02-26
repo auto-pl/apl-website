@@ -5,6 +5,20 @@ import { PS2Button, PS2ButtonProps, NotchLocation } from "./ps2button";
 export default {
   title: "PS2Button",
   component: PS2Button,
+  argTypes: {
+    children: {
+      table: {
+        defaultValue: { summary: "undefined" },
+        type: { summary: "ReactNode | undefined" },
+      },
+      control: "none",
+    },
+    tooltip_text: {
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<PS2ButtonProps> = ({ children, ...args }) => (
@@ -20,12 +34,14 @@ const ayaya_add = (e: MouseEvent) => {
 };
 
 Example.args = {
-  value: "I am a teapot, short and stout",
   children: <span id="ayaya-content"> </span>,
-  onClick: ayaya_add,
   tooltip_text:
     "This button will add an 'ayaya' to the child element each time it is clicked. Also logs the value of the button.",
-  deactivated: false,
   notch_location: NotchLocation.TOP_LEFT,
-  id: "button-hehe",
+  button_props: {
+    onClick: ayaya_add,
+    id: "button-hehe",
+    value: "I am a teapot, short and stout",
+    disabled: false,
+  },
 };

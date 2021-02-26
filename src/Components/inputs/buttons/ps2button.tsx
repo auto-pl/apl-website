@@ -13,47 +13,57 @@ export enum NotchLocation {
 
 export interface PS2ButtonProps {
   /**
-   * Defaults to an empty string
+   * Nodes to contain within the button
    */
-  value?: any;
-  children: ReactNode;
+  children?: ReactNode;
+  /**
+   * The text to display on hover
+   */
   tooltip_text?: string;
-  deactivated?: boolean;
+  /**
+   * Where to put the notch on the button (if at all).
+   * Use the `NotchLocation` enum when passing this prop.
+   */
   notch_location?: NotchLocation;
   /**
    * Extra props for the button element.
    */
-  ...button_props?: any[];
+  button_props?: Object;
 }
 
-const decide_notch_class = (notch_location: NotchLocation): string => {
+const decide_notch_class = (
+  notch_location: NotchLocation,
+  disabled: boolean
+): string => {
   return className(
     { "button-notched-top-left": notch_location === NotchLocation.TOP_LEFT },
     { "button-notched-top-right": notch_location === NotchLocation.TOP_RIGHT },
-    { "button-full": notch_location === NotchLocation.NONE }
+    { "button-full": notch_location === NotchLocation.NONE },
+    { "button-disabled": disabled }
   );
 };
 
-const get_classes = (notch_location: NotchLocation): string => {
+const get_classes = (
+  notch_location: NotchLocation,
+  disabled: boolean
+): string => {
   const constant_clases = "font-primary";
-  return [decide_notch_class(notch_location), constant_clases].join(" ");
+  return [decide_notch_class(notch_location, disabled), constant_clases].join(
+    " "
+  );
 };
 
 export const PS2Button: FC<PS2ButtonProps> = ({
-  children,
-  tooltip_text,
-  deactivated = false,
-  value = "",
+  children = undefined,
+  tooltip_text = undefined,
   notch_location = NotchLocation.TOP_LEFT,
-  ...button_props
+  button_props = {},
 }: PS2ButtonProps) => {
   return (
     <>
       <button
         type="button"
-        className={get_classes(notch_location)}
-        disabled={deactivated}
-        value={value}
+        className={get_classes(notch_location, "disabled" in button_props)}
         data-tip={tooltip_text}
         {...button_props}
       >
