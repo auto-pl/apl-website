@@ -1,85 +1,65 @@
-import React, { FC, useState, MouseEventHandler, ReactNode } from "react";
+import React, { FC, MouseEventHandler, ReactNode } from "react";
+import className from "classnames";
 import ReactTooltip from "react-tooltip";
 import "../../../styles/global/ps2_styles/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
 import "../../../styles/global/ps2_styles/containers.css";
 
-export interface BaseButtonProps {
-  children: ReactNode;
-  tooltip_text?: string;
-  on_click?: MouseEventHandler<HTMLButtonElement>;
-  deactivated?: boolean;
-  class_name?: string;
+export enum NotchLocation {
+  TOP_LEFT = "TOP_LEFT",
+  TOP_RIGHT = "TOP_RIGHT",
+  NONE = "NONE",
 }
 
-export interface ButtonProps extends BaseButtonProps {
+export interface PS2ButtonProps {
   /**
    * Defaults to an empty string
    */
   value?: any;
+  children: ReactNode;
+  tooltip_text?: string;
+  deactivated?: boolean;
+  notch_location?: NotchLocation;
+  /**
+   * Extra props for the button element.
+   */
+  button_props?: Object;
 }
 
-export const PS2Button: FC<ButtonProps> = ({
+const decide_notch_class = (notch_location: NotchLocation): string => {
+  return className(
+    { "button-notched-top-left": notch_location === NotchLocation.TOP_LEFT },
+    { "button-notched-top-right": notch_location === NotchLocation.TOP_RIGHT },
+    { "button-full": notch_location === NotchLocation.NONE }
+  );
+};
+
+const get_classes = (notch_location: NotchLocation): string => {
+  const constant_clases = "font-primary";
+  return [decide_notch_class(notch_location), constant_clases].join(" ");
+};
+
+export const PS2Button: FC<PS2ButtonProps> = ({
   children,
   tooltip_text,
-  on_click,
   deactivated = false,
   value = "",
-  class_name,
-}: ButtonProps) => {
+  notch_location = NotchLocation.TOP_LEFT,
+  ...button_props
+}: PS2ButtonProps) => {
   return (
     <>
       <button
         type="button"
-        className={`buttonDiv-notched-topLeft font-primary ${class_name || ""}`}
-        onClick={on_click}
+        className={get_classes(notch_location)}
         disabled={deactivated}
         value={value}
         data-tip={tooltip_text}
+        {...button_props}
       >
         {children}
       </button>
       <ReactTooltip className="font-primary container" />
     </>
-  );
-};
-
-export interface ToggleButtonProps extends BaseButtonProps {
-  /**
-   * The value of the button when the button is in the on state.
-   * Defaults to true
-   */
-  on_value?: any;
-  /**
-   * The value of the button when the button is in the off state.
-   * Defaults to false
-   */
-  off_value?: any;
-}
-
-// TODO: make ToggleButton. This is not a good toggle
-export const PS2ToggleButton = ({
-  children,
-  tooltip_text,
-  on_click,
-  deactivated,
-  on_value = true,
-  off_value = false,
-}: ToggleButtonProps) => {
-  const [toggled, set_toggled] = useState(false);
-  const toggle = () => set_toggled(!toggled);
-  const click_handler: typeof on_click = on_click || (() => {});
-
-  return (
-    <PS2Button
-      deactivated={deactivated}
-      on_click={(e) => {
-        toggle();
-        click_handler(e);
-      }}
-      children={children}
-      tooltip_text={tooltip_text}
-      value={toggled ? on_value : off_value}
-    />
   );
 };
