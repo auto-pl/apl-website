@@ -28,7 +28,7 @@ export interface PS2ButtonProps {
   /**
    * Extra props for the button element.
    */
-  button_props?: Object;
+  [button_prop_name: string]: any;
 }
 
 const decide_notch_class = (
@@ -57,7 +57,7 @@ export const PS2Button: FC<PS2ButtonProps> = ({
   children = undefined,
   tooltip_text = undefined,
   notch_location = NotchLocation.TOP_LEFT,
-  button_props = {},
+  ...button_props
 }: PS2ButtonProps) => {
   return (
     <>

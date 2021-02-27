@@ -38,10 +38,8 @@ Example.args = {
   tooltip_text:
     "This button will add an 'ayaya' to the child element each time it is clicked. Also logs the value of the button.",
   notch_location: NotchLocation.TOP_LEFT,
-  button_props: {
-    onClick: ayaya_add,
-    id: "button-hehe",
-    value: "I am a teapot, short and stout",
-    disabled: false,
-  },
+  onClick: ayaya_add,
+  id: "button-hehe",
+  value: "I am a teapot, short and stout",
+  disabled: false,
 };
