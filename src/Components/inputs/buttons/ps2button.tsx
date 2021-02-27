@@ -63,7 +63,7 @@ export const PS2Button: FC<PS2ButtonProps> = ({
     <>
       <button
         type="button"
-        className={get_classes(notch_location, "disabled" in button_props)}
+        className={get_classes(notch_location, button_props.disabled)}
         data-tip={tooltip_text}
         {...button_props}
       >
