@@ -1,5 +1,6 @@
-import React, { FC, MouseEventHandler, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import className from "classnames";
+import { get_class_names } from "../../../Utils/component_utils";
 import ReactTooltip from "react-tooltip";
 import "../../../styles/global/ps2_styles/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
@@ -43,16 +44,6 @@ const decide_notch_class = (
   );
 };
 
-const get_classes = (
-  notch_location: NotchLocation,
-  disabled: boolean
-): string => {
-  const constant_clases = "font-primary";
-  return [decide_notch_class(notch_location, disabled), constant_clases].join(
-    " "
-  );
-};
-
 export const PS2Button: FC<PS2ButtonProps> = ({
   children = undefined,
   tooltip_text = undefined,
@@ -63,7 +54,10 @@ export const PS2Button: FC<PS2ButtonProps> = ({
     <>
       <button
         type="button"
-        className={get_classes(notch_location, button_props.disabled)}
+        className={get_class_names("font-primary", decide_notch_class)(
+          notch_location,
+          button_props.disabled
+        )}
         data-tip={tooltip_text}
         {...button_props}
       >
