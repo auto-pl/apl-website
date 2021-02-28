@@ -1,4 +1,4 @@
-@keyframes ButtonClick {
+@keyframes ButtonClickFromLeftToRight {
   0% {
     box-shadow: none;
   }
@@ -9,7 +9,7 @@
     box-shadow: none;
   }
 }
-.ps2-button, .button-no-sides, .button-basic, .button-notched-top-left {
+.ps2-button, .button-no-sides, .button-full, .button-notched-corners, .button-notched-top-left, .button-notched {
   width: auto;
   height: auto;
   min-height: 16px;
@@ -19,22 +19,26 @@
   margin: 2px;
   cursor: pointer;
   background-color: #202020;
-  border: 1px rgba(185, 190, 190, 0.9) solid !important;
+  border: 1px rgba(185, 190, 190, 0.9) solid;
 }
-.ps2-button:focus, .button-no-sides:focus, .button-basic:focus, .button-notched-top-left:focus, .ps2-button:active, .button-no-sides:active, .button-basic:active, .button-notched-top-left:active, .ps2-button:visited, .button-no-sides:visited, .button-basic:visited, .button-notched-top-left:visited, .ps2-button:active {
+.ps2-button:focus, .button-no-sides:focus, .button-full:focus, .button-notched-corners:focus, .button-notched-top-left:focus, .button-notched:focus, .ps2-button:active, .button-no-sides:active, .button-full:active, .button-notched-corners:active, .button-notched-top-left:active, .button-notched:active, .ps2-button:visited, .button-no-sides:visited, .button-full:visited, .button-notched-corners:visited, .button-notched-top-left:visited, .button-notched:visited, .ps2-button:active {
+  outline: none;
+}
+.ps2-button:hover::after, .button-no-sides:hover::after, .button-full:hover::after, .button-notched-corners:hover::after, .button-notched-top-left:hover::after, .button-notched:hover::after {
+  background-color: #103333;
+}
+.ps2-button:active::after, .button-no-sides:active::after, .button-full:active::after, .button-notched-corners:active::after, .button-notched-top-left:active::after, .button-notched:active::after {
+  animation-name: ButtonClickFromLeftToRight;
+  animation-duration: 100ms;
+}
+.ps2-button:focus, .button-no-sides:focus, .button-full:focus, .button-notched-corners:focus, .button-notched-top-left:focus, .button-notched:focus {
   outline: none;
 }
 
-.button-notched-top-left {
+.button-notched, .button-notched-top-left {
   background-color: rgba(185, 190, 190, 0.9);
-  padding-left: 18px;
-  /* Credits:
-    Method: https://css-tricks.com/notched-boxes/
-    Clip path: https://bennettfeely.com/clippy/
-  */
-  clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.button-notched-top-left:after {
+.button-notched::after, .button-notched-top-left::after {
   content: "";
   left: 0;
   top: 0;
@@ -44,21 +48,38 @@
   background-color: #202020;
   z-index: -1;
   transition: background-color 225ms ease-in;
+}
+
+.button-notched-top-left {
+  padding-left: 18px;
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
   clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.button-notched-top-left:hover::after {
-  background-color: #103333;
+.button-notched-top-left::after {
+  background: linear-gradient(90deg, rgba(32, 32, 32, 0) 0%, #202020 18px, #202020 100%);
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon(14px 0, 100% 0%, 100% 100%, 0% 100%);
 }
-.button-notched-top-left:active::after {
-  animation-name: ButtonClick;
-  animation-duration: 100ms;
+
+.button-notched-corners {
+  clip-path: none;
 }
-.button-notched-top-left:focus {
-  outline: none;
+
+.button-full {
+  border-radius: 25px;
+}
+
+.button-no-sides {
+  border-left: none;
+  border-right: none;
+  padding: 0 18px 0 18px;
+  background: radial-gradient(circle, #202020 0%, #202020 calc(100% - 14px), rgba(32, 32, 32, 0) 100%);
 }
 
 .button-disabled {
@@ -67,7 +88,7 @@
   color: #101010 !important;
   text-shadow: 0 0 5px #505050 !important;
 }
-.button-disabled::hover {
+.button-disabled:hover {
   background-color: #303030;
 }
 

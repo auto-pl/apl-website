@@ -2,12 +2,32 @@
 
 $border-colour: rgba(185, 190, 190, 0.9);
 $notch_size: 14px;
+$padding-size: $notch_size + 4px;
+$button-bg: #202020;
 
 @mixin border-button {
-  border: 1px $border-colour solid !important;
+  border: 1px $border-colour solid;
 }
 
-@keyframes ButtonClick {
+@mixin fade-from-left {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 32, 32, 0) 0%,
+    rgba(32, 32, 32, 1) $padding-size,
+    rgba(32, 32, 32, 1) 100%
+  );
+}
+
+@mixin fade-from-right {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 32, 32, 1) 0%,
+    rgba(32, 32, 32, 1) calc(100% - #{$padding-size}),
+    rgba(32, 32, 32, 0) 100%
+  );
+}
+
+@keyframes ButtonClickFromLeftToRight {
   0% {
     box-shadow: none;
   }
@@ -21,12 +41,16 @@ $notch_size: 14px;
   }
 }
 
-@mixin HasLeftNotch {
+@mixin LeftNotch {
   /* Credits:
     Method: https://css-tricks.com/notched-boxes/
     Clip path: https://bennettfeely.com/clippy/
   */
   clip-path: polygon($notch_size 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@mixin CornersNotch {
+  clip-path: none;
 }
 
 .ps2-button {
@@ -38,21 +62,33 @@ $notch_size: 14px;
   box-sizing: border-box;
   margin: 2px;
   cursor: pointer;
-  background-color: #202020;
+  background-color: $button-bg;
   @include border-button;
   @include fixins.no-focus-outline;
+
+  &:hover::after {
+    background-color: #103333;
+  }
+
+  &:active::after {
+    animation-name: ButtonClickFromLeftToRight;
+    animation-duration: 100ms;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.button-notched-top-left {
+.button-notched {
   // This is the border
   // NOTE: this is required because clip-path clips out borders
-  @extend .ps2-button;
   background-color: $border-colour;
-  padding-left: $notch_size + 4;
-  @include HasLeftNotch;
+  // put padding of `$padding-size` where the notch is
+  // include your notch mixin
+  @extend .ps2-button;
 
-  // this is the background
-  &:after {
+  &::after {
     $dimension: 100%;
     $offset: 0;
 
@@ -62,32 +98,46 @@ $notch_size: 14px;
     position: absolute;
     width: $dimension;
     height: $dimension;
-    background-color: #202020;
+    background-color: $button-bg;
     z-index: -1;
     transition: background-color 225ms ease-in;
-    @include HasLeftNotch;
-  }
-
-  &:hover::after {
-    background-color: #103333;
-  }
-
-  &:active::after {
-    animation-name: ButtonClick;
-    animation-duration: 100ms;
-  }
-
-  &:focus {
-    outline: none;
+    // include your notch
   }
 }
 
-// TODO: add a small top left and top right notch
-.button-basic {
+.button-notched-top-left {
+  padding-left: $padding-size;
+  @include LeftNotch;
+  @extend .ps2-button;
+  @extend .button-notched;
+
+  // this is the background
+  &::after {
+    @include fade-from-left;
+    @include LeftNotch;
+  }
+}
+
+.button-notched-corners {
+  @include CornersNotch;
+  @extend .ps2-button;
+}
+
+.button-full {
+  border-radius: 25px;
   @extend .ps2-button;
 }
 
 .button-no-sides {
+  border-left: none;
+  border-right: none;
+  padding: 0 $padding-size 0 $padding-size;
+  background: radial-gradient(
+    circle,
+    rgba(32, 32, 32, 1) 0%,
+    rgba(32, 32, 32, 1) calc(100% - #{$notch_size}),
+    rgba(32, 32, 32, 0) 100%
+  );
   @extend .ps2-button;
 }
 
@@ -97,7 +147,7 @@ $notch_size: 14px;
   color: #101010 !important;
   text-shadow: 0 0 5px #505050 !important;
 
-  &::hover {
+  &:hover {
     background-color: #303030;
   }
 }
