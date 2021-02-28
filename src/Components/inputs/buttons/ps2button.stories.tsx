@@ -43,3 +43,13 @@ Example.args = {
   value: "I am a teapot, short and stout",
   disabled: false,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: "I am disabled",
+  tooltip_text:
+    "This button is disabled and cannot be clicked. Even its `onClick` will not fire",
+  notch_location: NotchLocation.TOP_LEFT,
+  onClick: () => console.log("I am not disabled :)"),
+  disabled: true,
+};
