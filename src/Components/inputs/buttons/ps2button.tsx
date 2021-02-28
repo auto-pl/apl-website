@@ -6,10 +6,11 @@ import "../../../styles/global/ps2_styles/buttons.css";
 import "../../../styles/global/ps2_styles/text.css";
 import "../../../styles/global/ps2_styles/containers.css";
 
-export enum NotchLocation {
-  TOP_LEFT = "TOP_LEFT",
-  TOP_RIGHT = "TOP_RIGHT",
-  NONE = "NONE",
+export enum ButtonType {
+  NOTCHED_TOP_LEFT = "NOTCHED_TOP_LEFT",
+  NOTCHED_CORNERS = "NOTCHED_CORNERS",
+  NO_NOTCH = "NO_NOTCH",
+  NO_SIDES = "NO_SIDES",
 }
 
 export interface PS2ButtonProps {
@@ -23,23 +24,26 @@ export interface PS2ButtonProps {
   tooltip_text?: string;
   /**
    * Where to put the notch on the button (if at all).
-   * Use the `NotchLocation` enum when passing this prop.
+   * Use the `ButtonType` enum when passing this prop.
    */
-  notch_location?: NotchLocation;
+  button_type?: ButtonType;
   /**
    * Extra props for the button element.
    */
   [button_prop_name: string]: any;
 }
 
-const decide_notch_class = (
-  notch_location: NotchLocation,
+const decide_button_type_class = (
+  button_type: ButtonType,
   disabled: boolean
 ): string => {
   return className(
-    { "button-notched-top-left": notch_location === NotchLocation.TOP_LEFT },
-    { "button-notched-top-right": notch_location === NotchLocation.TOP_RIGHT },
-    { "button-full": notch_location === NotchLocation.NONE },
+    {
+      "button-notched-top-left": button_type === ButtonType.NOTCHED_TOP_LEFT,
+    },
+    { "button-notched-corners": button_type === ButtonType.NOTCHED_CORNERS },
+    { "button-full": button_type === ButtonType.NO_NOTCH },
+    { "button-no-sides": button_type === ButtonType.NO_SIDES },
     { "button-disabled": disabled }
   );
 };
@@ -47,15 +51,15 @@ const decide_notch_class = (
 export const PS2Button: FC<PS2ButtonProps> = ({
   children = undefined,
   tooltip_text = undefined,
-  notch_location = NotchLocation.TOP_LEFT,
+  button_type = ButtonType.NOTCHED_CORNERS,
   ...button_props
 }: PS2ButtonProps) => {
   return (
     <>
       <button
         type="button"
-        className={get_class_names("font-primary", decide_notch_class)(
-          notch_location,
+        className={get_class_names("font-primary", decide_button_type_class)(
+          button_type,
           button_props.disabled
         )}
         data-tip={tooltip_text}
