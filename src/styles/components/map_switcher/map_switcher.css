@@ -1,12 +1,33 @@
 .map-switcher {
   left: 20%;
-  position: absolute;
-  z-index: 1;
   min-width: 250px;
 }
 
 .selected {
   opacity: 0.9;
+}
+
+.continent-item {
+  width: 100%;
+  height: 100%;
+  padding-left: 32px;
+}
+
+.locked-NC {
+  background-color: #1d4698;
+}
+
+.locked-TR {
+  background-color: #961100;
+}
+
+.locked-VS {
+  background-color: #612597;
+}
+
+.faction-logo {
+  height: 32px;
+  width: 32px;
 }
 
 /*# sourceMappingURL=map_switcher.css.map */
