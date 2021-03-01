@@ -10,7 +10,7 @@ import "../../styles/components/map_switcher/map_switcher.css";
 import "../../styles/global/ps2_styles/positioning.css";
 import "../../styles/global/ps2_styles/text.css";
 
-interface MapSwitcherProps {
+export interface MapSwitcherProps {
   continents: ContinentViews;
 }
 
