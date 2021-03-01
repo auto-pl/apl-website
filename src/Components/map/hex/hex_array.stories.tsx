@@ -1,8 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { HexArray, HexArrayProps } from "./hex_array";
-import { api } from "../../../../Utils/api_interface";
+import { api } from "../../../Utils/api_interface";
 
+/*
 const meta: Meta = {
   title: "Hexes/HexArray",
   component: HexArray,
@@ -21,3 +22,4 @@ api
         base_states: bases,
       })
   );
+*/

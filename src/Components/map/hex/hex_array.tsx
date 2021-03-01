@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { BaseState } from "../../../../interfaces/continent";
+import { BaseState } from "../../../interfaces/continent";
 import { Hex } from "./hex";
 
 export interface HexArrayProps {
