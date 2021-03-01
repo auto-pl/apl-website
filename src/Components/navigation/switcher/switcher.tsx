@@ -13,6 +13,10 @@ import "../../../styles/components/switcher/switcher.css";
 export interface SwitcherItemArgs {
   text: string;
   body: ReactNode;
+  /**
+   * Defaults to false
+   */
+  disabled?: boolean;
 }
 
 export interface SwitcherProps {
@@ -37,6 +41,7 @@ interface SwitcherItemsProps {
   items: Array<SwitcherItemArgs>;
   on_item_select: OnSelectHandler;
   revealed: boolean;
+  selected_item_text: string;
 }
 
 // I extracted this into its own component to make `Switcher`'s return block cleaner
@@ -44,7 +49,11 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
   items,
   on_item_select,
   revealed,
+  selected_item_text,
 }) => {
+  const is_selected = (item: SwitcherItemArgs) =>
+    item.text === selected_item_text;
+
   return (
     <div
       className={classNames("switcher-content-container", {
@@ -58,6 +67,7 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
           body={item.body}
           on_select={on_item_select}
           key={i}
+          disabled={is_selected(item)}
         />
       ))}
     </div>
@@ -102,6 +112,7 @@ export const Switcher: FC<SwitcherProps> = ({
           revealed={revealed}
           items={items}
           on_item_select={on_item_select}
+          selected_item_text={selected_item_text}
         />
       </div>
     </TextContainer>

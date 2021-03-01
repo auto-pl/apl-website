@@ -27,6 +27,7 @@ export interface SwitcherItemProps {
    * The arguments are the same as the props.
    */
   on_select?: OnSelectHandler;
+  disabled?: boolean;
 }
 
 /**
@@ -41,6 +42,7 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
   index,
   header = false,
   on_select = (name, index) => {},
+  disabled = false,
 }) => {
   const handle_click: MouseEventHandler = (e) => {
     e.preventDefault();
@@ -53,6 +55,7 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
       disable_click_animation={header}
       button_type={ButtonType.NO_SIDES}
       onClick={handle_click}
+      disabled={disabled}
     >
       {body}
     </PS2Button>
