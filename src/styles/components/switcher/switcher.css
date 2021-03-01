@@ -1,7 +1,7 @@
 .switcher-container {
   position: relative;
   display: inline-block;
-  min-width: 160px;
+  min_width: 160px;
   width: 100%;
 }
 
@@ -18,28 +18,15 @@
 
 .switcher-content-container-revealed {
   opacity: 1;
-  display: block;
 }
 
-.switcher-header-btn,
 .switcher-item {
   padding: 16px;
   display: block;
   width: 100%;
 }
-.switcher-header-btn:focus, .switcher-header-btn:active, .switcher-header-btn:visited, .switcher-header-btn:active,
-.switcher-item:focus,
-.switcher-item:active,
-.switcher-item:visited,
-.switcher-item:active {
+.switcher-item:focus, .switcher-item:active, .switcher-item:visited, .switcher-item:active {
   outline: none;
-}
-
-.switcher-header-btn {
-  width: 100%;
-  padding: 16px;
-  height: 100%;
-  margin: 0;
 }
 
 /*# sourceMappingURL=switcher.css.map */

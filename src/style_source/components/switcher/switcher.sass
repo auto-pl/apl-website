@@ -1,12 +1,13 @@
 @use "../../global/ps2_styles/variables"
 @use "../../global/fixins"
 
-$min_width: 160px
+@mixin min-width
+    min_width: 160px
 
 .switcher-container
     position: relative
     display: inline-block
-    min-width: 160px
+    @include min-width
     width: 100%
 
 // The container for the menu that will appear on click
@@ -22,18 +23,10 @@ $min_width: 160px
 
 .switcher-content-container-revealed
     opacity: 1
-    display: block
 
-.switcher-header-btn,  // the button that's clicked to show the options
 .switcher-item // Each item within the Switcher
     padding: 16px
     display: block
     //text-align: center
     width: 100%
     @include fixins.no-focus-outline
-
-.switcher-header-btn
-    width: 100%
-    padding: 16px
-    height: 100%
-    margin: 0
