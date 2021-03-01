@@ -52,7 +52,7 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
       className="switcher-item"
       disable_click_animation={header}
       button_type={ButtonType.NO_SIDES}
-      on_click={handle_click}
+      onClick={handle_click}
     >
       {body}
     </PS2Button>
