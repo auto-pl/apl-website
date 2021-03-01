@@ -19,15 +19,19 @@ TextOnly.args = {
 export const WithCustomElements = Template.bind({});
 const cheese_icon_link =
   "https://b.thumbs.redditmedia.com/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png";
+const cheese_img = (
+  <img src={cheese_icon_link} height="16px" width="16px" alt="Cheese" />
+);
 const apple_icon_link =
   "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32349-red-apple-icon.png";
+const apple_img = (
+  <img src={apple_icon_link} height="16px" width="16px" alt="apple" />
+);
 WithCustomElements.args = {
   name: "I am the text",
   body: (
     <span style={{ display: "inline-block" }}>
-      <img src={cheese_icon_link} height="16px" width="16px" alt="Cheese" />
-      <img src={apple_icon_link} height="16px" width="16px" alt="apple" />
-      Cheese + apple = chapple
+      {cheese_img} Cheese + {apple_img} apple = chapple
     </span>
   ),
 };
