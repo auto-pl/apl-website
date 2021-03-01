@@ -86,13 +86,18 @@ export const Switcher: FC<SwitcherProps> = ({
   );
 
   return (
-    <TextContainer style={style} class_name={`switcher ${class_name}`}>
+    <TextContainer style={style} class_name={`switcher ${class_name || ""}`}>
       {/* The click handler is in the div to make sure that the whole thing is covered */}
       <div
         onClick={() => set_revealed(!revealed)}
         className="switcher-container"
       >
-        <button className="switcher-header-btn">{selected_item_text}</button>
+        <SwitcherItem
+          name="header"
+          index={0}
+          header
+          body={selected_item_text}
+        />
         <SwitcherItems
           revealed={revealed}
           items={items}
@@ -102,7 +107,3 @@ export const Switcher: FC<SwitcherProps> = ({
     </TextContainer>
   );
 };
-
-// test github pulse
-// test 2
-// test 3
