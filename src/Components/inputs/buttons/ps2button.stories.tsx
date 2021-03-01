@@ -25,7 +25,7 @@ const Template: Story<PS2ButtonProps> = ({ children, ...args }) => (
   <PS2Button {...args}>{children}</PS2Button>
 );
 
-export const CornerNotch = Template.bind({});
+export const Example = Template.bind({});
 const ayaya_add = (e: MouseEvent) => {
   const ele = document.querySelector("#ayaya-content");
   if (!ele) return;
@@ -33,11 +33,11 @@ const ayaya_add = (e: MouseEvent) => {
   console.log((e?.target as HTMLButtonElement).value);
 };
 
-CornerNotch.args = {
+Example.args = {
   children: <span id="ayaya-content"> </span>,
   tooltip_text:
     "This button will add an 'ayaya' to the child element each time it is clicked. Also logs the value of the button.",
-  notch_location: ButtonType.NOTCHED_CORNERS,
+  button_type: ButtonType.NOTCHED_CORNERS,
   onClick: ayaya_add,
   id: "button-hehe",
   value: "I am a teapot, short and stout",
@@ -49,28 +49,35 @@ Disabled.args = {
   children: "I am disabled",
   tooltip_text:
     "This button is disabled and cannot be clicked. Even its `onClick` will not fire",
-  notch_location: ButtonType.NOTCHED_CORNERS,
+  button_type: ButtonType.NOTCHED_CORNERS,
   onClick: () => console.log("I am not disabled :)"),
   disabled: true,
+};
+
+export const CornerNotch = Template.bind({});
+CornerNotch.args = {
+  children: "I have notches in the top left and bottom right corners",
+  tooltip_text: "There is nothing special here. Just a different style.",
+  button_type: ButtonType.NOTCHED_CORNERS,
 };
 
 export const LeftNotch = Template.bind({});
 LeftNotch.args = {
   children: "I have a notch on the left",
   tooltip_text: "There is nothing special here. Just a different style.",
-  notch_location: ButtonType.NOTCHED_TOP_LEFT,
+  button_type: ButtonType.NOTCHED_TOP_LEFT,
 };
 
 export const NoNotch = Template.bind({});
 NoNotch.args = {
   children: "I have no notch",
   tooltip_text: "There is nothing special here. Just a different style.",
-  notch_location: ButtonType.NO_NOTCH,
+  button_type: ButtonType.NO_NOTCH,
 };
 
 export const NoSides = Template.bind({});
 NoSides.args = {
   children: "I have no notch and no sides",
   tooltip_text: "There is nothing special here. Just a different style.",
-  notch_location: ButtonType.NO_SIDES,
+  button_type: ButtonType.NO_SIDES,
 };
