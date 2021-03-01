@@ -4,6 +4,7 @@ $border-colour: rgba(185, 190, 190, 0.9);
 $notch_size: 14px;
 $padding-size: $notch_size + 4px;
 $button-bg: #202020;
+$hover-bg: #103333;
 
 @mixin border-button {
   border: 1px $border-colour solid;
@@ -81,14 +82,15 @@ $button-bg: #202020;
   margin: 2px;
   cursor: pointer;
   background-color: $button-bg;
+  transition: background-color 225ms ease-in;
   @include border-button;
   @include fixins.no-focus-outline;
 
-  &:hover::after {
-    background-color: #103333;
+  &:hover {
+    background-color: $hover-bg;
   }
 
-  &:active::after {
+  &:active {
     animation-name: ButtonClickFromLeftToRight;
     animation-duration: 100ms;
   }
@@ -120,6 +122,15 @@ $button-bg: #202020;
     z-index: -1;
     transition: background-color 225ms ease-in;
     // include your notch
+  }
+
+  &:hover::after {
+    background-color: $hover-bg;
+  }
+
+  &:active::after {
+    animation-name: ButtonClickFromLeftToRight;
+    animation-duration: 100ms;
   }
 }
 

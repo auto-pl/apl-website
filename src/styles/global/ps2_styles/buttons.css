@@ -19,15 +19,16 @@
   margin: 2px;
   cursor: pointer;
   background-color: #202020;
+  transition: background-color 225ms ease-in;
   border: 1px rgba(185, 190, 190, 0.9) solid;
 }
 .ps2-button:focus, .button-no-sides:focus, .button-full:focus, .button-notched-corners:focus, .button-notched-top-left:focus, .button-notched:focus, .ps2-button:active, .button-no-sides:active, .button-full:active, .button-notched-corners:active, .button-notched-top-left:active, .button-notched:active, .ps2-button:visited, .button-no-sides:visited, .button-full:visited, .button-notched-corners:visited, .button-notched-top-left:visited, .button-notched:visited, .ps2-button:active {
   outline: none;
 }
-.ps2-button:hover::after, .button-no-sides:hover::after, .button-full:hover::after, .button-notched-corners:hover::after, .button-notched-top-left:hover::after, .button-notched:hover::after {
+.ps2-button:hover, .button-no-sides:hover, .button-full:hover, .button-notched-corners:hover, .button-notched-top-left:hover, .button-notched:hover {
   background-color: #103333;
 }
-.ps2-button:active::after, .button-no-sides:active::after, .button-full:active::after, .button-notched-corners:active::after, .button-notched-top-left:active::after, .button-notched:active::after {
+.ps2-button:active, .button-no-sides:active, .button-full:active, .button-notched-corners:active, .button-notched-top-left:active, .button-notched:active {
   animation-name: ButtonClickFromLeftToRight;
   animation-duration: 100ms;
 }
@@ -49,6 +50,13 @@
   z-index: -1;
   transition: background-color 225ms ease-in;
 }
+.button-notched:hover::after, .button-notched-top-left:hover::after {
+  background-color: #103333;
+}
+.button-notched:active::after, .button-notched-top-left:active::after {
+  animation-name: ButtonClickFromLeftToRight;
+  animation-duration: 100ms;
+}
 
 .button-notched-top-left {
   padding-left: 18px;
@@ -68,6 +76,9 @@
 }
 
 .button-notched-corners {
+  /*
+    Credit: https://bennettfeely.com/clippy/
+  */
   clip-path: polygon(0% 7px, 7px 0, 7px 0%, calc(100% - 7px) 0%, 100% 0, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, calc(100% - 7px) 100%, 7px 100%, 0 100%, 0% calc(100% - 7px));
 }
 
