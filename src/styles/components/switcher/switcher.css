@@ -1,3 +1,49 @@
+.left {
+  position: absolute !important;
+  left: 0;
+  padding: 5px;
+}
+
+.right {
+  position: absolute !important;
+  right: 0;
+  padding: 5px;
+}
+
+.top {
+  position: absolute !important;
+  top: 0;
+  padding: 5px;
+}
+
+.bottom {
+  position: absolute !important;
+  bottom: 0;
+  padding: 5px;
+}
+
+.horizontalCenter {
+  position: absolute !important;
+  margin: 0 25%;
+  margin-top: 5px;
+  width: 50%;
+  padding: 5px;
+  text-align: justify;
+}
+
+.pair-text-image {
+  display: flex;
+  align-items: center;
+}
+
+.absolute-centered {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .switcher-container {
   position: relative;
   display: inline-block;
@@ -11,9 +57,14 @@
   display: block;
   margin-top: 8px;
   position: absolute;
-  width: 100%;
+  width: 80%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .switcher-content-container-revealed {
