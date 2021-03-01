@@ -6,7 +6,7 @@
 
 <b>Warning:</b> Commit any changes to the apl-website folder before running this as they will be lost otherwise
 
-`git clone https://github.com/auto-pl/apl-website.git && cd apl-website && git reset --hard && git custom-map && npm i && npm start`
+`git clone https://github.com/auto-pl/apl-website.git && cd apl-website && git reset --hard && git checkout custom-map && npm i && npm start`
 
 # Compiling and Using SASS
 
