@@ -1,6 +1,7 @@
 import React, { useState, FC } from "react";
 import {
   ContinentDetails,
+  ContinentView,
   ContinentViews,
   Faction,
 } from "../../interfaces/continent";
@@ -95,19 +96,31 @@ const ContinentItem: FC<ContinentItemProps> = ({
 export const MapSwitcher: FC<MapSwitcherProps> = ({ continent_views }) => {
   const active_cont = get_active_continent();
   const [current_cont, set_current_cont] = useState(active_cont);
+  const check_locked = (c: ContinentDetails): boolean => !!c.locked_by;
+  const is_selected = (c: ContinentDetails): boolean => c === current_cont;
+  const set_new_cont = (c: ContinentDetails) =>
+    check_locked(c) || is_selected(c) ? undefined : set_current_cont(c);
 
-  const items = continent_views.map((cont, i) => ({
-    text: cont.details.name,
-    body: (
-      <ContinentItem
-        continent_record={cont.details}
-        selected={current_cont === cont.details}
-        set_cont={(c) => set_current_cont(c)}
-        url={cont.view_url}
-        key={i}
-      />
-    ),
-  }));
+  const items = continent_views.map((cont, i) => {
+    console.log(
+      `${cont.details.name} is selected: ${is_selected(cont.details)}`
+    );
+    console.log(
+      `${cont.details.name} is locked: ${check_locked(cont.details)}`
+    );
+    return {
+      text: cont.details.name,
+      body: (
+        <ContinentItem
+          continent_record={cont.details}
+          selected={is_selected(cont.details)}
+          set_cont={set_new_cont}
+          url={cont.view_url}
+          key={i}
+        />
+      ),
+    };
+  });
 
   return (
     <div className="map-switcher">

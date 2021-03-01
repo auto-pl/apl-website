@@ -14,7 +14,7 @@ export default meta;
 const Template: Story<MapSwitcherProps> = (args) => <MapSwitcher {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  continents: to_continent_view(api.get_all_continents(), [
+  continent_views: to_continent_view(api.get_all_continents(), [
     "foo",
     "bar",
     "baz",

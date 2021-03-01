@@ -13,6 +13,13 @@
   padding-left: 32px;
 }
 
+.locked, .locked-VS, .locked-TR, .locked-NC {
+  padding-left: 0px;
+}
+.locked:active::after, .locked-VS:active::after, .locked-TR:active::after, .locked-NC:active::after {
+  background-color: red;
+}
+
 .locked-NC {
   background-color: #1d4698;
 }

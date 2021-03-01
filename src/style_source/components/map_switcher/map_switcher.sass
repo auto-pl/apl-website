@@ -15,14 +15,24 @@ $logo-size: 32px
     height: 100%
     padding-left: $logo-size
 
+.locked
+    padding-left: 0px
+
+    &:active::after
+        background-color: red
+
 .locked-NC
+    @extend .locked
     background-color: variables.$COLOR-FG-CAPPED-NC
 
 .locked-TR
+    @extend .locked
     background-color: variables.$COLOR-FG-CAPPED-TR
 
 .locked-VS
+    @extend .locked
     background-color: variables.$COLOR-FG-CAPPED-VS
+
 .faction-logo
     height: $logo-size
     width: $logo-size
