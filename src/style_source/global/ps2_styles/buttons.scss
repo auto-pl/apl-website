@@ -50,6 +50,9 @@ $button-bg: #202020;
 }
 
 @mixin CornersNotch {
+  /*
+    Credit: https://bennettfeely.com/clippy/
+  */
   $left_corner_notch_size: $notch_size / 2;
   $right_corner_notch_size: calc(100% - #{$left_corner_notch_size});
   clip-path: polygon(
