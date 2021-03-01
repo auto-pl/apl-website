@@ -68,7 +68,7 @@
 }
 
 .button-notched-corners {
-  clip-path: none;
+  clip-path: polygon(0% 7px, 7px 0, 7px 0%, calc(100% - 7px) 0%, 100% 0, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, calc(100% - 7px) 100%, 7px 100%, 0 100%, 0% calc(100% - 7px));
 }
 
 .button-full {

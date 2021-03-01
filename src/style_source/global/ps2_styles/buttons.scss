@@ -50,7 +50,22 @@ $button-bg: #202020;
 }
 
 @mixin CornersNotch {
-  clip-path: none;
+  $left_corner_notch_size: $notch_size / 2;
+  $right_corner_notch_size: calc(100% - #{$left_corner_notch_size});
+  clip-path: polygon(
+    0% $left_corner_notch_size,
+    $left_corner_notch_size 0,
+    $left_corner_notch_size 0%,
+    $right_corner_notch_size 0%,
+    100% 0,
+    100% $left_corner_notch_size,
+    100% $right_corner_notch_size,
+    $right_corner_notch_size 100%,
+    $right_corner_notch_size 100%,
+    $left_corner_notch_size 100%,
+    0 100%,
+    0% $right_corner_notch_size
+  );
 }
 
 .ps2-button {
