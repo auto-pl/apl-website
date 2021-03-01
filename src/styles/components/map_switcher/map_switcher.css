@@ -16,8 +16,8 @@
 .locked, .locked-VS, .locked-TR, .locked-NC {
   padding-left: 0px;
 }
-.locked:active::after, .locked-VS:active::after, .locked-TR:active::after, .locked-NC:active::after {
-  background-color: red;
+.locked a, .locked-VS a, .locked-TR a, .locked-NC a {
+  cursor: not-allowed;
 }
 
 .locked-NC {
