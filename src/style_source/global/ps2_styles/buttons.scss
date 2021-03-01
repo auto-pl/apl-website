@@ -180,3 +180,7 @@ $hover-bg: #103333;
     background-color: #303030;
   }
 }
+
+.animation-disabled {
+  animation-name: none !important;
+}

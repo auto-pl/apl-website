@@ -103,4 +103,8 @@
   background-color: #303030;
 }
 
+.animation-disabled {
+  animation-name: none !important;
+}
+
 /*# sourceMappingURL=buttons.css.map */

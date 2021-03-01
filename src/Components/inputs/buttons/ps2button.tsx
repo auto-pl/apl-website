@@ -23,6 +23,10 @@ export interface PS2ButtonProps {
    */
   tooltip_text?: string;
   /**
+   * Whether to remove the onclick visual feedback
+   */
+  disable_click_animation?: boolean;
+  /**
    * Where to put the notch on the button (if at all).
    * Use the `ButtonType` enum when passing this prop.
    */
@@ -35,7 +39,9 @@ export interface PS2ButtonProps {
 
 const decide_button_type_class = (
   button_type: ButtonType,
-  disabled: boolean
+  disabled: boolean,
+  disable_click_animation: boolean,
+  user_classes: string | undefined
 ): string => {
   return className(
     {
@@ -44,7 +50,9 @@ const decide_button_type_class = (
     { "button-notched-corners": button_type === ButtonType.NOTCHED_CORNERS },
     { "button-full": button_type === ButtonType.NO_NOTCH },
     { "button-no-sides": button_type === ButtonType.NO_SIDES },
-    { "button-disabled": disabled }
+    { "button-disabled": disabled },
+    { "animation-disabled": disable_click_animation },
+    user_classes
   );
 };
 
@@ -52,22 +60,29 @@ export const PS2Button: FC<PS2ButtonProps> = ({
   children = undefined,
   tooltip_text = undefined,
   button_type = ButtonType.NOTCHED_CORNERS,
+  disable_click_animation,
   ...button_props
 }: PS2ButtonProps) => {
+  // handle className differently so it doesn't override the classes set by this component
+  const { className, ...filtered_props } = button_props;
   return (
     <>
       <button
         type="button"
         className={get_class_names("font-primary", decide_button_type_class)(
           button_type,
-          button_props.disabled
+          filtered_props.disabled,
+          disable_click_animation,
+          className
         )}
         data-tip={tooltip_text}
-        {...button_props}
+        {...filtered_props}
       >
         {children}
       </button>
-      <ReactTooltip className="font-primary container" />
+      {tooltip_text ? (
+        <ReactTooltip className="font-primary container" />
+      ) : null}
     </>
   );
 };
