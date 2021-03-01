@@ -28,3 +28,4 @@ yarn-error.log*
 .react-playground
 .debug.log
 debug.log
+build-storybook.log
