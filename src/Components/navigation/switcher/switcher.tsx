@@ -67,7 +67,7 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
           body={item.body}
           on_select={on_item_select}
           key={i}
-          disabled={is_selected(item)}
+          disabled={is_selected(item) || item.disabled}
         />
       ))}
     </div>
