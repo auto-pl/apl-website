@@ -54,7 +54,7 @@
 .switcher-content-container {
   transition: opacity 0.25s ease-out;
   opacity: 0;
-  display: block;
+  display: none;
   margin-top: 8px;
   position: absolute;
   width: 80%;
@@ -69,6 +69,7 @@
 
 .switcher-content-container-revealed {
   opacity: 1;
+  display: block;
 }
 
 .switcher-item {
