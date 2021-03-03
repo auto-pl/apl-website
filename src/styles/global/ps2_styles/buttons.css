@@ -98,6 +98,9 @@
   cursor: not-allowed;
   text-shadow: 0 0 5px #505050 !important;
 }
+.button-disabled:hover {
+  background-color: #4b0202;
+}
 
 .animation-disabled {
   animation-name: none !important;
