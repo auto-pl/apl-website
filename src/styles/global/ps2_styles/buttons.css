@@ -94,13 +94,9 @@
 }
 
 .button-disabled {
-  background-color: #303030;
-  cursor: default;
-  color: #101010 !important;
+  background-color: #4b0202;
+  cursor: not-allowed;
   text-shadow: 0 0 5px #505050 !important;
-}
-.button-disabled:hover {
-  background-color: #303030;
 }
 
 .animation-disabled {

@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from "react";
+import { ConditionalParent } from "../../wrappers/conditional_wrappers";
 import className from "classnames";
 import { get_class_names } from "../../../Utils/component_utils";
 import ReactTooltip from "react-tooltip";
@@ -68,7 +69,6 @@ export const PS2Button: FC<PS2ButtonProps> = ({
   return (
     <>
       <button
-        type="button"
         className={get_class_names("font-primary", decide_button_type_class)(
           button_type,
           filtered_props.disabled,
@@ -78,7 +78,12 @@ export const PS2Button: FC<PS2ButtonProps> = ({
         data-tip={tooltip_text}
         {...filtered_props}
       >
-        {children}
+        <ConditionalParent
+          wrapper={(children) => <del>{children}</del>}
+          condition={button_props.disabled as boolean}
+        >
+          {children}
+        </ConditionalParent>
       </button>
       {tooltip_text ? (
         <ReactTooltip className="font-primary container" />
