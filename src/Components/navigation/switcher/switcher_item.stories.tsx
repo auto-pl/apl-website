@@ -5,6 +5,12 @@ import { SwitcherItem, SwitcherItemProps } from "./switcher_item";
 const meta: Meta = {
   title: "Switchers/Base Switcher/SwitcherItem",
   component: SwitcherItem,
+  argTypes: {
+    header: {
+      control: "boolean",
+    },
+    disabled: { control: "boolean" },
+  },
 };
 
 export default meta;
@@ -13,7 +19,11 @@ const Template: Story<SwitcherItemProps> = (args) => <SwitcherItem {...args} />;
 export const TextOnly = Template.bind({});
 TextOnly.args = {
   name: "UmU",
-  body: <span>Strasbourg, France</span>,
+  index: 4,
+  body: <span>I will log my `name` and `index`</span>,
+  on_select: (name, index) => {
+    console.log(`Name: ${name}, Index: ${index}`);
+  },
 };
 
 export const WithCustomElements = Template.bind({});

@@ -80,4 +80,11 @@
   outline: none;
 }
 
+.switcher-item-disabled {
+  cursor: not-allowed;
+}
+.switcher-item-disabled * {
+  cursor: not-allowed;
+}
+
 /*# sourceMappingURL=switcher.css.map */

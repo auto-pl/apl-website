@@ -1,4 +1,6 @@
 import React, { FC, ReactNode, memo, MouseEventHandler } from "react";
+import { get_class_names } from "../../../Utils/component_utils";
+import classNames from "classnames";
 import "../../../styles/components/switcher/switcher.css";
 import "../../../styles/global/ps2_styles/text.css";
 import { PS2Button, ButtonType } from "../../inputs/buttons/ps2button";
@@ -30,6 +32,10 @@ export interface SwitcherItemProps {
   disabled?: boolean;
 }
 
+const get_class = get_class_names("switcher-item", (disabled: boolean) => {
+  return classNames({ "switcher-item-disabled": disabled });
+});
+
 /**
  * One of multiple items in a `Switcher`.
  * Supports custom items instead of just text like `PS2DropDown` (example below).
@@ -51,8 +57,8 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
 
   return (
     <PS2Button
-      className="switcher-item"
-      disable_click_animation={header}
+      className={get_class(disabled)}
+      disable_click_animation={header || disabled}
       button_type={ButtonType.NO_SIDES}
       onClick={handle_click}
       disabled={disabled}
