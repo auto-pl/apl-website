@@ -72,16 +72,10 @@ const ContinentItem: FC<ContinentItemProps> = ({
         continent_item_classes
       )(locked_by)}
     >
-      <form action={url}>
-        <button
-          className="font-primary pair-text-image"
-          type="submit"
-          disabled={check_locked(continent_record)}
-        >
-          <FactionIMG locked_by={locked_by} />
-          {name}
-        </button>
-      </form>
+      <a className="font-primary pair-text-image" href={url}>
+        <FactionIMG locked_by={locked_by} />
+        {name}
+      </a>
     </div>
   );
 };
@@ -100,6 +94,7 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({ continent_views }) => {
         check_locked={check_locked}
       />
     ),
+    disabled: check_locked(cont.details),
   }));
 
   return (
