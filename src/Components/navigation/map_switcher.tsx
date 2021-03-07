@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import React, { useState, FC, useCallback } from "react";
 import {
   ContinentDetails,
   ContinentViews,
@@ -17,6 +17,8 @@ export interface MapSwitcherProps {
   continent_views: ContinentViews;
 }
 
+type LockChecker = (continent: ContinentDetails) => boolean;
+
 interface ContinentItemProps {
   /**
    * All relevant information about the continent to link to
@@ -24,24 +26,15 @@ interface ContinentItemProps {
   continent_record: ContinentDetails;
 
   /**
-   * Whether this item is the currently viewed continent.
-   */
-  selected: boolean;
-
-  /**
-   * The function to update the parent's state when this item is selected.
-   */
-  set_cont: (new_continent: ContinentDetails) => void;
-
-  /**
    * The URL to the target continent's view
    */
   url: string;
+
+  check_locked: LockChecker;
 }
 
-const continent_item_classes = (selected: boolean, locked_by: faction) => {
+const continent_item_classes = (locked_by: faction) => {
   return classNames(
-    { selected: selected },
     { "locked-NC": locked_by === "NC" },
     { "locked-TR": locked_by === "TR" },
     { "locked-VS": locked_by === "VS" }
@@ -67,51 +60,44 @@ const FactionIMG: FC<FactionIMGProps> = ({ locked_by }) => {
 
 const ContinentItem: FC<ContinentItemProps> = ({
   continent_record,
-  selected,
-  set_cont,
   url,
+  check_locked,
 }) => {
   const { locked_by, name } = continent_record;
 
   return (
     <div
-      className={get_class_names("continent-item", continent_item_classes)(
-        selected,
-        locked_by
-      )}
-      onClick={() => set_cont(continent_record)}
+      className={get_class_names(
+        "continent-item",
+        continent_item_classes
+      )(locked_by)}
     >
-      <a className="font-primary pair-text-image" href={url}>
-        <FactionIMG locked_by={locked_by} />
-        {name}
-      </a>
+      <form action={url}>
+        <button
+          className="font-primary pair-text-image"
+          type="submit"
+          disabled={check_locked(continent_record)}
+        >
+          <FactionIMG locked_by={locked_by} />
+          {name}
+        </button>
+      </form>
     </div>
   );
 };
 
 export const MapSwitcher: FC<MapSwitcherProps> = ({ continent_views }) => {
   const active_cont = get_active_continent();
-  const [current_cont, set_current_cont] = useState(active_cont);
   const check_locked = (c: ContinentDetails): boolean => !!c.locked_by;
-  const is_selected = (c: ContinentDetails): boolean => c === current_cont;
-  const set_new_cont = (c: ContinentDetails) =>
-    check_locked(c) || is_selected(c) ? undefined : set_current_cont(c);
-  const with_debug = (c: ContinentDetails) => {
-    console.log(`${c.name} is selected: ${is_selected(c)}`);
-    console.log(`${c.name} is locked: ${check_locked(c)}`);
-    console.log("---------------");
-    set_new_cont(c);
-  };
 
   const items = continent_views.map((cont, i) => ({
     text: cont.details.name,
     body: (
       <ContinentItem
         continent_record={cont.details}
-        selected={is_selected(cont.details)}
-        set_cont={with_debug}
         url={cont.view_url}
         key={i}
+        check_locked={check_locked}
       />
     ),
   }));
