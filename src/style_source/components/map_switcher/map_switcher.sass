@@ -23,15 +23,21 @@ $logo-size: 32px
 
 .locked-NC
     @extend .locked
-    background-color: variables.$COLOR-FG-CAPPED-NC
+
+    &::after
+        background-color: variables.$COLOR-FG-CAPPED-NC
 
 .locked-TR
     @extend .locked
-    background-color: variables.$COLOR-FG-CAPPED-TR
+
+    &::after
+        background-color: variables.$COLOR-FG-CAPPED-TR
 
 .locked-VS
     @extend .locked
-    background-color: variables.$COLOR-FG-CAPPED-VS
+
+    &::after
+        background-color: variables.$COLOR-FG-CAPPED-VS
 
 .faction-logo
     height: $logo-size

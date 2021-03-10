@@ -20,15 +20,15 @@
   cursor: not-allowed;
 }
 
-.locked-NC {
+.locked-NC::after {
   background-color: #1d4698;
 }
 
-.locked-TR {
+.locked-TR::after {
   background-color: #961100;
 }
 
-.locked-VS {
+.locked-VS::after {
   background-color: #612597;
 }
 
