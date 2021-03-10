@@ -3,6 +3,7 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-docs",
+    "@storybook/addon-actions",
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
   ],
@@ -11,7 +12,7 @@ module.exports = {
     checkOptions: {},
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
+      shouldExtractLiteralValuesFromEnum: false,
       propFilter: (prop) =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
