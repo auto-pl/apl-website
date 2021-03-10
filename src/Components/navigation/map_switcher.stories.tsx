@@ -6,6 +6,9 @@ import { api } from "../../Utils/api_interface";
 const meta: Meta = {
   title: "Switchers/MapSwitcher",
   component: MapSwitcher,
+  argTypes: {
+    set_new_continent: { action: "clicked", control: "none" },
+  },
 };
 
 export default meta;
