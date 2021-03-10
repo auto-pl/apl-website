@@ -56,8 +56,9 @@ const ContinentItem: FC<ContinentItemProps> = ({
 }) => {
   const { locked_by, name } = continent;
 
+  // !TODO: center the text
   return (
-    <div
+    <span
       className={get_class_names(
         "continent-item pair-text-image",
         continent_item_classes
@@ -66,7 +67,7 @@ const ContinentItem: FC<ContinentItemProps> = ({
     >
       <FactionIMG locked_by={locked_by} />
       {name}
-    </div>
+    </span>
   );
 };
 
