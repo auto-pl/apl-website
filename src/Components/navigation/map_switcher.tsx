@@ -57,18 +57,16 @@ const ContinentItem: FC<ContinentItemProps> = ({
   const { locked_by, name } = continent;
 
   return (
-    <PS2Button
+    <div
       className={get_class_names(
         "continent-item pair-text-image",
         continent_item_classes
       )(locked_by)}
-      onClick={set_new_continent}
-      button_type={ButtonType.NO_SIDES}
-      disabled={!!locked_by}
+      onClick={() => set_new_continent(continent)}
     >
       <FactionIMG locked_by={locked_by} />
       {name}
-    </PS2Button>
+    </div>
   );
 };
 
