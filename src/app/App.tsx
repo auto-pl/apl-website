@@ -19,10 +19,7 @@ function App() {
       <div id="portals"></div>
       {/* put your tests here */}
       <div id="testing-code-goes-here">
-        <Map
-          continents={conts}
-          view_urls={["amerish", "esamir", "indar", "hossin"]}
-        />
+        <Map continents={conts} />
       </div>
     </div>
   );

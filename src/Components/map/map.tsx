@@ -1,8 +1,5 @@
 import React, { FC, useState } from "react";
-import {
-  ContinentDetails,
-  to_continent_view,
-} from "../../interfaces/continent";
+import { BaseState, ContinentDetails } from "../../interfaces/continent";
 import { TextContainer } from "../containers/text_container";
 import { PS2Loader } from "../loading/loader";
 import { Zoomer } from "../wrappers/zoom";
@@ -15,16 +12,10 @@ import { api } from "../../Utils/api_interface";
 
 export interface MapProps {
   continents: Array<ContinentDetails>;
-  /**
-   * The links to the view for each continent
-   */
-  view_urls: Array<string>;
 }
 
 // TODO: style the loading screen
 export const Map: FC<MapProps> = (props) => {
-  const views = to_continent_view(props.continents, props.view_urls);
-
   const [loading, set_loading] = useState(true);
   const [error, set_error] = useState(false);
   const on_load = () => {
@@ -32,6 +23,9 @@ export const Map: FC<MapProps> = (props) => {
     const map: HTMLElement | null = document.querySelector("#MAP_IMG");
     if (!map) return set_error(true);
     map.classList.add("map-loaded");
+  };
+  const update_hexes = (get_states: Promise<Array<BaseState>>) => {
+    get_states.then((value) => console.log(value));
   };
 
   return (
@@ -43,7 +37,10 @@ export const Map: FC<MapProps> = (props) => {
         className="horizontalCenter"
         style={{ height: "100%", width: "100%" }}
       >
-        <MapSwitcher continents={views} />
+        <MapSwitcher
+          continents={props.continents}
+          set_new_continent={(cont) => update_hexes(cont.base_states())}
+        />
         <div>
           <Zoomer>
             <img
