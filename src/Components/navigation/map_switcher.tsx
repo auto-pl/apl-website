@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { ContinentDetails, faction } from "../../interfaces/continent";
-import { PS2Button, ButtonType } from "../inputs/buttons/ps2button";
 import { get_active_continent } from "../../Utils/apitils";
 import { faction_logos } from "../../Utils/globals/faction_globals";
 import classNames from "classnames";
@@ -96,7 +95,11 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({
 
   return (
     <div className="map-switcher">
-      <Switcher header_text={active_cont.name} items={items} />
+      <Switcher
+        style={{ width: "100%" }}
+        header_text={active_cont.name}
+        items={items}
+      />
     </div>
   );
 };

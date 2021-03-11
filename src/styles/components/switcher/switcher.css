@@ -47,7 +47,7 @@
 .switcher-container {
   position: relative;
   display: inline-block;
-  min_width: 160px;
+  min-width: 160px;
   width: 100%;
 }
 

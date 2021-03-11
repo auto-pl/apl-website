@@ -1,6 +1,9 @@
 .map-switcher {
   left: 20%;
   min-width: 250px;
+  display: inline-block;
+  position: absolute;
+  z-index: 3;
 }
 
 .selected {
