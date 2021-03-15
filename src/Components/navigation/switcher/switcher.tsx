@@ -19,6 +19,10 @@ export interface SwitcherItemArgs {
   disabled?: boolean;
 }
 
+type SwitcherItemArgsSorter = (
+  to_sort: Array<SwitcherItemArgs>
+) => Array<SwitcherItemArgs>;
+
 export interface SwitcherProps {
   items: Array<SwitcherItemArgs>;
   /** The text to initially display at the top of the switcher.
@@ -35,6 +39,12 @@ export interface SwitcherProps {
    * A CSS class name
    */
   class_name?: string;
+
+  /**
+   * The function to sort the switcher items on each render.
+   * Defaults to sort by disabled => sort alphabetically
+   */
+  sorting_function?: SwitcherItemArgsSorter;
 }
 
 interface SwitcherItemsProps {
@@ -42,7 +52,13 @@ interface SwitcherItemsProps {
   on_item_select: OnSelectHandler;
   revealed: boolean;
   selected_item_text: string;
+  sorting_function: SwitcherItemArgsSorter;
 }
+
+const default_sorter: SwitcherItemArgsSorter = (items) =>
+  [
+    ...[...items].sort((last, next) => (last.text > next.text ? 1 : -1)),
+  ].sort((last, next) => (!last.disabled && next.disabled ? 1 : -1));
 
 // I extracted this into its own component to make `Switcher`'s return block cleaner
 const SwitcherItems: FC<SwitcherItemsProps> = ({
@@ -50,9 +66,11 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
   on_item_select,
   revealed,
   selected_item_text,
+  sorting_function,
 }) => {
   const is_selected = (item: SwitcherItemArgs) =>
     item.text === selected_item_text;
+  const sorted = sorting_function(items);
 
   return (
     <div
@@ -60,7 +78,7 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
         "switcher-content-container-revealed": revealed,
       })}
     >
-      {items.map((item, i) => (
+      {sorted.map((item, i) => (
         <SwitcherItem
           name={item.text}
           index={i}
@@ -80,11 +98,13 @@ export const Switcher: FC<SwitcherProps> = ({
   on_select = () => {},
   style,
   class_name,
+  sorting_function,
 }) => {
   const [revealed, set_revealed] = useState(false);
   // handle header
   const initial_header = header_text ?? items[0].text;
   const [selected_item_text, set_selected_item_text] = useState(initial_header);
+  const sorter = sorting_function || default_sorter;
 
   const on_item_select: OnSelectHandler = useCallback(
     (name, i) => {
@@ -113,6 +133,7 @@ export const Switcher: FC<SwitcherProps> = ({
           items={items}
           on_item_select={on_item_select}
           selected_item_text={selected_item_text}
+          sorting_function={sorter}
         />
       </div>
     </TextContainer>

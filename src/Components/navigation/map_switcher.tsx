@@ -76,12 +76,8 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({
 }) => {
   const active_cont = get_active_continent();
   const check_locked = (c: ContinentDetails): boolean => !!c.locked_by;
-  // [...continent] makes a copy to prevent mutating the prop
-  const sorted_continents = [...continents].sort((last, next) =>
-    next.name > last.name ? -1 : 1
-  );
 
-  const items = sorted_continents.map((cont, i) => ({
+  const items = continents.map((cont, i) => ({
     text: cont.name,
     body: (
       <ContinentItem
