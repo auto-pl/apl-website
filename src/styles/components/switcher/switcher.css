@@ -72,12 +72,12 @@
   display: block;
 }
 
-.switcher-item {
+.switcher-item button {
   padding: 16px;
   display: block;
   width: 100%;
 }
-.switcher-item:focus, .switcher-item:active, .switcher-item:visited, .switcher-item:active {
+.switcher-item button:focus, .switcher-item button:active, .switcher-item button:visited, .switcher-item button:active {
   outline: none;
 }
 

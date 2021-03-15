@@ -32,7 +32,7 @@ export interface SwitcherItemProps {
   disabled?: boolean;
 }
 
-const get_class = get_class_names("switcher-item", (disabled: boolean) => {
+const get_class = get_class_names("", (disabled: boolean) => {
   return classNames({ "switcher-item-disabled": disabled });
 });
 
@@ -56,15 +56,17 @@ const _SwitcherItem: FC<SwitcherItemProps> = ({
   };
 
   return (
-    <PS2Button
-      className={get_class(disabled)}
-      disable_click_animation={header || disabled}
-      button_type={ButtonType.NO_SIDES}
-      onClick={handle_click}
-      disabled={disabled}
-    >
-      {body}
-    </PS2Button>
+    <span className="switcher-item">
+      <PS2Button
+        className={get_class(disabled)}
+        disable_click_animation={header || disabled}
+        button_type={ButtonType.NO_SIDES}
+        onClick={handle_click}
+        disabled={disabled}
+      >
+        {body}
+      </PS2Button>
+    </span>
   );
 };
 
