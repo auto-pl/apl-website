@@ -56,9 +56,9 @@ interface SwitcherItemsProps {
 }
 
 const default_sorter: SwitcherItemArgsSorter = (items) =>
-  [
-    ...[...items].sort((last, next) => (last.text > next.text ? 1 : -1)),
-  ].sort((last, next) => (!last.disabled && next.disabled ? 1 : -1));
+  [...items]
+    .sort((last, next) => (!last.disabled && next.disabled ? 1 : -1))
+    .sort((last, next) => (last.text > next.text ? 1 : -1));
 
 // I extracted this into its own component to make `Switcher`'s return block cleaner
 const SwitcherItems: FC<SwitcherItemsProps> = ({

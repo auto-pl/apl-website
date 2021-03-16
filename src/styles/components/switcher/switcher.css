@@ -55,7 +55,7 @@
   transition: opacity 0.25s ease-out;
   opacity: 0;
   display: none;
-  margin-top: 8px;
+  margin-top: 9px;
   position: absolute;
   width: 80%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -75,6 +75,7 @@
 .switcher-item button {
   padding: 16px;
   display: block;
+  text-align: center;
   width: 100%;
 }
 .switcher-item button:focus, .switcher-item button:active, .switcher-item button:visited, .switcher-item button:active {
@@ -86,6 +87,10 @@
 }
 .switcher-item-disabled * {
   cursor: not-allowed;
+}
+
+.switcher {
+  display: block;
 }
 
 /*# sourceMappingURL=switcher.css.map */

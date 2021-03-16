@@ -13,14 +13,14 @@
 .continent-item {
   min-height: 32px;
   width: 100%;
-  padding-left: 32px;
+}
+.continent-item p {
+  left: 35%;
+  position: relative;
 }
 
-.locked, .locked-VS, .locked-TR, .locked-NC {
-  padding-left: 0px;
-}
-.locked a, .locked-VS a, .locked-TR a, .locked-NC a {
-  cursor: not-allowed;
+.locked p, .locked-VS p, .locked-TR p, .locked-NC p {
+  left: 0;
 }
 
 .locked-NC {

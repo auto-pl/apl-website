@@ -65,7 +65,7 @@ const ContinentItem: FC<ContinentItemProps> = ({
       onClick={() => set_new_continent(continent)}
     >
       <FactionIMG locked_by={locked_by} />
-      {name}
+      <p>{name}</p>
     </span>
   );
 };
