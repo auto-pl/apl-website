@@ -9,6 +9,7 @@ import { TextContainer } from "../../containers/text_container";
 import { SwitcherItem, OnSelectHandler } from "./switcher_item";
 import classNames from "classnames";
 import "../../../styles/components/switcher/switcher.css";
+import { get_keys } from "../../../Utils/component_utils";
 
 export interface SwitcherItemArgs {
   text: string;
@@ -55,10 +56,14 @@ interface SwitcherItemsProps {
   sorting_function: SwitcherItemArgsSorter;
 }
 
+const sort_by_disabled: SwitcherItemArgsSorter = (items) =>
+  [...items].sort((last, next) => (!last.disabled && next.disabled ? 1 : -1));
+const sort_alphabetically: SwitcherItemArgsSorter = (items) =>
+  [...items].sort((last, next) => (last.text > next.text ? 1 : -1));
 const default_sorter: SwitcherItemArgsSorter = (items) =>
-  [...items]
-    .sort((last, next) => (!last.disabled && next.disabled ? 1 : -1))
-    .sort((last, next) => (last.text > next.text ? 1 : -1));
+  sort_alphabetically(sort_by_disabled(items));
+
+const switcher_item_keys = get_keys(10);
 
 // I extracted this into its own component to make `Switcher`'s return block cleaner
 const SwitcherItems: FC<SwitcherItemsProps> = ({
@@ -84,7 +89,7 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
           index={i}
           body={item.body}
           on_select={on_item_select}
-          key={i}
+          key={switcher_item_keys[i]}
           disabled={is_selected(item) || item.disabled}
         />
       ))}
