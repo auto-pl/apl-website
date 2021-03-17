@@ -92,9 +92,9 @@ export const MapSwitcher: FC<MapSwitcherProps> = ({
   return (
     <div className="map-switcher">
       <Switcher
-        style={{ width: "100%" }}
         header_text={active_cont.name}
         items={items}
+        style={{ width: "100%" }}
       />
     </div>
   );

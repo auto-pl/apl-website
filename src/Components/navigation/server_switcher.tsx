@@ -18,5 +18,5 @@ export const ServerSwitcher: FC<ServerSwitcherProps> = ({ servers }) => {
       </span>
     ),
   }));
-  return <Switcher items={items} />;
+  return <Switcher items={items} style={{ minWidth: "200px" }} />;
 };
