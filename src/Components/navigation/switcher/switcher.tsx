@@ -53,7 +53,6 @@ interface SwitcherItemsProps {
   on_item_select: OnSelectHandler;
   revealed: boolean;
   selected_item_text: string;
-  sorting_function: SwitcherItemArgsSorter;
 }
 
 const sort_by_disabled: SwitcherItemArgsSorter = (items) =>
@@ -71,11 +70,9 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
   on_item_select,
   revealed,
   selected_item_text,
-  sorting_function,
 }) => {
   const is_selected = (item: SwitcherItemArgs) =>
     item.text === selected_item_text;
-  const sorted = sorting_function(items);
 
   return (
     <div
@@ -83,7 +80,7 @@ const SwitcherItems: FC<SwitcherItemsProps> = ({
         "switcher-content-container-revealed": revealed,
       })}
     >
-      {sorted.map((item, i) => (
+      {items.map((item, i) => (
         <SwitcherItem
           name={item.text}
           index={i}
@@ -111,13 +108,14 @@ export const Switcher: FC<SwitcherProps> = ({
   const [selected_item_text, set_selected_item_text] = useState(initial_header);
   const sorter = sorting_function || default_sorter;
 
+  const sorted = sorter(items);
   const on_item_select: OnSelectHandler = useCallback(
     (name, i) => {
-      const selected = items[i];
+      const selected = sorted[i];
       set_selected_item_text(selected.text);
       on_select(selected);
     },
-    [items, on_select]
+    [sorted, on_select]
   );
 
   return (
@@ -135,10 +133,9 @@ export const Switcher: FC<SwitcherProps> = ({
         />
         <SwitcherItems
           revealed={revealed}
-          items={items}
+          items={sorted}
           on_item_select={on_item_select}
           selected_item_text={selected_item_text}
-          sorting_function={sorter}
         />
       </div>
     </TextContainer>
