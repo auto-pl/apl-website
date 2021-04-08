@@ -1,0 +1,32 @@
+@use "variables"
+
+.container
+    border: 1px variables.$COLOR-BORDER solid
+    background-color: variables.$COLOR-BG
+    margin: 5px
+    padding: 5px
+    z-index: 100000
+
+.container-glow
+    background-color: rgba(255, 255, 255, 0.02)
+    height: 100%
+    width: 100%
+
+.container-header
+    text-align: center
+    margin: 5px
+    padding: 5px
+    border-width: 0 0 1px 0
+    border-style: solid
+    border-color: rgba(185, 190, 190, 0.9)
+
+.container-body
+    text-align: justify
+    padding: 5px
+
+.overflow-y-scroll
+    overflow-y: auto
+
+.container-inline
+    text-align: center
+    padding: 5px

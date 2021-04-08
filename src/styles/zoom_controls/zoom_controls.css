@@ -1,0 +1,28 @@
+.zoom-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  border: 1px rgba(185, 190, 190, 0.9) solid;
+  top: 40%;
+  right: 1%;
+  height: 10%;
+  width: 1%;
+}
+
+.zoom-button {
+  padding: 5px;
+  font-size: 16px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #051010;
+  border: none;
+  cursor: pointer;
+}
+.zoom-button:not(:last-child) {
+  border-bottom: 1px rgba(185, 190, 190, 0.9) solid;
+}
+
+/*# sourceMappingURL=zoom_controls.css.map */

@@ -1,0 +1,25 @@
+.TopRight {
+  bottom: 5%;
+  right: 2%;
+  position: absolute;
+}
+
+.TopLeft {
+  bottom: 5%;
+  right: 2%;
+  position: absolute;
+}
+
+.BottomRight {
+  bottom: 5%;
+  right: 2%;
+  position: absolute;
+}
+
+.BottomLeft {
+  bottom: 5%;
+  right: 2%;
+  position: absolute;
+}
+
+/*# sourceMappingURL=corners.css.map */

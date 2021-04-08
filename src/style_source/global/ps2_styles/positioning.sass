@@ -1,0 +1,44 @@
+
+.left
+    position: absolute !important
+    left: 0
+    padding: 5px
+
+.right
+    position: absolute !important
+    right: 0
+    padding: 5px
+
+.top
+    position: absolute !important
+    top: 0
+    padding: 5px
+
+.bottom
+    position: absolute !important
+    bottom: 0
+    padding: 5px
+
+.horizontalCenter
+    position: absolute !important
+    margin: 0 25%
+    margin-top: 5px
+    width: 50%
+    padding: 5px
+    text-align: justify
+
+// For aligning text with images
+.pair-text-image
+    display: flex
+    align-items: center
+
+/// You can be absolutely sure that this will center a `position: absolute` element :)
+@mixin absolutely-centered
+    position: absolute
+    left: 0
+    right: 0
+    margin-left: auto
+    margin-right: auto
+
+.absolute-centered
+    @include absolutely-centered

@@ -1,0 +1,43 @@
+.map-switcher {
+  left: 20%;
+  min-width: 250px;
+  display: inline-block;
+  position: absolute;
+  z-index: 3;
+}
+
+.selected {
+  opacity: 0.9;
+}
+
+.continent-item {
+  min-height: 32px;
+  width: 100%;
+}
+.continent-item p {
+  left: 35%;
+  position: relative;
+}
+
+.locked p, .locked-VS p, .locked-TR p, .locked-NC p {
+  left: 0;
+}
+
+.locked-NC {
+  background-color: #1d4698;
+}
+
+.locked-TR {
+  background-color: #961100;
+}
+
+.locked-VS {
+  background-color: #612597;
+}
+
+.faction-logo {
+  height: 32px;
+  width: 32px;
+}
+
+/*# sourceMappingURL=map_switcher.css.map */

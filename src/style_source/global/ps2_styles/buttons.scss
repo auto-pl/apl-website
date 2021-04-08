@@ -1,0 +1,184 @@
+@use "../fixins.sass";
+
+$border-colour: rgba(185, 190, 190, 0.9);
+$notch_size: 14px;
+$padding-size: $notch_size + 4px;
+$button-bg: #202020;
+$hover-bg: #103333;
+
+@mixin border-button {
+  border: 1px $border-colour solid;
+}
+
+@mixin fade-from-left {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 32, 32, 0) 0%,
+    rgba(32, 32, 32, 1) $padding-size,
+    rgba(32, 32, 32, 1) 100%
+  );
+}
+
+@mixin fade-from-right {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 32, 32, 1) 0%,
+    rgba(32, 32, 32, 1) calc(100% - #{$padding-size}),
+    rgba(32, 32, 32, 0) 100%
+  );
+}
+
+@keyframes ButtonClickFromLeftToRight {
+  0% {
+    box-shadow: none;
+  }
+
+  75% {
+    box-shadow: $notch_size 0 rgb(77, 187, 43) inset;
+  }
+
+  100% {
+    box-shadow: none;
+  }
+}
+
+@mixin LeftNotch {
+  /* Credits:
+    Method: https://css-tricks.com/notched-boxes/
+    Clip path: https://bennettfeely.com/clippy/
+  */
+  clip-path: polygon($notch_size 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@mixin CornersNotch {
+  /*
+    Credit: https://bennettfeely.com/clippy/
+  */
+  $left_corner_notch_size: $notch_size / 2;
+  $right_corner_notch_size: calc(100% - #{$left_corner_notch_size});
+  clip-path: polygon(
+    0% $left_corner_notch_size,
+    $left_corner_notch_size 0,
+    $left_corner_notch_size 0%,
+    $right_corner_notch_size 0%,
+    100% 0,
+    100% $left_corner_notch_size,
+    100% $right_corner_notch_size,
+    $right_corner_notch_size 100%,
+    $right_corner_notch_size 100%,
+    $left_corner_notch_size 100%,
+    0 100%,
+    0% $right_corner_notch_size
+  );
+}
+
+.ps2-button {
+  width: auto;
+  height: auto;
+  min-height: 16px;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 2px;
+  cursor: pointer;
+  background-color: $button-bg;
+  transition: background-color 225ms ease-in;
+  @include border-button;
+  @include fixins.no-focus-outline;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+
+  &:active {
+    animation-name: ButtonClickFromLeftToRight;
+    animation-duration: 100ms;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-notched {
+  // This is the border
+  // NOTE: this is required because clip-path clips out borders
+  background-color: $border-colour;
+  // put padding of `$padding-size` where the notch is
+  // include your notch mixin
+  @extend .ps2-button;
+
+  &::after {
+    $dimension: 100%;
+    $offset: 0;
+
+    content: "";
+    left: $offset;
+    top: $offset;
+    position: absolute;
+    width: $dimension;
+    height: $dimension;
+    background-color: $button-bg;
+    z-index: -1;
+    transition: background-color 225ms ease-in;
+    // include your notch
+  }
+
+  &:hover::after {
+    background-color: $hover-bg;
+  }
+
+  &:active::after {
+    animation-name: ButtonClickFromLeftToRight;
+    animation-duration: 100ms;
+  }
+}
+
+.button-notched-top-left {
+  padding-left: $padding-size;
+  @include LeftNotch;
+  @extend .ps2-button;
+  @extend .button-notched;
+
+  // this is the background
+  &::after {
+    @include fade-from-left;
+    @include LeftNotch;
+  }
+}
+
+.button-notched-corners {
+  @include CornersNotch;
+  @extend .ps2-button;
+}
+
+.button-full {
+  border-radius: 25px;
+  @extend .ps2-button;
+}
+
+.button-no-sides {
+  border-left: none;
+  border-right: none;
+  padding: 0 $padding-size 0 $padding-size;
+  background: radial-gradient(
+    circle,
+    rgba(32, 32, 32, 1) 0%,
+    rgba(32, 32, 32, 1) calc(100% - #{$notch_size}),
+    rgba(32, 32, 32, 0) 100%
+  );
+  @extend .ps2-button;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  text-shadow: 0 0 5px #505050 !important;
+
+  &:hover {
+    background-color: #4b0202;
+  }
+}
+
+.animation-disabled {
+  animation-name: none !important;
+}
