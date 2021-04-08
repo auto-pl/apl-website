@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, ReactNode } from "react";
+import React, { CSSProperties, FC, MouseEventHandler, ReactNode } from "react";
 import "../../styles/global/ps2_styles/containers.css";
 import "../../styles/global/ps2_styles/text.css";
 import "../../styles/global/ps2_styles/sizing.css";
@@ -25,12 +25,13 @@ type Height =
   | 85
   | 90
   | 95
-  | 100;
+  | 100
+  | "auto";
 
 /**
  * A percentage of the screen
  */
-type Width = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
+type Width = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | "auto";
 
 /**
  * Measured in vh
@@ -42,17 +43,10 @@ export interface TextContainerProps {
    * Defaults to 2
    */
   font_size?: FontSize;
-  header_settings?: {
-    /**
-     * The header's contents
-     */
-    text: string;
-    /**
-     * The size of the header's font.
-     * Defaults to 3.
-     */
-    font_size?: FontSize;
-  };
+  /**
+   * A `ContainerHeader`
+   */
+  header?: ReactNode;
   /**
    * Whether the container should be displayed inline with other elements.
    * Defaults to `false`
@@ -81,12 +75,33 @@ export interface TextContainerProps {
   on_hover?: MouseEventHandler;
   on_click?: MouseEventHandler;
   children?: ReactNode;
+  style?: CSSProperties;
+  class_name?: string;
+  body_background_colour?: string;
 }
 
-// !FIX: not enough components! Split the header and body into components and make TextContainer just hold them
+export interface ContainerHeaderProps {
+  children: ReactNode;
+  /**
+   * Defaults to 3
+   */
+  font_size?: FontSize;
+}
+
+export const ContainerHeader: FC<ContainerHeaderProps> = ({
+  children,
+  font_size,
+}) => {
+  return (
+    <div className={`h-10 container-header font-size-${font_size || 3}`}>
+      {/* The header */}
+      {children}
+    </div>
+  );
+};
 
 export const TextContainer: FC<TextContainerProps> = ({
-  header_settings,
+  header,
   inline = false,
   x_scrollable = false,
   y_scrollable = false,
@@ -96,33 +111,35 @@ export const TextContainer: FC<TextContainerProps> = ({
   on_click,
   font_size = 2,
   children,
+  style,
+  class_name,
+  body_background_colour,
 }) => {
   return (
     <div
       className={`container h-${height} w-${width} font-primary ${
         inline ? "container-inline" : ""
-      }`}
+      } ${class_name}`}
       onClick={on_click}
       onMouseOver={on_hover}
+      style={style}
     >
-      {/* The header */}
-      {header_settings ? (
+      <div className="container-glow">
+        {header}
+        {/* Scrolling support */}
         <div
-          className={`h-10 container-header font-size-${
-            header_settings.font_size || 3
+          className={`w-100 h-85 ${y_scrollable ? "overflow-y-scroll" : ""} ${
+            x_scrollable ? "overflow-x-scroll" : ""
           }`}
         >
-          {header_settings.text}
+          {/* The contents */}
+          <div
+            className={`container-body font-size${font_size}`}
+            style={{ backgroundColor: body_background_colour }}
+          >
+            {children}
+          </div>
         </div>
-      ) : null}
-      {/* Scrolling support */}
-      <div
-        className={`w-100 h-85 ${y_scrollable ? "overflow-y-scroll" : ""} ${
-          x_scrollable ? "overflow-x-scroll" : ""
-        }`}
-      >
-        {/* The contents */}
-        <div className={`container-body font-size${font_size}`}>{children}</div>
       </div>
     </div>
   );

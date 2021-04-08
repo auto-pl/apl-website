@@ -1,0 +1,46 @@
+@use "../../global/ps2_styles/variables"
+@use "../../global/fixins"
+@use "../../global/ps2_styles/positioning"
+
+@mixin min-width
+    min-width: 160px
+
+.switcher-container
+    position: relative
+    display: inline-block
+    @include min-width
+    width: 100%
+
+// The container for the menu that will appear on click
+.switcher-content-container
+    transition: opacity 0.25s ease-out
+    opacity: 0
+    display: none
+    margin-top: 9px
+    position: absolute
+    width: 80%
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2)
+    z-index: 1
+    @include positioning.absolutely-centered
+
+.switcher-content-container-revealed
+    opacity: 1
+    display: block
+
+// Use this on a parent <span> for the button because the
+// PS2Button style will override it if the class is applied directly
+.switcher-item button // Each item within the Switcher
+    padding: 16px
+    display: block
+    text-align: center
+    width: 100%
+    @include fixins.no-focus-outline
+
+.switcher-item-disabled
+    cursor: not-allowed
+
+    & *
+        cursor: not-allowed
+
+.switcher
+    display: block

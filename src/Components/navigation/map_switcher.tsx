@@ -1,144 +1,101 @@
-import React, { useState, FC, CSSProperties } from "react";
-import { ContinentDetails, ContinentViews } from "../../interfaces/continent";
+import React, { FC } from "react";
+import { ContinentDetails, faction } from "../../interfaces/continent";
 import { get_active_continent } from "../../Utils/apitils";
-import {
-  get_faction_colour,
-  faction_logos,
-} from "../../Utils/globals/faction_globals";
+import { faction_logos } from "../../Utils/globals/faction_globals";
+import classNames from "classnames";
+import { Switcher } from "./switcher/switcher";
+import { get_class_names } from "../../Utils/component_utils";
+import "../../styles/components/map_switcher/map_switcher.css";
+import "../../styles/global/ps2_styles/positioning.css";
+import "../../styles/global/ps2_styles/text.css";
 
-// !FIX: make good code this time, idiot
+type ContinentChangeHandler = (cont: ContinentDetails) => void;
 
-interface MapSwitcherProps {
-  continents: ContinentViews;
+export interface MapSwitcherProps {
+  continents: Array<ContinentDetails>;
+  /**
+   * This function should handle displaying the new continent
+   */
+  set_new_continent: ContinentChangeHandler;
 }
 
 interface ContinentItemProps {
   /**
    * All relevant information about the continent to link to
    */
-  continent_record: ContinentDetails;
-
-  /**
-   * Whether this item is the currently viewed continent.
-   */
-  selected: boolean;
-
-  /**
-   * The function to update the parent's state when this item is selected.
-   */
-  set_cont: (new_continent: ContinentDetails) => void;
-
-  /**
-   * The URL to the target continent's view
-   */
-  url: string;
+  continent: ContinentDetails;
+  set_new_continent: ContinentChangeHandler;
 }
 
-// TODO: add styles
-const continent_item_overlay_style: CSSProperties = {};
-const continent_item_link_style: CSSProperties = {
-  display: "inline-block",
-};
-
-/**
- * A link to display another continent
- */
-const ContinentItem: FC<ContinentItemProps> = (props: ContinentItemProps) => {
-  const div_style: CSSProperties = {
-    ...continent_item_overlay_style,
-    verticalAlign: "middle",
-    height: "32px",
-  };
-
-  const locked_by = props.continent_record.locked_by;
-
-  let locked_icon = null;
-  if (locked_by) {
-    locked_icon = (
-      <img
-        src={faction_logos.get(locked_by)}
-        alt={`Locked by ${locked_by}`}
-        height={"32px"}
-        width={"32px"}
-        style={{ position: "relative", top: "10px" }}
-      ></img>
-    );
-  }
-
-  const selected_style: CSSProperties = {
-    backgroundColor: props.selected ? "rgba(0, 0, 0, 0.25)" : undefined,
-    width: "100%",
-    verticalAlign: "middle",
-    display: "justify",
-  };
-
-  const locked_style: CSSProperties = {
-    backgroundColor: locked_by ? get_faction_colour(locked_by) : undefined,
-    display: "inline-block",
-    border: "1px solid grey",
-    padding: "2px 4px 2px 4px",
-    width: "20%",
-  };
-
-  return (
-    <div
-      style={div_style}
-      onClick={() => props.set_cont(props.continent_record)}
-    >
-      <span style={locked_style}>
-        <div style={selected_style}>
-          <a href={props.url} style={continent_item_link_style}>
-            {locked_icon}
-            <span>{props.continent_record.name}</span>
-          </a>
-        </div>
-      </span>
-    </div>
+const continent_item_classes = (locked_by: faction) => {
+  return classNames(
+    { "locked-NC": locked_by === "NC" },
+    { "locked-TR": locked_by === "TR" },
+    { "locked-VS": locked_by === "VS" }
   );
 };
 
-const default_cont = get_active_continent();
-const up_arrow: CSSProperties = {
-  width: 0,
-  height: 0,
-  borderStyle: "solid",
-  borderWidth: "0 16px 32px 16px",
-  borderColor: "transparent transparent #7048e8 transparent",
-  position: "relative",
+interface FactionIMGProps {
+  locked_by: string | null;
+}
+
+const FactionIMG: FC<FactionIMGProps> = ({ locked_by }) => {
+  return locked_by ? (
+    <img
+      className="faction-logo"
+      alt={`${locked_by} logo`}
+      src={faction_logos.get(locked_by)}
+    />
+  ) : null;
 };
 
-export const MapSwitcher: FC<MapSwitcherProps> = (props: MapSwitcherProps) => {
-  const [current_cont, set_current_cont] = useState(default_cont);
-  const [clicked, set_clicked] = useState(false);
+const ContinentItem: FC<ContinentItemProps> = ({
+  continent,
+  set_new_continent,
+}) => {
+  const { locked_by, name } = continent;
 
-  const cont_name_style: CSSProperties = {
-    border: "2px solid black",
-    width: "20%",
-    display: "inline-block",
-    marginBottom: "4px",
-  };
+  // !TODO: center the text
+  return (
+    <span
+      className={get_class_names(
+        "continent-item pair-text-image",
+        continent_item_classes
+      )(locked_by)}
+      onClick={() => set_new_continent(continent)}
+    >
+      <FactionIMG locked_by={locked_by} />
+      <p>{name}</p>
+    </span>
+  );
+};
+
+export const MapSwitcher: FC<MapSwitcherProps> = ({
+  continents,
+  set_new_continent,
+}) => {
+  const active_cont = get_active_continent();
+  const check_locked = (c: ContinentDetails): boolean => !!c.locked_by;
+
+  const items = continents.map((cont, i) => ({
+    text: cont.name,
+    body: (
+      <ContinentItem
+        continent={cont}
+        key={i}
+        set_new_continent={set_new_continent}
+      />
+    ),
+    disabled: check_locked(cont),
+  }));
 
   return (
-    <div
-      id="MapSwitcher"
-      style={{ verticalAlign: "center" }}
-      onClick={() => set_clicked(!clicked)}
-    >
-      <span style={cont_name_style}>
-        {/* <span style={up_arrow} /> */}
-        {current_cont.name}
-      </span>
-      {clicked
-        ? props.continents.map((cont, i) => (
-            <ContinentItem
-              continent_record={cont.details}
-              key={i}
-              selected={cont.details.name === current_cont.name}
-              set_cont={set_current_cont}
-              url={cont.view_url}
-            />
-          ))
-        : null}
+    <div className="map-switcher">
+      <Switcher
+        header_text={active_cont.name}
+        items={items}
+        style={{ width: "100%" }}
+      />
     </div>
   );
 };

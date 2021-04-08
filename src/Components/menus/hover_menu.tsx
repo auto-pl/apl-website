@@ -1,7 +1,7 @@
 // this file will have the hover menu for hexes
 import React, { ReactNode, CSSProperties, memo } from "react";
-import { Portal } from "../HOCs/portal";
-import { TextContainer } from "../containers/text_container";
+import { Portal } from "../wrappers/portal";
+import { TextContainer, ContainerHeader } from "../containers/text_container";
 import "../../styles/global/fade_in/fade_in.css";
 import "../../styles/global/corners/corners.css";
 
@@ -75,7 +75,7 @@ export const HoverMenu = memo((props: HoverMenuProps) => {
         }}
       >
         <TextContainer
-          header_settings={{ text: props.title }}
+          header={<ContainerHeader>{props.title}</ContainerHeader>}
           width={100}
           height={100}
         >

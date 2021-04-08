@@ -31,4 +31,17 @@
   text-align: justify;
 }
 
+.pair-text-image {
+  display: flex;
+  align-items: center;
+}
+
+.absolute-centered {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*# sourceMappingURL=positioning.css.map */

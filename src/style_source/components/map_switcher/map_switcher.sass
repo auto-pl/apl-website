@@ -1,0 +1,41 @@
+@use "../../global/ps2_styles/variables"
+@use "../../global/fixins"
+
+$logo-size: 32px
+
+.map-switcher
+    left: 20% // !FIXME this is weird
+    min-width: 250px
+    display: inline-block
+    position: absolute
+    z-index: 3
+
+.selected
+    opacity: 0.9
+
+.continent-item
+    min-height: 32px
+    width: 100%
+
+    & p
+        left: 35%
+        position: relative
+
+.locked p
+    left: 0
+
+.locked-NC
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-NC
+
+.locked-TR
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-TR
+
+.locked-VS
+    @extend .locked
+    background-color: variables.$COLOR-FG-CAPPED-VS
+
+.faction-logo
+    height: $logo-size
+    width: $logo-size

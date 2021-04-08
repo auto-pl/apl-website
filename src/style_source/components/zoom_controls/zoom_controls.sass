@@ -1,0 +1,28 @@
+@use "../../global/ps2_styles/variables"
+@use "../../global/fixins"
+
+$border: 1px variables.$COLOR-BORDER solid
+
+.zoom-container
+    display: flex
+    flex-direction: column
+    text-align: center
+    position: absolute
+    border: $border
+    top: 40%
+    right: 1%
+    height: 15%
+    width: 2%
+
+.zoom-button
+    padding: 5px
+    height: 50%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background-color: variables.$COLOR-BG
+    border: none
+    @include fixins.clickable
+
+    &:not(:last-child) // borders between buttons
+        border-bottom: $border
