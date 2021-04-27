@@ -30,7 +30,7 @@ export interface ContinentInfo {
   readonly name: string;
   readonly description: string;
   readonly lattice_links: Array<[number, number]>; // Numbers are base IDs
-  readonly map_outlines_svg: BaseSvgMapping;
+  readonly map_base_svgs: BaseSvgMapping;
   readonly map_tileset: string;
 }
 
