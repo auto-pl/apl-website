@@ -29,9 +29,8 @@ export interface ContinentInfo {
   readonly id: number;
   readonly name: string;
   readonly description: string;
-  readonly bases: Array<BaseInfo>;
   readonly lattice_links: Array<[number, number]>; // Numbers are base IDs
-  readonly map_outlines_svg: string;
+  readonly map_outlines_svg: BaseSvgMapping;
   readonly map_tileset: string;
 }
 
@@ -57,4 +56,11 @@ export interface Population {
   readonly TR: number;
   readonly VS: number;
   readonly NSO: number;
+}
+
+/**
+ * Mapping of string base IDs to their outline SVG.
+ */
+export interface BaseSvgMapping {
+  [key: string]: string
 }
