@@ -1,0 +1,14 @@
+@keyframes FadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@mixin FadesIn
+    animation-name: FadeIn
+    animation-timing-function: ease-in-out
+    animation-iteration-count: 1
+    animation-duration: 0.2s
+
+.FadeIn
+    @include FadesIn

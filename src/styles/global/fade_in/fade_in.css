@@ -1,0 +1,16 @@
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.FadeIn {
+  animation-name: FadeIn;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+}
+
+/*# sourceMappingURL=fade_in.css.map */

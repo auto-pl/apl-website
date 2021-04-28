@@ -1,0 +1,28 @@
+.switcher {
+  left: 20%;
+  position: absolute;
+  z-index: 1;
+  max-width: 200px;
+}
+
+.continent-item {
+  text-align: center;
+  width: 80%;
+}
+
+.selected {
+  opacity: 0.9;
+}
+
+details, summary {
+  cursor: pointer;
+}
+details:focus, summary:focus {
+  outline: none;
+}
+
+details:open {
+  cursor: arrow;
+}
+
+/*# sourceMappingURL=map_switcher.css.map */
