@@ -18,4 +18,4 @@ interface _ServerUpdate {
   population: Population;
   open_continents: Array<number>;
 }
-export type ServerUpdate = Readonly<_ServerUpdate>;
+export type APIServerUpdate = Readonly<_ServerUpdate>;

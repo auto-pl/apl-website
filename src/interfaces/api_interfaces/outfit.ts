@@ -8,4 +8,4 @@ interface _OutfitInfo {
   name: string;
   tag?: string;
 }
-export type OutfitInfo = Readonly<_OutfitInfo>;
+export type APIOutfitInfo = Readonly<_OutfitInfo>;

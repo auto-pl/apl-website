@@ -12,7 +12,7 @@ interface _BaseInfo {
   resource_id?: number;
   resource_name?: string;
 }
-export type BaseInfo = Readonly<_BaseInfo>;
+export type APIBaseInfo = Readonly<_BaseInfo>;
 
 interface _BaseStatus {
   id: number;
@@ -22,7 +22,7 @@ interface _BaseStatus {
   owning_outfit?: number;
   held_since: number; // UTC timestamp of the last cap or reset
 }
-export type BaseStatus = Readonly<_BaseStatus>;
+export type APIBaseStatus = Readonly<_BaseStatus>;
 
 /**
  * Static continent data, loaded once and cached.
@@ -35,7 +35,7 @@ interface _ContinentInfo {
   map_base_svgs: BaseSvgMapping;
   map_tileset: string;
 }
-export type ContinentInfo = Readonly<_ContinentInfo>;
+export type APIContinentInfo = Readonly<_ContinentInfo>;
 
 /**
  * Dynamic continent update
@@ -50,7 +50,7 @@ interface _ContinentStatus {
   alert_started?: number;
   alert_ends?: number;
 }
-export type ContinentStatus = Readonly<_ContinentStatus>;
+export type APIContinentStatus = Readonly<_ContinentStatus>;
 
 /**
  * Faction-specific population data.
