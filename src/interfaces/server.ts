@@ -1,16 +1,20 @@
-import { Continents, Population } from "./continent";
-import { ApiGetter } from "./api";
+import { Population } from "./continent";
 
-export type Region = "NA" | "EU" | "AS";
-
-export type Servers = Array<Server>;
-
-export interface Server {
+/**
+ * Static data for a PS2 game server.
+ */
+export interface ServerInfo {
+  readonly id: number; // Integer
   readonly name: string;
-  readonly id: string;
-  readonly region: Region;
-  readonly population: Population;
-  readonly continents: Continents;
+  readonly region: string;
 }
 
-export type ServerGetter = ApiGetter<Server>;
+/**
+ * Dynamic server data used for status display.
+ */
+export interface ServerUpdate {
+  readonly id: number;
+  readonly status: string;
+  readonly population: Population;
+  readonly open_continents: Array<number>;
+}
