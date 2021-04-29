@@ -16,6 +16,7 @@
     "react-lazyload": "^3.2.0",
     "react-scripts": "4.0.1",
     "react-spinners": "^0.10.6",
+    "react-svg": "^13.0.3",
     "react-tooltip": "^4.2.15",
     "react-zoom-pan-pinch": "^1.6.1",
     "web-vitals": "^0.2.4"
