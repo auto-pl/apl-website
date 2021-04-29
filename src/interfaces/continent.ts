@@ -27,22 +27,27 @@ interface _ContinentInfo extends APIContinentInfo {
  */
 export type ContinentInfo = Readonly<_ContinentInfo>;
 
-interface _ContinentStatus extends APIContinentStatus {
+export interface Alert {
+  active: boolean;
+  started?: Date;
+  ends?: Date;
+}
+
+interface _ContinentStatus
+  extends Omit<
+    APIContinentStatus,
+    "alert_active" | "alert_started" | "alert_ends"
+  > {
   id: Continents;
   server_id: Servers;
   locked_by?: Factions;
+  alert_info: Alert;
 }
 /**
  * A dynamic continent update
  */
 export type ContinentStatus = Readonly<_ContinentStatus>;
-const test: ContinentStatus = {
-  id: Continents.INDAR,
-  server_id: Servers.COBALT,
-  locked_by: Factions.NC,
-  population: { NC: 40, TR: 3, VS: 90, NSO: 0 },
-  status: "online",
-};
+
 /**
  * An object containing the outfit resource gain for owning this base.
  */
