@@ -36,6 +36,13 @@ interface _ContinentStatus extends APIContinentStatus {
  * A dynamic continent update
  */
 export type ContinentStatus = Readonly<_ContinentStatus>;
+const test: ContinentStatus = {
+  id: Continents.INDAR,
+  server_id: Servers.COBALT,
+  locked_by: Factions.NC,
+  population: { NC: 40, TR: 3, VS: 90, NSO: 0 },
+  status: "online",
+};
 /**
  * An object containing the outfit resource gain for owning this base.
  */
