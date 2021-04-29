@@ -1,5 +1,5 @@
 import { APIServerUpdate, Servers } from "./api_interfaces/server";
-import { ContinentStatus } from "./api_interfaces/continent";
+import { ContinentStatus } from "./continent";
 
 export type { ServerInfo, Servers } from "./api_interfaces/server";
 
