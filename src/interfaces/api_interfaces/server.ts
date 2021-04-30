@@ -1,11 +1,9 @@
 import { Population } from "./continent";
 
-export type Region = "EU" | "US East" | "US West" | "Asia";
-
 interface _ServerInfo {
   id: number; // Integer
   name: string;
-  region: Region;
+  region: string;
 }
 /**
  * Static data for a PS2 game server.

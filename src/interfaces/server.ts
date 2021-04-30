@@ -6,8 +6,14 @@ import {
 import { ContinentStatus } from "./continent";
 
 export { Servers } from "./api_interfaces/server";
+
+export type Region = "EU" | "US East" | "US West" | "Asia";
+export type Status = "online" | "offline";
+
 interface _ServerInfo extends APIServerInfo {
   id: Servers;
+  region: Region;
+  status: Status;
 }
 export type ServerInfo = Readonly<_ServerInfo>;
 

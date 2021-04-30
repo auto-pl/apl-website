@@ -1,17 +1,5 @@
 export type BaseCoords = [number, number];
 
-export type ResourceName = "Auraxium" | "Synthium" | "Polystellarite";
-export enum BaseTypes {
-  AMP_STATION = 2,
-  BIO_LAB = 3,
-  TECH_PLANT = 4,
-  LARGE_OUTPOST = 5,
-  SMALL_OUTPOST = 6,
-  WARPGATE = 7,
-  CONSTRUCTION_OUTPOST = 9,
-  CONTAINMENT_SITE = 11,
-}
-
 interface _BaseInfo {
   id: number;
   continent_id: number;
@@ -22,7 +10,7 @@ interface _BaseInfo {
   // Outfit Resources
   resource_amount: number;
   resource_id?: number;
-  resource_name?: ResourceName;
+  resource_name?: string;
 }
 /**
  * Static base information to load and cache.
@@ -90,16 +78,3 @@ interface _BaseSVGMapping {
  * Mapping of string base IDs to their outline SVG.
  */
 export type BaseSVGMapping = Readonly<_BaseSVGMapping>;
-
-/**
- * The continent IDs
- */
-export enum Continents {
-  INDAR = 2,
-  HOSSIN = 4,
-  AMERISH = 6,
-  ESAMIR = 8,
-  VR_TRAINING_NC = 96,
-  VR_TRAINING_TR = 97,
-  VR_TRAINING_VS = 98,
-}

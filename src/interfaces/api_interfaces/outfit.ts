@@ -9,12 +9,3 @@ interface _OutfitInfo {
  * Static data representation of an player outfit.
  */
 export type APIOutfitInfo = Readonly<_OutfitInfo>;
-
-/**
- * Enum for the faction IDs
- */
-export enum Factions {
-  VS,
-  NC,
-  TR,
-}

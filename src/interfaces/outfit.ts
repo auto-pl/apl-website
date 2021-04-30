@@ -1,6 +1,14 @@
-import { APIOutfitInfo, Factions } from "./api_interfaces/outfit";
+import { APIOutfitInfo } from "./api_interfaces/outfit";
 import { ServerInfo, Servers } from "./server";
 
+/**
+ * Enum for the faction IDs
+ */
+export enum Factions {
+  VS,
+  NC,
+  TR,
+}
 interface _OutfitInfo extends Omit<APIOutfitInfo, "faction_id"> {
   faction: Factions;
   server_id: Servers;
@@ -11,5 +19,3 @@ interface _OutfitInfo extends Omit<APIOutfitInfo, "faction_id"> {
  * Static data representation of an player outfit.
  */
 export type OutfitInfo = Readonly<_OutfitInfo>;
-
-export { Factions } from "./api_interfaces/outfit";
