@@ -1,7 +1,7 @@
 export type BaseCoords = [number, number];
 
 export type ResourceName = "Auraxium" | "Synthium" | "Polystellarite";
-export enum BaseType {
+export enum BaseTypes {
   AMP_STATION = 2,
   BIO_LAB = 3,
   TECH_PLANT = 4,

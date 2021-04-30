@@ -4,7 +4,7 @@ import {
   APIContinentStatus,
   APIBaseInfo,
   APIBaseStatus,
-  BaseType,
+  BaseTypes,
   ResourceName,
 } from "./api_interfaces/continent";
 import { Servers } from "./api_interfaces/server";
@@ -15,7 +15,7 @@ export type {
   BaseSVGMapping,
   Population,
   Continents,
-  BaseType,
+  BaseTypes,
   ResourceName,
 } from "./api_interfaces/continent";
 
@@ -67,10 +67,10 @@ interface _BaseInfo
     | "type_name"
   > {
   continent_id: Continents;
-  type: BaseType;
+  type: BaseTypes;
   resource_info: BaseResources;
 }
-export type BaseINfo = Readonly<_BaseInfo>;
+export type BaseInfo = Readonly<_BaseInfo>;
 
 interface _BaseStatus extends Omit<APIBaseStatus, "owning_outfit"> {
   server_id: Servers;
