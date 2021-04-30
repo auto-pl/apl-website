@@ -1,7 +1,15 @@
-import { APIServerUpdate, Servers } from "./api_interfaces/server";
+import {
+  APIServerUpdate,
+  Servers,
+  APIServerInfo,
+} from "./api_interfaces/server";
 import { ContinentStatus } from "./continent";
 
-export type { ServerInfo, Servers } from "./api_interfaces/server";
+export { Servers } from "./api_interfaces/server";
+interface _ServerInfo extends APIServerInfo {
+  id: Servers;
+}
+export type ServerInfo = Readonly<_ServerInfo>;
 
 interface _ServerUpdate extends Omit<APIServerUpdate, "open_continents"> {
   id: Servers;
