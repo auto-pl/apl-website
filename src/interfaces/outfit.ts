@@ -1,7 +1,7 @@
 import { APIOutfitInfo, Factions } from "./api_interfaces/outfit";
 import { ServerInfo, Servers } from "./server";
 
-interface _OutfitInfo extends APIOutfitInfo {
+interface _OutfitInfo extends Omit<APIOutfitInfo, "faction_id"> {
   faction: Factions;
   server_id: Servers;
   server: () => Promise<ServerInfo>;
