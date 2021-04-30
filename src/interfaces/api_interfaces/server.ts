@@ -53,11 +53,13 @@ export enum Servers {
   SOLTECH = 40,
   /**
    * The private testing server.
+   * @deprecated This is private.
    */
   APEX = 24,
   /**
    * This server is no longer active.
    * It was the Australian server.
+   * @deprecated This server is closed.
    */
   BRIGGS = 25,
 }
