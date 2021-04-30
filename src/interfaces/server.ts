@@ -13,7 +13,7 @@ export type ServerInfo = Readonly<_ServerInfo>;
 
 interface _ServerUpdate extends Omit<APIServerUpdate, "open_continents"> {
   id: Servers;
-  open_continents: Promise<ContinentStatus>;
+  open_continents: () => Promise<ContinentStatus>;
 }
 
 /**
