@@ -24,5 +24,11 @@
   "include": [
     "src/app",
     "src/**/*"
-  ]
+  ],
+  "paths": {
+    "@Components": ["Components/*"],
+    "@Containers": ["@Components/containers/*"],
+    "@HOCs": ["@Components/HOCs/*"],
+    "@Inputs": ["@Components/inputs/*"], // TODO: finish import paths
+  }
 }
