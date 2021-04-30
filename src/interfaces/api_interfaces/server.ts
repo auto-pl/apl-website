@@ -10,7 +10,7 @@ interface _ServerInfo {
 /**
  * Static data for a PS2 game server.
  */
-export type ServerInfo = Readonly<_ServerInfo>;
+export type APIServerInfo = Readonly<_ServerInfo>;
 interface _ServerUpdate {
   id: number;
   status: string;
