@@ -19,7 +19,20 @@ export type ServerInfo = Readonly<_ServerInfo>;
 
 interface _ServerUpdate extends Omit<APIServerUpdate, "open_continents"> {
   id: Servers;
-  open_continents: () => Promise<ContinentStatus>;
+  /**
+   * Get the lastest update on all 4 continents and the VR training instances
+   */
+  open_continents: () => Promise<
+    [
+      ContinentStatus,
+      ContinentStatus,
+      ContinentStatus,
+      ContinentStatus,
+      ContinentStatus,
+      ContinentStatus,
+      ContinentStatus
+    ]
+  >;
 }
 
 /**

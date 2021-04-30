@@ -34,6 +34,7 @@ export enum Continents {
   VR_TRAINING_TR = 97,
   VR_TRAINING_VS = 98,
 }
+// TODO: add Koltyr and update server.ts to return 8 continents
 
 interface _ContinentInfo extends APIContinentInfo {
   id: Continents;
