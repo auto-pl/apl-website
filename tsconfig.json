@@ -25,19 +25,10 @@
     "src/app",
     "src/**/*"
   ],
-  "baseUrl": "./",
   "paths": {
-    "@Components/*": ["Components/*"],
-    "@Containers/*": ["@Components/containers/*"],
-    "@HOCs/*": ["@Components/HOCs/*"],
-    "@Inputs/*": ["@Components/inputs/*"],
-    "@Loaders/*": ["@Components/loading/*"],
-    "@Menus/*": ["@Components/menus/*"],
-    "@SVGs/*": ["@Components/svg_wrappers/*"],
-    "@Visualisation/*": ["@Components/visualisation/*"],
-    "@Wrappers/*": ["@Components/wrappers/*"],
-    "@Styles/*": ["styles/*"],
-    "@GlobalStyles/*": ["@Styles/global/*"],
-    "@Interfaces/*": ["interfaces/*"]
+    "@Components": ["Components/*"],
+    "@Containers": ["@Components/containers/*"],
+    "@HOCs": ["@Components/HOCs/*"],
+    "@Inputs": ["@Components/inputs/*"], // TODO: finish import paths
   }
 }
