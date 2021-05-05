@@ -6,9 +6,8 @@ type KeyCompatible = string | number;
  * @returns The wrapped function
  */
 const with_cache = <KeyType extends KeyCompatible, ReturnType>(
-  func: (arg: KeyType) => ReturnType
-): ((arg: KeyType) => ReturnType) => {
-  const cache: Record<any, ReturnType> = {};
+  cache: Record<KeyType, ReturnType> = {} as Record<KeyType, ReturnType>
+) => (func: (arg: KeyType) => ReturnType): ((arg: KeyType) => ReturnType) => {
   return (arg) => {
     if (!cache[arg]) {
       const result = func(arg);
