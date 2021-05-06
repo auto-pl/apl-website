@@ -70,7 +70,7 @@ export type ContinentStatus = Readonly<_ContinentStatus>;
 export interface BaseResources {
   amount: number;
   id?: number;
-  name: ResourceName;
+  name?: ResourceName;
 }
 
 interface _BaseInfo
