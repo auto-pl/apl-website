@@ -1,6 +1,14 @@
-import { base_from_id } from "./base_from_id";
+import {
+  update_base_cache,
+  get_base_cache,
+  from_base_cache,
+  flush_cache as flush_base_cache,
+} from "./base_cache";
 
 const BaseAPI = {
-  base_from_id,
+  update_base_cache,
+  get_base_cache,
+  from_base_cache,
+  flush_base_cache,
 };
 export default BaseAPI;
