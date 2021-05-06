@@ -8,3 +8,10 @@ import { KeyFunction } from "./global_interfaces";
 export interface ApiGetter<contained> {
   (key?: KeyFunction): Array<contained>;
 }
+
+/**
+ * A function that converts an API response to an output type.
+ */
+export interface Converter<Response, Output> {
+  (response: Response): Output;
+}
