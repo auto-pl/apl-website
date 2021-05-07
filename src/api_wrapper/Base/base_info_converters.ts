@@ -1,15 +1,10 @@
 import {
   BaseInfo,
-  BaseStatus,
   BaseResources,
   ResourceName,
   BaseTypes,
-  Continents,
 } from "../../interfaces/continent";
-import {
-  APIBaseInfo,
-  APIBaseStatus,
-} from "../../interfaces/api_interfaces/continent";
+import { APIBaseInfo } from "../../interfaces/api_interfaces/continent";
 import { Converter } from "../../interfaces/api";
 
 const is_valid_resource_name = (name: string): name is ResourceName => {
