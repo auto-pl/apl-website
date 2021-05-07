@@ -33,6 +33,7 @@ export type APIBaseStatus = Readonly<_BaseStatus>;
 interface _ContinentInfo {
   id: number;
   name: string;
+  /** Internal identifier used as part of API file names. */
   code: string;
   description: string;
   lattice_links: Array<BaseCoords>; // Numbers are base IDs
