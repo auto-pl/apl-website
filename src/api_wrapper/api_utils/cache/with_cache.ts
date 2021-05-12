@@ -1,8 +1,7 @@
-type KeyCompatible = string | number;
 /**
  * Wrap the given function in a permanent cache.
  * All results of the function will be cached until reload.
- * @param func The function to wrap. The argument must be a string or number.
+ * @param func The function to wrap. The argument must be a string
  * @returns The wrapped function
  */
 export const with_cache = <KeyType extends string, ReturnType>(
