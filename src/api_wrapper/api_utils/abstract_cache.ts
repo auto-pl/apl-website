@@ -22,7 +22,7 @@ export interface Cache<T> {
   /**
    * Get a value by its key from the cache.
    */
-  from_cache: (key: CacheKey<T>) => T | null;
+  get_key: (key: CacheKey<T>) => T | null;
   /**
    * Remove a key from the cache.
    */
