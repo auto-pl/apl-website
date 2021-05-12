@@ -17,7 +17,7 @@ export interface CacheOverrides<T> {
  * @param overrides Any method implementations you want to override.
  * @returns The cache with the overridden methods.
  */
-const make_cache = <T extends unknown>(
+export const make_cache = <T extends unknown>(
   overrides: CacheOverrides<T> = {}
 ): AbstractCache<T> => {
   const BaseCache: AbstractCache<T> = {
@@ -43,5 +43,3 @@ const make_cache = <T extends unknown>(
   };
   return { ...BaseCache, ...overrides };
 };
-
-export default make_cache;

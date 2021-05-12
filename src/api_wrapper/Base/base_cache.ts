@@ -1,6 +1,5 @@
 import { BaseInfo } from "../../interfaces/continent";
-import make_cache from "../api_utils/make_cache";
-import { Cache } from "../api_utils/abstract_cache";
+import { make_cache, AbstractCache } from "../api_utils/cache";
 
-const BaseCache = make_cache() as Cache<BaseInfo>;
+const BaseCache = make_cache() as AbstractCache<BaseInfo>;
 export default BaseCache;
