@@ -37,6 +37,11 @@ export enum Continents {
 
 interface _ContinentInfo extends APIContinentInfo {
   id: Continents;
+  /**
+   * The big SVG holding lots of hex outlines.
+   * Each hex outline has an ID.
+   */
+  svgs: string;
 }
 /**
  * Static data about a continent to be loaded once and cached.
