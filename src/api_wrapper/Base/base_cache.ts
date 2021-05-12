@@ -1,51 +1,33 @@
 import { BaseInfo } from "../../interfaces/continent";
+import { Cache } from "../api_utils/abstract_cache";
 
-export type BaseCacheT = Record<number, BaseInfo>;
-let BaseCache: BaseCacheT = {};
-
-/**
- * Get a read-only copy of the current cache.
- * @returns The current base cache.
- */
-export const get_base_cache = (): BaseCacheT => Object.freeze(BaseCache);
-
-/**
- * Replaces the internal cache's keys with the provided keys.
- * Unprovided keys will be assumed to be still accurate.
- * @param new_cache The new keys to add/update
- * @returns The new cache.
- */
-export const update_base_cache = (new_cache: BaseCacheT): BaseCacheT => {
-  BaseCache = { ...BaseCache, ...new_cache };
-  return get_base_cache();
+const BaseCache: Cache<BaseInfo> = {
+  _cache: {},
+  get_cache: function () {
+    return Object.freeze(this._cache);
+  },
+  update_cache: function (new_cache) {
+    this._cache = { ...this._cache, ...new_cache };
+    return this.get_cache();
+  },
+  flush_cache: function () {
+    this._cache = {};
+    return this.get_cache();
+  },
+  from_cache: function (id) {
+    return this.get_cache()[id] || null;
+  },
+  delete_key: function (id) {
+    delete this._cache[id];
+    return this.get_cache();
+  },
+  refresh_cache: async function () {
+    // TODO: request base cache
+    // TODO: API request
+    // TODO: map BaseInfo converter on result
+    // TODO re: ^ maybe that should be mixed into the request function
+    const result = {};
+    return this.update_cache(result);
+  },
 };
-
-/**
- * Get the latest base info objects from the API and update the internal cache.
- * @returns The new cache.
- */
-export const refresh_base_cache = async (): Promise<BaseCacheT> => {
-  // TODO: request base cache
-  // TODO: API request
-  // TODO: map BaseInfo converter on result
-  // TODO re: ^ maybe that should be mixed into the request function
-  const result = {};
-  return update_base_cache(result);
-};
-
-/**
- * Get a base from the cache.
- * @param id The ID of the base to get.
- * @returns The base or `null` if not found.
- */
-export const from_base_cache = (id: number): BaseInfo | null =>
-  get_base_cache()[id] || null;
-
-/**
- * Clear the cache.
- * @returns The new cache.
- */
-export const flush_cache = (): BaseCacheT => {
-  BaseCache = {};
-  return get_base_cache();
-};
+export default BaseCache;
