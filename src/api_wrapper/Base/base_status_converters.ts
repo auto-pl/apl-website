@@ -4,9 +4,18 @@ import OutfitAPI from "../Outfit/index";
 import { Converter } from "../../interfaces/api";
 const { get_outfit } = OutfitAPI;
 
-export const convert_base_info: Converter<APIBasesStatus, BaseStatus> = (
+export const convert_base_status: Converter<APIBaseStatus, BaseStatus> = (
   response
 ) => {
-  const get_outfit_info = () => get_outfit(response.outfit_id);
-  return {};
+  const get_outfit_info = () => get_outfit(response.owning_outfit);
+
+  return {
+    id: response.id,
+    server_id: response.server_id,
+    population: response.population,
+    owning_faction: response.owning_faction,
+    owning_outfit: get_outfit_info,
+    owning_outfit_id: response.owning_outfit,
+    held_since: response.held_since,
+  };
 };
