@@ -1,14 +1,7 @@
 import { Cache as AbstractCache } from "./abstract_cache";
 export type { Cache as AbstractCache } from "./abstract_cache";
 
-export interface CacheOverrides<T> {
-  get_cache?: AbstractCache<T>["get_cache"];
-  update_cache?: AbstractCache<T>["update_cache"];
-  flush_cache?: AbstractCache<T>["flush_cache"];
-  get_key?: AbstractCache<T>["get_key"];
-  delete_key?: AbstractCache<T>["delete_key"];
-  refresh_cache?: AbstractCache<T>["refresh_cache"];
-}
+type CacheOverrides<T> = Partial<AbstractCache<T>>;
 
 /**
  * Factory for caches so that you don't have to use a lot of boilerplate.
@@ -17,7 +10,7 @@ export interface CacheOverrides<T> {
  * @param overrides Any method implementations you want to override.
  * @returns The cache with the overridden methods.
  */
-export const make_cache = <T extends unknown>(
+export const make_cache = <T>(
   overrides: CacheOverrides<T> = {}
 ): AbstractCache<T> => {
   const BaseCache: AbstractCache<T> = {
