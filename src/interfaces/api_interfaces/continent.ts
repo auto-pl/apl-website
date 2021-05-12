@@ -22,7 +22,7 @@ interface _BaseStatus {
   server_id: number;
   population: Population;
   owning_faction?: number;
-  owning_outfit?: number;
+  owning_outfit?: bigint;
   held_since: Date; // UTC timestamp of the last cap or reset
 }
 /**
