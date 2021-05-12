@@ -33,10 +33,10 @@ export type APIBaseStatus = Readonly<_BaseStatus>;
 interface _ContinentInfo {
   id: number;
   name: string;
+  /** Internal identifier used as part of API file names. */
+  code: string;
   description: string;
   lattice_links: Array<BaseCoords>; // Numbers are base IDs
-  map_base_svgs: BaseSVGMapping;
-  map_tileset: string;
 }
 /**
  * Static continent data, loaded once and cached.
