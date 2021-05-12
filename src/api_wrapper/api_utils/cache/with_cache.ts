@@ -5,7 +5,7 @@ type KeyCompatible = string | number;
  * @param func The function to wrap. The argument must be a string or number.
  * @returns The wrapped function
  */
-export const with_cache = <KeyType extends KeyCompatible, ReturnType>(
+export const with_cache = <KeyType extends string, ReturnType>(
   cache: Record<KeyType, ReturnType> = {} as Record<KeyType, ReturnType>
 ) => (func: (arg: KeyType) => ReturnType): ((arg: KeyType) => ReturnType) => {
   return (arg) => {
