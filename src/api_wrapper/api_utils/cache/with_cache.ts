@@ -7,7 +7,7 @@ type PromiseReturnType<T> = T extends (...args: any[]) => PromiseLike<infer U>
   : SafeReturnType<T>;
 
 type WithCacheSignature = <Func extends (...args: any[]) => any>(
-  cache: Record<Parameters<Func>[0], PromiseReturnType<Func>>
+  cache?: Record<Parameters<Func>[0], PromiseReturnType<Func>>
 ) => (
   func: Func
 ) => (
@@ -19,7 +19,7 @@ type WithCacheSignature = <Func extends (...args: any[]) => any>(
  * @param func The function to wrap. The argument must be a string
  * @returns The wrapped function
  */
-export const with_cache: WithCacheSignature = (cache) => (func) => {
+export const with_cache: WithCacheSignature = (cache = {} as any) => (func) => {
   type Args = Parameters<typeof func>;
   type Key = Args[0];
   type Return = PromiseReturnType<typeof func>;
