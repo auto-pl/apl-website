@@ -6,20 +6,24 @@ type PromiseReturnType<T> = T extends (...args: any[]) => PromiseLike<infer U>
   ? U
   : SafeReturnType<T>;
 
-type WithCacheSignature = <Func extends (...args: any[]) => any>(
-  cache?: Record<Parameters<Func>[0], PromiseReturnType<Func>>
-) => (
-  func: Func
-) => (
-  ...args: Parameters<Func>
-) => PromiseReturnType<Func> | Promise<PromiseReturnType<Func>>;
 /**
  * Wrap the given function in a permanent cache.
  * All results of the function will be cached until reload.
  * @param func The function to wrap. The argument must be a string
  * @returns The wrapped function
  */
-export const with_cache: WithCacheSignature = (cache = {} as any) => (func) => {
+export const with_cache = <Func extends (...args: any[]) => any>(
+  func: Func
+) => (
+  cache: Record<
+    Parameters<Func>[0],
+    PromiseReturnType<Func>
+  > = {} as typeof cache
+): ((
+  ...args: Parameters<Func>
+) => ReturnType<Func> extends PromiseLike<infer U>
+  ? Promise<U>
+  : ReturnType<Func>) => {
   type Args = Parameters<typeof func>;
   type Key = Args[0];
   type Return = PromiseReturnType<typeof func>;
@@ -53,4 +57,4 @@ export const with_cache: WithCacheSignature = (cache = {} as any) => (func) => {
   return is_async(func) ? async_wrapper : sync_wrapper;
 };
 
-const wrapped = with_cache({})((arg1: string): number => 1);
+const wrapped = with_cache((arg1: string): number => 1)({});
