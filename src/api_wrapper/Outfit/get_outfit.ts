@@ -8,5 +8,4 @@ const _get_outfit = async (id: string): Promise<OutfitInfo> => {
   return {} as OutfitInfo;
 };
 
-const get_outfit = with_cache(_get_outfit, OutfitCache);
-export default get_outfit;
+export const get_outfit = with_cache(_get_outfit, OutfitCache);
