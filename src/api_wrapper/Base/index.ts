@@ -1,14 +1,10 @@
-import {
-  update_base_cache,
-  get_base_cache,
-  from_base_cache,
-  flush_cache as flush_base_cache,
-} from "./base_cache";
+import { BaseCache } from "./base_cache";
+import { convert_base_info } from "./base_info_converters";
+import { convert_base_status } from "./base_status_converters";
 
 const BaseAPI = {
-  update_base_cache,
-  get_base_cache,
-  from_base_cache,
-  flush_base_cache,
+  BaseCache,
+  convert_base_info,
+  convert_base_status,
 };
 export default BaseAPI;
