@@ -96,7 +96,7 @@ export type BaseInfo = Readonly<_BaseInfo>;
 interface _BaseStatus extends Omit<APIBaseStatus, "owning_outfit"> {
   server_id: Servers;
   owning_faction?: Factions;
-  owning_outfit: () => Promise<OutfitInfo>;
+  owning_outfit: () => Promise<OutfitInfo> | undefined;
   owning_outfit_id?: bigint;
 }
 export type BaseStatus = Readonly<_BaseStatus>;

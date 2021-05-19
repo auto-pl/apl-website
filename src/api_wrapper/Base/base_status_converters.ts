@@ -7,7 +7,10 @@ const { get_outfit } = OutfitAPI;
 export const convert_base_status: Converter<APIBaseStatus, BaseStatus> = (
   response
 ) => {
-  const get_outfit_info = () => get_outfit(response.owning_outfit);
+  const get_outfit_info = () =>
+    response.owning_outfit
+      ? get_outfit(response.owning_outfit.toString())
+      : undefined;
 
   return {
     id: response.id,
