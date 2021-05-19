@@ -7,6 +7,7 @@ import {
 import { Servers } from "./api_interfaces/server";
 import { Factions } from "./outfit";
 import { OutfitInfo } from "./outfit";
+import { ServerInfo, ServerUpdate } from "./server";
 
 export type { BaseSVGMapping, Population } from "./api_interfaces/continent";
 
@@ -95,6 +96,8 @@ export type BaseInfo = Readonly<_BaseInfo>;
 
 interface _BaseStatus extends Omit<APIBaseStatus, "owning_outfit"> {
   server_id: Servers;
+  get_server_info: () => ServerInfo;
+  get_server_update: () => Promise<ServerUpdate>;
   owning_faction?: Factions;
   owning_outfit: () => Promise<OutfitInfo> | undefined;
   owning_outfit_id?: bigint;
