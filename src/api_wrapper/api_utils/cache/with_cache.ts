@@ -12,20 +12,13 @@ type WrappedWithCache<Args extends any[], Return> = (
 
 const is_async = (f: Function) => f.constructor.name === "AsyncFunction";
 
-const test: <Func extends (...args: any[]) => any>(
-  func: Func
-) =>
-  | ((...args: Parameters<Func>) => Promise<PromiseReturnType<Func>>)
-  | ((...args: Parameters<Func>) => ReturnType<Func>) = (func) => {
-  type AsyncReturn = (
-    ...args: Parameters<typeof func>
-  ) => Promise<PromiseReturnType<typeof func>>;
-  type SyncReturn = (
-    ...args: Parameters<typeof func>
-  ) => ReturnType<typeof func>;
-  return is_async(func)
-    ? ((async (...args) => await func(...args)) as AsyncReturn)
-    : (((...args) => func(...args)) as SyncReturn);
+const test = <Args extends any[], Return>(
+  func: (...args: Args) => Return
+): typeof func => {
+  return (...args) => {
+    console.log("Wrapped");
+    return func(...args);
+  };
 };
 
 const res = test((arg: string): number => 1);
