@@ -5,7 +5,7 @@ type CacheOverrides<T> = Partial<AbstractCache<T>>;
 
 /**
  * Factory for caches so that you don't have to use a lot of boilerplate.
- * NOTE: you'll need to cast the result of this function.
+ * NOTE: you'll need to cast the result of this function if you don't provide any overrides.
  * E.G: `const NameCache = make_cache(overrides) as AbstractCache<NameType>;`
  * @param overrides Any method implementations you want to override.
  * @returns The cache with the overridden methods.
