@@ -49,10 +49,6 @@ export const with_cache = <Func extends (...args: any[]) => any>(
     PromiseReturnType<Func>
   > = {} as typeof cache
 ): WrappedWithCache<Parameters<Func>, PromiseReturnType<Func>> => {
-  type Args = Parameters<typeof func>;
-  type Key = Args[0];
-  type Return = PromiseReturnType<typeof func>;
-
   const should_call = (key: Key): boolean => !(key in cache);
   const get_key = (args: Args): Key => args[0];
   const add_to_cache = (key: Key) => (result: Return): Return => {
