@@ -6,6 +6,10 @@ type PromiseReturnType<T> = T extends (...args: any[]) => PromiseLike<infer U>
   ? U
   : SafeReturnType<T>;
 
+type WrappedWithCache<Args extends any[], Return> = (
+  ...args: Args
+) => Return extends PromiseLike<Return> ? Promise<Return> : Return;
+
 /**
  * Wrap the given function in a permanent cache.
  * All results of the function will be cached until reload.
@@ -19,11 +23,7 @@ export const with_cache = <Func extends (...args: any[]) => any>(
     Parameters<Func>[0],
     PromiseReturnType<Func>
   > = {} as typeof cache
-): ((
-  ...args: Parameters<Func>
-) => ReturnType<Func> extends PromiseLike<infer U>
-  ? Promise<U>
-  : ReturnType<Func>) => {
+): WrappedWithCache<Parameters<Func>, PromiseReturnType<Func>> => {
   type Args = Parameters<typeof func>;
   type Key = Args[0];
   type Return = PromiseReturnType<typeof func>;
