@@ -10,6 +10,27 @@ type WrappedWithCache<Args extends any[], Return> = (
   ...args: Args
 ) => Return extends PromiseLike<Return> ? Promise<Return> : Return;
 
+const is_async = (f: Function) => f.constructor.name === "AsyncFunction";
+
+const test: <Func extends (...args: any[]) => any>(
+  func: Func
+) =>
+  | ((...args: Parameters<Func>) => Promise<PromiseReturnType<Func>>)
+  | ((...args: Parameters<Func>) => ReturnType<Func>) = (func) => {
+  type AsyncReturn = (
+    ...args: Parameters<typeof func>
+  ) => Promise<PromiseReturnType<typeof func>>;
+  type SyncReturn = (
+    ...args: Parameters<typeof func>
+  ) => ReturnType<typeof func>;
+  return is_async(func)
+    ? ((async (...args) => await func(...args)) as AsyncReturn)
+    : (((...args) => func(...args)) as SyncReturn);
+};
+
+const res = test((arg: string): number => 1);
+const try_ = res("one");
+
 /**
  * Wrap the given function in a permanent cache.
  * All results of the function will be cached until reload.
@@ -18,7 +39,11 @@ type WrappedWithCache<Args extends any[], Return> = (
  */
 export const with_cache = <Func extends (...args: any[]) => any>(
   func: Func
-) => (
+) => <
+  Return extends PromiseReturnType<typeof func>,
+  Args extends Parameters<typeof func>,
+  Key extends Args[0]
+>(
   cache: Record<
     Parameters<Func>[0],
     PromiseReturnType<Func>
@@ -34,7 +59,6 @@ export const with_cache = <Func extends (...args: any[]) => any>(
     cache[key] = result;
     return result;
   };
-  const is_async = (f: Function) => func.constructor.name === "AsyncFunction";
 
   const async_wrapper = async (...args: Args) => {
     const key = get_key(args);
