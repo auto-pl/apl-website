@@ -1,4 +1,5 @@
 import { OutfitInfo } from "../../interfaces/outfit";
+import { OutfitCache } from "./outfit_cache";
 import { with_cache } from "../api_utils/cache";
 
 const _get_outfit = async (id: string): Promise<OutfitInfo> => {
@@ -7,5 +8,5 @@ const _get_outfit = async (id: string): Promise<OutfitInfo> => {
   return {} as OutfitInfo;
 };
 
-const get_outfit = with_cache()(_get_outfit);
+const get_outfit = with_cache(_get_outfit, OutfitCache);
 export default get_outfit;
