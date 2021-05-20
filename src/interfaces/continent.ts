@@ -41,8 +41,9 @@ interface _ContinentInfo extends APIContinentInfo {
   /**
    * The big SVG holding lots of hex outlines.
    * Each hex outline has an ID.
+   *
    */
-  svgs: string;
+  svgs: () => Promise<string>;
 }
 /**
  * Static data about a continent to be loaded once and cached.
