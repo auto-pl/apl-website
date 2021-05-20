@@ -27,6 +27,26 @@ const validate_query = (url: string): string => {
 };
 
 /**
+ *
+ * @param collections The folders to query (E.G `[bases, info]` -> `base/info`)
+ * @param parameters The extra arguments for the query
+ * @returns
+ */
+const build_url = (collections: Array<string>) => (
+  parameters?: Array<Record<string, string | number>>
+): string => {
+  const domain = "http://127.0.0.1:5000/";
+  const path = domain + collections.join("/");
+  return parameters
+    ? path +
+        "?" +
+        parameters
+          .map((p) => `${Object.keys(p)[0]}=${Object.values(p)[0]}`)
+          .join("&")
+    : path;
+};
+
+/**
  * Fetch something from the AutoPL API.
  * This function validates that the query uses valid collections to make debugging easier.
  * @param url The APL API query
@@ -34,7 +54,10 @@ const validate_query = (url: string): string => {
  * @throws `ValidationError` if the URL is invalid.
  * @throws Errors from `axios.get` are not handled
  */
-export const query = async (url: string): Promise<object> => {
+export const query = (collections: Array<string>) => async (
+  parameters: Array<Record<string, string | number>>
+): Promise<object> => {
+  const url = build_url(collections)(parameters);
   const validated = validate_query(url);
-  return await get(validated);
+  return (await get(validated)).data;
 };
