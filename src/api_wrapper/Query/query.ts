@@ -56,7 +56,7 @@ const build_url = (collections: Array<string>) => (
  */
 export const query = (collections: Array<string>) => async (
   parameters?: Array<Record<string, string | number>>
-): Promise<object> => {
+): Promise<unknown> => {
   const url = build_url(collections)(parameters);
   const validated = validate_query(url);
   return (await get(validated)).data;
