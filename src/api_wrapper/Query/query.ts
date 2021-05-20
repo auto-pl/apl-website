@@ -55,7 +55,7 @@ const build_url = (collections: Array<string>) => (
  * @throws Errors from `axios.get` are not handled
  */
 export const query = (collections: Array<string>) => async (
-  parameters: Array<Record<string, string | number>>
+  parameters?: Array<Record<string, string | number>>
 ): Promise<object> => {
   const url = build_url(collections)(parameters);
   const validated = validate_query(url);
