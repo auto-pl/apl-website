@@ -1,3 +1,3 @@
-import { query_url } from "./query_url";
+import { query } from "./query";
 
-export const QueryAPI = { query_url };
+export const QueryAPI = { query };

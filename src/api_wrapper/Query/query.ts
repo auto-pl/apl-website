@@ -34,7 +34,7 @@ const validate_query = (url: string): string => {
  * @throws `ValidationError` if the URL is invalid.
  * @throws Errors from `axios.get` are not handled
  */
-export const query_url = async (url: string): Promise<object> => {
+export const query = async (url: string): Promise<object> => {
   const validated = validate_query(url);
   return await get(validated);
 };
