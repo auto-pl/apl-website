@@ -11,7 +11,7 @@ const is_base_status = (result: unknown): result is APIBaseStatus => {
 };
 
 export const get_base_status = async (id: string): Promise<BaseStatus> => {
-  const params: Record<string, string>[] = [{ id: id.toString() }];
+  const params = { id: id };
   const result = await query(["base", "status"])(params);
   if (!is_base_status(result))
     throw new Error(

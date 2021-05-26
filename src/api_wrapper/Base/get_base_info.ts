@@ -21,7 +21,7 @@ const is_base_info = (result: unknown): result is APIBaseInfo => {
 };
 
 const _get_base_info = async (id: string): Promise<BaseInfo> => {
-  const params: Array<Record<string, string>> = [{ id }];
+  const params = { id };
   const result = await query(["base", "info"])(params);
   if (!is_base_info(result))
     throw new Error(

@@ -33,15 +33,15 @@ const validate_query = (url: string): string => {
  * @returns
  */
 const build_url = (collections: Array<string>) => (
-  parameters?: Array<Record<string, string | number>>
+  parameters?: Record<string, string | number>
 ): string => {
   const domain = "http://127.0.0.1:5000/";
   const path = domain + collections.join("/");
   return parameters
     ? path +
         "?" +
-        parameters
-          .map((p) => `${Object.keys(p)[0]}=${Object.values(p)[0]}`)
+        Object.keys(parameters)
+          .map((k) => `${k}=${parameters[k]}`)
           .join("&")
     : path;
 };
@@ -55,7 +55,7 @@ const build_url = (collections: Array<string>) => (
  * @throws Errors from `axios.get` are not handled
  */
 export const query = (collections: Array<string>) => async (
-  parameters?: Array<Record<string, string | number>>
+  parameters?: Record<string, string | number>
 ): Promise<unknown> => {
   const url = build_url(collections)(parameters);
   const validated = validate_query(url);
